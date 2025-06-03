@@ -38,3 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+// Active menu highlighting based on current page
+document.addEventListener('DOMContentLoaded', () => {
+  const path = window.location.pathname;
+  const page = path.substring(path.lastIndexOf('/') + 1, path.lastIndexOf('.'));
+  const navLink = document.querySelector(`.nav-item[data-page="${page}"]`);
+  if (navLink) navLink.classList.add('active');
+});
