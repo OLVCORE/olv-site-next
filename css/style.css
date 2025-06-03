@@ -6,6 +6,7 @@
      nas páginas principais (index, ecossistema, etc.).
    - NOVA CLASSE: .ecossistema-cards-grid (para o grid de plataformas).
    - TODO o CSS de cards-notícias (blog) foi “movido” para #blog-cards .cards-grid.
+   - Alterações marcadas com /* === AQUI FOI ALTERADO === */
    ======================================================================== */
 
 /*--------------------------------------------------------------------------- 
@@ -72,6 +73,7 @@ body {
   --height-header: 120px;                 /* comporta logo 100px + slogan */
   --sidebar-collapsed-width: 60px;        /* largura da sidebar fechada */
   --sidebar-expanded-width: 220px;        /* largura quando expande no hover */
+  --sidebar-mobile-height: 60px;          /* altura do “top bar” em mobile */
   --radius: 8px;
 
   /* Sombras */
@@ -142,7 +144,7 @@ img {
 }
 
 /*===========================================
-  SIDEBAR (SEM LOGO NO TOPO) – sem alterações 
+  SIDEBAR (SEM LOGO NO TOPO) – ajustado
 ===========================================*/
 .sidebar {
   position: fixed;
@@ -242,9 +244,9 @@ body.theme-light .sidebar-icon {
   }
 }
 
-/*===========================================
-  HEADER FIXO – ajustes no logo e posicionamento
-===========================================*/
+/* ==========================================
+   HEADER FIXO – ajustes no logo e posicionamento
+   ========================================== */
 /* ========================================================================
    1) HEADER FIXO – já existente, mas reforçamos a borda inferior dourada
    ------------------------------------------------------------------------ */
@@ -363,9 +365,9 @@ body.theme-light .sidebar-icon {
   align-items: center;
 }
 
-/* =========================================
+/* ==========================================
    TICKER – ajustes para borda dourada contínua
-   ========================================= */
+   ========================================== */
 /* ------------------------------------------------------------------------
    5) TICKER – imediatamente abaixo do header, sem gap, borda dourada unida
    ------------------------------------------------------------------------ */
@@ -439,12 +441,46 @@ body.theme-light .sidebar-icon {
   RESPONSIVIDADE (ticker e sidebar)
 ===============================*/
 @media (max-width: 768px) {
-  .ticker {
-    left: 0; /* ocupa toda a largura no mobile, abaixo do header */
-    right: 0;
-  }
+  /* === AQUI FOI ALTERADO === 
+     Antes havia “.sidebar { display: none; }” aqui. Removemos por completo.
+     Agora mostramos a sidebar no topo e a transformamos em uma barra horizontal. */
   .sidebar {
-    display: flex !important; /* mantém a sidebar acessível no tablet e mobile */
+    display: flex !important;
+    width: 100%;
+    height: var(--sidebar-mobile-height);
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-x: auto;
+    z-index: 2000;
+    padding: 0 0.5rem;
+  }
+  .sidebar-nav ul {
+    display: flex;
+    gap: 1rem;
+  }
+  .sidebar-item {
+    padding: 8px 12px;
+  }
+  .sidebar-icon {
+    width: 20px;
+    height: 20px;
+  }
+  .sidebar-text {
+    opacity: 1;
+    font-size: 0.9rem;
+  }
+  /* Ajusta o header para não ficar “escondido” pela nova barra */
+  .header-wrapper {
+    left: 0;
+    margin-top: var(--sidebar-mobile-height);
+  }
+  /* Ajusta o ticker para considerar a altura da sidebar mobile */
+  .ticker {
+    top: calc(var(--sidebar-mobile-height) + var(--height-header) - 120px);
+    /* A barra mobile “empilha” 60px no topo, depois vem o header */
+    left: 0;
+    right: 0;
   }
 }
 
@@ -464,18 +500,48 @@ body.theme-light .sidebar-icon {
 }
 @media (max-width: 768px) {
   .nav-menu {
-    gap: 0.75rem;        /* ainda menos espaço entre itens no celular */
-    margin-right: 0;
+    display: none; /* será exibido via hamburger menu no JS */
   }
   .theme-switch-wrapper {
-    top: calc(50% - 1.25rem); /* ajuste fino para switch menor */
-    right: 0;
+    top: calc(50% - 1.5rem); /* ajuste para switch no mobile */
+    right: 1rem;
   }
 
   /* No mobile, o ticker ocupa toda a largura (já abaixo do header) */
   .ticker {
     left: 0;
     right: 0;
+  }
+}
+
+/*===========================================
+  HAMBURGER MENU – ícone sempre visível
+===========================================*/
+/* =======================================
+   Inserimos o ícone “menu” no HTML dentro do header (veja no JS/HTML),
+   mas aqui garantimos que fique legível em ambos os temas.
+   ======================================= */
+.menu-toggle {
+  display: none;              /* só aparece em mobile (max-width:768px) */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 1rem;
+  transition: opacity 0.2s ease;
+  z-index: 1900;
+}
+.menu-toggle img {
+  width: 24px;
+  height: 24px;
+  filter: invert(1);       /* ícone branco no tema escuro */
+}
+body.theme-light .menu-toggle img {
+  filter: invert(0);       /* ícone escuro no tema claro */
+}
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
   }
 }
 
@@ -550,14 +616,27 @@ body.theme-light .sidebar-icon {
 ===========================================*/
 .main-content {
   margin-left: var(--sidebar-collapsed-width);
-  margin-top: calc(var(--height-header) + 45px); /* header (120px) + ticker (45px) = 165px */
+  margin-top: calc(var(--height-header) + 45px);
   background-color: var(--bg);
   min-height: calc(100vh - (var(--height-header) + 45px));
   padding-bottom: 100px; /* Garante que o footer não cubra nada */
-  transition: margin-left 0.3s ease;
+  transition: margin-left 0.3s ease, margin-top 0.3s ease;
 }
 .sidebar:hover ~ .main-content {
   margin-left: var(--sidebar-expanded-width);
+}
+/* === AQUI FOI ALTERADO ===
+   Em mobile, não “empurra” a main-content para a esquerda: ocupa 100% da largura. */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    margin-top: calc(var(--height-header) + var(--sidebar-mobile-height) + 45px - 120px);
+    /* Recalculamos para “empurrar” o conteúdo:
+       - sidebar-mobile-height (60px)
+       - + header (120px)
+       - + ticker (45px)
+       - menos 120px porque o header interno já inclui certa altura em mobile */
+  }
 }
 
 /*===========================================
@@ -859,9 +938,13 @@ body.theme-light .card-list img {
   }
 }
 @media (max-width: 768px) {
+  /* === AQUI FOI ALTERADO === 
+     Removi o “.sidebar { display: none }” que escondia a barra lateral.
+     Agora a sidebar fica visível no topo como uma barra horizontal */
   .sidebar {
-    display: none;
+    display: flex !important;
   }
+  /* Faz o layout mobile do header e nav-menu rodar via JS */
   .header-wrapper {
     left: 0;
   }
@@ -869,6 +952,7 @@ body.theme-light .card-list img {
     margin-left: 0;
   }
   .nav-menu {
+    display: none; /* abriremos via hambúrguer no JS */
     gap: 1rem;
     font-size: 0.9rem;
   }
@@ -926,15 +1010,6 @@ body.theme-light .card-list img {
   .social-icons img {
     width: 20px;
     height: 20px;
-  }
-}
-
-/*--------------------------------------------------------------------------- 
-  INCLUSÃO SOLICITADA: Sidebar visível em mobile/tablet 
----------------------------------------------------------------------------*/
-@media (max-width: 768px) {
-  .sidebar {
-    display: flex !important;
   }
 }
 
@@ -1120,129 +1195,3 @@ body.theme-light .card-list img {
 }
 
 /*========================================================================================*/
-
-/* ===================================================================
-   === MOBILE RESPONSIVE ADDITIONS ===
-   (Não modifique nada acima deste comentário; as regras abaixo
-    complementarão o CSS existente, sem sobrepor ou remover código.
-   =================================================================== */
-
-/*--------------------------------------------------------------------------------
-  1) ESCONDER SIDEBAR E AJUSTES GERAIS PARA MOBILE (até 768px)
---------------------------------------------------------------------------------*/
-@media (max-width: 768px) {
-  /* 1.1) Esconder a sidebar por completo no mobile */
-  .sidebar {
-    display: none !important;
-  }
-
-  /* 1.2) Header deve ocupar toda a largura (sem margin-left) */
-  .header-wrapper {
-    left: 0 !important;
-  }
-
-  /* 1.3) Ajustar .main-content para ocupar 100% da largura, sem margin-left */
-  .main-content {
-    margin-left: 0 !important;
-    padding: 0 1rem; /* espaçamento lateral para não tocar borda */
-  }
-
-  /* 1.4) Botões flutuantes posicionados mais acima, para não se sobrepor ao footer */
-  .floating-buttons {
-    bottom: 80px;
-    right: 12px;
-  }
-}
-
-/*--------------------------------------------------------------------------------
-  2) TRANSFORMAR .nav-menu EM OVERLAY RESPONSIVO
---------------------------------------------------------------------------------*/
-/* 
-  - Ao clicar no botão “hamburger” (injetado via JS), a classe ‘mobile-menu-open’
-    será adicionada ao <body> e exibirá o nav-menu como coluna em overlay.
-*/
-@media (max-width: 768px) {
-  .nav-menu {
-    display: none; /* esconde por padrão */
-    position: fixed;
-    top: var(--height-header);
-    left: 0;
-    right: 0;
-    background-color: var(--bg-secondary);
-    flex-direction: column;
-    padding: 1rem 2rem;
-    z-index: 2000; /* acima de tudo, exceto a sidebar (que já estará escondida) */
-  }
-  /* Quando <body> tiver .mobile-menu-open, mostramos o nav-menu */
-  body.mobile-menu-open .nav-menu {
-    display: flex;
-  }
-}
-
-/*--------------------------------------------------------------------------------
-  3) BOTÃO “HAMBURGER” VISÍVEL NO HEADER APENAS EM MOBILE
---------------------------------------------------------------------------------*/
-/*
-  - O JS criará dinamicamente um elemento com classe .mobile-menu-button,
-    que ficará dentro de .header-inner. Quando clicado, alterna 
-    body.classList.toggle('mobile-menu-open').
-*/
-.mobile-menu-button {
-  display: none;
-}
-@media (max-width: 768px) {
-  .mobile-menu-button {
-    display: block;
-    cursor: pointer;
-  }
-  .mobile-menu-button img {
-    width: 24px;
-    height: 24px;
-    filter: invert(100%);
-  }
-}
-
-/*--------------------------------------------------------------------------------
-  4) REDUÇÃO DE FONTES E ESPAÇAMENTOS PARA TELAS MENORES
---------------------------------------------------------------------------------*/
-@media (max-width: 600px) {
-  .hero-title {
-    font-size: 1.8rem;
-  }
-  .hero-description {
-    font-size: 0.9rem;
-  }
-  .section-heading {
-    font-size: 1.6rem;
-  }
-  .cta-button {
-    padding: 8px 16px;
-    font-size: 0.85rem;
-  }
-  .nav-menu .nav-item {
-    font-size: 1rem;
-    padding: 0.5rem 0;
-  }
-  .hero-grid {
-    gap: 1rem;
-  }
-}
-
-/*--------------------------------------------------------------------------------
-  5) AJUSTE NO FOOTER REVEAL (evitar invadir CTAs)
---------------------------------------------------------------------------------*/
-@media (max-width: 768px) {
-  .footer {
-    /* Aparecer um pouco antes de chegar no final, para não invadir imediatamente */
-    transition: transform 0.3s ease;
-  }
-}
-
-/*--------------------------------------------------------------------------------
-  6) GARANTIR QUE O FAQ ABRA E FECHE CORRETAMENTE (CSS)
---------------------------------------------------------------------------------*/
-/* 
-  - Já existe .faq-answer com max-height: 0 e transition no HTML/JS;
-    não é necessário sobrescrever nada aqui, pois o JS irá controlar
-    max-height via inline-style quando abrir/fechar.
-*/

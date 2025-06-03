@@ -1,15 +1,14 @@
 /**
  * =============================================================================
- * ARQUIVO: js/script.js (AJUSTADO para isolar ticker e blog, além de
- * adicionar o “hamburger menu” para mobile)
+ * ARQUIVO: js/script.js (AJUSTADO para isolar ticker, blog e responsividade)
  * FINALIDADE:
  *  - Controle do tema claro/escuro via toggle switch
  *  - Persistência no localStorage
  *  - Destacar item de menu ativo
+ *  - Torna o “hamburger” funcional em mobile
  *  - Busca de notícias em tempo real (apenas se existir id="ticker-inner")
  *  - Renderização dinâmica de cards no blog, com filtros, ordenação e paginação
  *  - População automática do ticker (apenas em blog.html, pois lá existe id="ticker-inner")
- *  - **CRIPTOGRAMAÇÃO DO “HAMBURGER MENU” para mobile**  
  * =============================================================================
  */
 
@@ -58,7 +57,51 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =====================================================
-  // 3) POPULAÇÃO DO TICKER (APENAS SE EXISTIR id="ticker-inner")
+  // 3) HAMBURGER MENU (MOBILE)
+  // =====================================================
+  const menuToggle = document.createElement('button');
+  menuToggle.classList.add('menu-toggle');
+  // ícone “hamburger” (você pode ajustar o caminho para seu ícone menu.svg)
+  menuToggle.innerHTML = `<img src="icons/menu.svg" alt="Menu">`;
+  // Insere o botão logo após o container de links principais
+  const headerInner = document.querySelector('.header-inner');
+  if (headerInner) {
+    headerInner.appendChild(menuToggle);
+  }
+
+  const navMenu = document.querySelector('.nav-menu');
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', () => {
+      const isVisible = navMenu.classList.contains('open');
+      if (isVisible) {
+        navMenu.classList.remove('open');
+        navMenu.style.display = 'none';
+      } else {
+        navMenu.classList.add('open');
+        navMenu.style.display = 'flex';
+        navMenu.style.flexDirection = 'column';
+        navMenu.style.backgroundColor = 'var(--bg-secondary)';
+        navMenu.style.position = 'absolute';
+        navMenu.style.top = '100%';
+        navMenu.style.left = '0';
+        navMenu.style.width = '100%';
+        navMenu.style.boxShadow = '0 2px 8px rgba(0,0,0,0.4)';
+      }
+    });
+  }
+
+  // Fechar menu ao clicar em qualquer link (em mobile)
+  document.querySelectorAll('.nav-menu .nav-item').forEach(link => {
+    link.addEventListener('click', () => {
+      if (navMenu.classList.contains('open')) {
+        navMenu.classList.remove('open');
+        navMenu.style.display = 'none';
+      }
+    });
+  });
+
+  // =====================================================
+  // 4) POPULAÇÃO DO TICKER (APENAS SE EXISTIR id="ticker-inner")
   // =====================================================
   const tickerInner = document.getElementById('ticker-inner');
   if (tickerInner) {
@@ -69,117 +112,32 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =====================================================
-  // 4) CONFIGURAÇÕES DO BLOG (EXISTIR #cards-container)
+  // 5) CONFIGURAÇÕES DO BLOG (EXISTIR #cards-container)
   // =====================================================
   const cardsContainer = document.getElementById('cards-container');
   if (cardsContainer) {
-    // 4.1) Carrega notícias e renderiza
+    // 5.1) Carrega notícias e renderiza
     fetchNews().then(() => {
       applyFiltersAndSort(); // renderiza cards e paginação
     });
 
-    // 4.2) Agendar atualização a cada 1 hora (tanto cards quanto ticker)
+    // 5.2) Agendar atualização a cada 1 hora (tanto cards quanto ticker)
     setInterval(async () => {
       await fetchNews();
       applyFiltersAndSort();
       populateTicker();
     }, 60 * 60 * 1000);
 
-    // 4.3) Listeners para filtros (se existirem)
+    // 5.3) Listeners para filtros (se existirem)
     const categorySelect = document.getElementById('category-filter');
     const sortSelect = document.getElementById('sort-filter');
     if (categorySelect) categorySelect.addEventListener('change', applyFiltersAndSort);
     if (sortSelect)   sortSelect.addEventListener('change', applyFiltersAndSort);
   }
-
-  // =====================================================
-  // 5) CONFIGURAÇÃO DO “HAMBURGER MENU” PARA MOBILE
-  // =====================================================
-  // 5.1) Criar dinamicamente o botão de menu e injetar no header
-  const headerInner = document.querySelector('.header-inner');
-  if (headerInner) {
-    const menuBtn = document.createElement('div');
-    menuBtn.classList.add('mobile-menu-button');
-    menuBtn.innerHTML = `<img src="icons/menu.svg" alt="Menu">`;
-    headerInner.appendChild(menuBtn);
-
-    // 5.2) Ao clicar, alterna a classe 'mobile-menu-open' no body
-    menuBtn.addEventListener('click', () => {
-      document.body.classList.toggle('mobile-menu-open');
-    });
-  }
-
-  // =====================================================
-  // 6) SCRIPT PARA FAQ – ABRIR E FECHAR CORRETAMENTE
-  // =====================================================
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question');
-    const toggle   = item.querySelector('.faq-toggle');
-    const answer   = item.querySelector('.faq-answer');
-
-    // Inicia sempre fechado
-    answer.style.maxHeight = null;
-    toggle.textContent = "+";
-
-    question.addEventListener('click', () => {
-      const isOpen = item.classList.contains('active');
-
-      // Fecha todos os outros
-      faqItems.forEach(other => {
-        if (other !== item && other.classList.contains('active')) {
-          other.classList.remove('active');
-          other.querySelector('.faq-answer').style.maxHeight = null;
-          other.querySelector('.faq-toggle').textContent = "+";
-        }
-      });
-
-      if (!isOpen) {
-        // Abre este item
-        item.classList.add('active');
-        toggle.textContent = "−";
-        answer.style.maxHeight = answer.scrollHeight + "px";
-      } else {
-        // Fecha este item
-        item.classList.remove('active');
-        toggle.textContent = "+";
-        answer.style.maxHeight = null;
-      }
-    });
-  });
-
-  // =====================================================
-  // 7) VALIDAÇÃO E ENVIO DO FORMULÁRIO DE CONTATO
-  // =====================================================
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      // Aqui, integrar a lógica real de envio (AJAX, backend, etc.)
-      alert('Mensagem enviada com sucesso! Em breve, um de nossos especialistas entrará em contato.');
-      contactForm.reset();
-    });
-  }
-
-  // =====================================================
-  // 8) FOOTER REVEAL
-  // =====================================================
-  const footer = document.querySelector('footer');
-  function checkFooterReveal() {
-    const scrollPosition = window.scrollY + window.innerHeight;
-    const pageHeight = document.documentElement.scrollHeight;
-    if (scrollPosition >= pageHeight - 50) {
-      footer.classList.add('reveal');
-    } else {
-      footer.classList.remove('reveal');
-    }
-  }
-  window.addEventListener('scroll', checkFooterReveal);
-  checkFooterReveal();
 }); // fim do DOMContentLoaded
 
 // =====================================================
-// 9) BUSCA DE NOTÍCIAS (API ou fallback)
+// 6) BUSCA DE NOTÍCIAS (API ou fallback)
 // =====================================================
 let allNews = [];       // Array completo de notícias
 let filteredNews = [];  // Array após aplicação de filtro/ordenação
@@ -215,7 +173,7 @@ async function fetchNews() {
 }
 
 // =====================================================
-// 10) POPULAÇÃO DO TICKER (APENAS EM BLOG.CARDs)
+// 7) POPULAÇÃO DO TICKER (APENAS EM BLOG.CARDs)
 // =====================================================
 /**
  * populateTicker:
@@ -259,7 +217,7 @@ function populateTicker() {
     a.textContent = item.title;
     a.style.color = 'var(--accent)';
     a.style.textDecoration = 'none';
-    // Não abre em nova aba: para manter usuário navegando no blog primeiro
+    // Não abre em nova aba: para manter usuário navegando no blog first
     a.target = '';
     a.rel = '';
 
@@ -277,7 +235,7 @@ function populateTicker() {
 }
 
 // =====================================================
-// 11) RENDERIZAÇÃO DE CARDS NO BLOG (paginação + filtros)
+// 8) RENDERIZAÇÃO DE CARDS NO BLOG (paginação + filtros)
 // =====================================================
 function renderNewsCards() {
   const container = document.getElementById('cards-container');
