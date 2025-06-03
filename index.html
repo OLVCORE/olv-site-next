@@ -103,7 +103,7 @@
 
       <!-- Menu principal -->
       <nav class="nav-menu">
-        <a href="index.html" class="nav-item" data-page="index">Home</a>
+        <a href="index.html" class="nav-item active" data-page="index">Home</a>
         <a href="sobre.html" class="nav-item" data-page="sobre">Sobre</a>
         <a href="solucoes.html" class="nav-item" data-page="solucoes">Soluções</a>
         <a href="ecossistema.html" class="nav-item" data-page="ecossistema">Ecossistema</a>
@@ -134,14 +134,8 @@
   <!--                    TICKER                     -->
   <!-- ============================================= -->
   <div class="ticker">
-    <div class="ticker-inner">
-      <p>
-        <span><a href="radar360.html">Radar 360 Ativo</a> – </span>
-        <span><a href="https://www.bcb.gov.br/estatisticas/mercadoabertodiario" target="_blank">Câmbio em Tempo Real</a> – </span>
-        <span><a href="solucoes.html">Consultoria Premium em Logística</a> – </span>
-        <span><a href="https://comexstat.mdic.gov.br/" target="_blank">Últimas do Blog OLV Internacional</a> – </span>
-        <span><a href="contato.html">Fale com um Especialista Agora Mesmo</a></span>
-      </p>
+    <div class="ticker-inner" id="ticker-inner">
+      <!-- O conteúdo das manchetes será injetado via JS -->
     </div>
   </div>
 
@@ -303,13 +297,15 @@
       </div>
     </section>
 
-    <!-- ========== CONTATO RÁPIDO ========== -->
+    <!-- ========== CONTATO RÁPIDO (versão única-linha + card flexível) ========== -->
     <section class="section contato">
       <div class="container contato-container">
-        <p class="contact-paragraph">
-          Entre em contato agora via WhatsApp, e-mail ou formulário. Nossa equipe está pronta para transformar sua operação.
-        </p>
-        <a href="contato.html" class="cta-button">Fale Agora</a>
+        <div class="contato-card">
+          <p class="contact-paragraph">
+            Entre em contato agora via WhatsApp, e-mail ou formulário. Nossa equipe está pronta para transformar sua operação.
+          </p>
+          <a href="contato.html" class="cta-button">Fale Agora</a>
+        </div>
       </div>
     </section>
   </main>
@@ -354,21 +350,13 @@
   <!-- ============================================= -->
   <!--           BOTÃO “COMMIT VALIDADO”             -->
   <!-- ============================================= -->
-  <div style="text-align: center; margin: 1rem 0;">
-    <a href="./commit-validado.bat" download
-       style="
-         display: inline-block;
-         background-color: var(--accent);
-         color: #ffffff;
-         padding: 10px 20px;
-         border-radius: var(--radius);
-         font-weight: 600;
-         text-decoration: none;
-         transition: background-color 0.2s ease, transform 0.2s ease;
-       "
-       onmouseover="this.style.transform='scale(1.05)';"
-       onmouseout="this.style.transform='scale(1)';"
-       title="Clique para gerar commit validado">
+  <div class="commit-float-container">
+    <a
+      href="./commit-validado.bat"
+      download
+      class="commit-float-button"
+      title="Clique para gerar commit validado"
+    >
       Commit Validado
     </a>
   </div>

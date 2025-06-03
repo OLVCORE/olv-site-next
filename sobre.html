@@ -143,20 +143,15 @@
     </div>
   </header>
 
-  <!-- ============================================= -->
-  <!--                    TICKER                     -->
-  <!-- ============================================= -->
-  <div class="ticker">
-    <div class="ticker-inner">
-      <p>
-        <span><a href="radar360.html">Radar 360 Ativo</a> – </span>
-        <span><a href="https://www.bcb.gov.br/estatisticas/mercadoabertodiario" target="_blank">Câmbio em Tempo Real</a> – </span>
-        <span><a href="solucoes.html">Consultoria Premium em Logística</a> – </span>
-        <span><a href="https://comexstat.mdic.gov.br/" target="_blank">Últimas do Blog OLV Internacional</a> – </span>
-        <span><a href="contato.html">Fale com um Especialista Agora Mesmo</a></span>
-      </p>
-    </div>
+<!-- ============================================= -->
+<!--                    TICKER                     -->
+<!-- ============================================= -->
+<div class="ticker">
+  <div class="ticker-inner" id="ticker-inner">
+    <!-- O conteúdo das manchetes será injetado via JS -->
   </div>
+</div>
+
 
   <!-- ============================================= -->
   <!--                 CONTEÚDO PRINCIPAL            -->
@@ -410,16 +405,17 @@
       </div>
     </section>
 
-    <!-- ========== CONTATO RÁPIDO ========== -->
-    <section class="section contato">
-      <div class="container contato-container" style="max-width: 600px; margin: 0 auto; margin-bottom: 120px;">
-        <p class="contact-paragraph">
-          Entre em contato agora via WhatsApp, e-mail ou formulário. Nossa equipe está pronta para transformar sua operação.
-        </p>
-        <a href="contato.html" class="cta-button">Fale Agora</a>
-      </div>
-    </section>
-  </main>
+<!-- ========== CONTATO RÁPIDO (versão única-linha + card flexível) ========== -->
+<section class="section contato">
+  <div class="container contato-container">
+    <div class="contato-card">
+      <p class="contact-paragraph">
+        Entre em contato agora via WhatsApp, e-mail ou formulário. Nossa equipe está pronta para transformar sua operação.
+      </p>
+      <a href="contato.html" class="cta-button">Fale Agora</a>
+    </div>
+  </div>
+</section>
 
   <!-- ============================================= -->
   <!--                    FOOTER                     -->

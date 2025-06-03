@@ -1,18 +1,11 @@
 /* ========================================================================
-   ARQUIVO: css/style.css (Versão 1.4.8 – 05/06/2025)
+   ARQUIVO: css/style.css (Versão 1.4.8 – 05/06/2025 – AJUSTADO)
    ------------------------------------------------------------------------
    - Mantida 100% da estrutura validada anteriormente.
-   - Ajustes pontuais:
-     1. Logo: <img> preenche total do círculo, hover com expansão e sombra dourada.
-     2. Espaçamento de 0,3 cm entre o topo da página e o logo.
-     3. Footer Reveal: rodapé oculto até fim de rolagem, desliza para cima ao revelar.
-     4. Cards: pontas arredondadas + borda dourada sutil.
-     5. Seção Contato: largura limitada a 600 px.
-     6. Ticker:
-        • Faixa com borda dourada slim em todo o contorno.
-        • Hover aplica sombra suave nas extremidades.
-        • Recuo de 0,5 cm abaixo do header para não ficar colado ao slogan.
-        • Link muda de cor para azul claro ao hover.
+   - Ajustes pontuais para isolar o Blog e restaurar o ticker estático
+     nas páginas principais (index, ecossistema, etc.).
+   - NOVA CLASSE: .ecossistema-cards-grid (para o grid de plataformas).
+   - TODO o CSS de cards-notícias (blog) foi “movido” para #blog-cards .cards-grid.
    ======================================================================== */
 
 /*--------------------------------------------------------------------------- 
@@ -370,9 +363,9 @@ body.theme-light .sidebar-icon {
   align-items: center;
 }
 
-/* ===========================================
+/* ==========================================
    TICKER – ajustes para borda dourada contínua
-   =========================================== */
+   ========================================== */
 /* ------------------------------------------------------------------------
    5) TICKER – imediatamente abaixo do header, sem gap, borda dourada unida
    ------------------------------------------------------------------------ */
@@ -398,6 +391,8 @@ body.theme-light .sidebar-icon {
 }
 
 /* Conteúdo interno do ticker (por exemplo, o <p> rolando) */
+/* Observação: para não sobrepor o ticker estático das páginas principais,
+   só “populamos” esse bloco via JS quando existe id="ticker-inner". */
 .ticker-inner {
   display: flex;
   align-items: center;
@@ -632,7 +627,7 @@ body.theme-light .sidebar-icon {
 }
 
 /*===========================================
-  NOSSAS SOLUÇÕES CONSULTIVAS 
+  NOSSAS SOLUÇÕES CONSULTIVAS (INDEX) 
 ===========================================*/
 .section-heading {
   display: flex;
@@ -651,6 +646,8 @@ body.theme-light .sidebar-icon {
 body.theme-light .section-icon {
   filter: invert(0);
 }
+/* Nesta seção, utilizamos “.cards-grid” para os cards de soluções do index.html.
+   O CSS abaixo *não* será aplicado ao Blog ou ao Ecossistema, que usam grid próprio. */
 .cards-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -723,25 +720,48 @@ body.theme-light .card-list img {
 }
 
 /*===========================================
-  CONTATO RÁPIDO 
+  CONTATO RÁPIDO – card único-linha e flexível
 ===========================================*/
-.contato {
-  background-color: var(--bg-tertiary);
-  padding: 60px 0;
-  margin-top: 2rem;
-}
 .contato-container {
-  text-align: center;
-  max-width: 600px;     /* largura limitada conforme solicitado */
-  margin: 0 auto;       /* centralização horizontal */
+  display: flex;
+  justify-content: center;  /* centraliza horizontalmente */
+  padding: 2rem 0;          /* espaçamento vertical */
 }
+
+.contato-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;                             /* espaço entre texto e botão */
+  background-color: var(--bg-secondary); /* mantém mesma cor de fundo das seções */
+  border: 1px solid var(--accent);       /* borda dourada sutil */
+  border-radius: var(--radius);
+  padding: 0.75rem 1.5rem;               /* ajuste de espaçamento interno */
+  box-shadow: var(--shadow-dark);
+  transition: box-shadow 0.2s ease;
+}
+
+.contato-card:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
 .contact-paragraph {
-  font-size: 1rem;      /* restaurado ao tamanho original */
+  margin: 0;            /* remove margens padrão */
+  white-space: nowrap;  /* força texto em uma única linha */
+  font-size: 1rem;
   color: var(--txt);
-  margin-bottom: 1rem;
 }
-.contato-container a.cta-button {
-  margin-top: 1rem;
+
+/* Se o texto for maior que o container em telas muito pequenas, ele quebra: */
+@media (max-width: 600px) {
+  .contato-card {
+    white-space: normal;  /* permite quebra de linha */
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  .contact-paragraph {
+    white-space: normal;
+  }
 }
 
 /*===========================================
@@ -917,3 +937,186 @@ body.theme-light .card-list img {
     display: flex !important;
   }
 }
+
+/*===========================================
+  GRID DE CARDS DO ECOSSISTEMA
+===========================================*/
+/* Essa classe é exclusiva para a seção “Plataformas do Ecossistema” em ecossistema.html */
+.ecossistema-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+@media (max-width: 1023px) {
+  .ecossistema-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 767px) {
+  .ecossistema-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*==============================================================================  
+  INCLUSÃO COMPLEMENTAR (BLOG) – TODO ESSE BLOCO SÓ RODA DENTRO DE #blog-cards
+  – GRID DE CARDS DE NOTÍCIAS (seletores prefixados com #blog-cards)
+  – FILTRO FUNCIONAL (data-category)
+  – PAGINAÇÃO (8 cards por página)
+  – ESTILO DOS CARDS DE NOTÍCIAS
+  – BOTÕES DE PAGINAÇÃO
+  – ANIMAÇÕES E TRANSIÇÕES MÍNIMAS
+==============================================================================*/
+#blog-cards .cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+/* === 2) CARD INDIVIDUAL (IMAGEM + CONTEÚDO) === */
+#blog-cards .card {
+  display: flex;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-dark);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#blog-cards .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+/* === 3) IMAGEM DO CARD – quadrado 120×120px === */
+#blog-cards .card-img {
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  background-color: #000; /* Placeholder */
+}
+#blog-cards .card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* === 4) CONTEÚDO DO CARD – texto + link + data === */
+#blog-cards .card-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#blog-cards .card-content h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--txt);
+}
+#blog-cards .card-content p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+  color: var(--txt);
+}
+#blog-cards .card-content .card-link {
+  color: var(--accent);
+  text-decoration: none;
+  margin-top: auto;
+}
+#blog-cards .card-content .card-link:hover {
+  text-decoration: underline;
+}
+#blog-cards .card-content small {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #cccccc;
+}
+#blog-cards .card-content small img {
+  width: 16px;
+  height: 16px;
+  margin-right: 0.25rem;
+  filter: invert(1);
+}
+
+/* === 5) FILTRO E PAGINAÇÃO (botões no rodapé do grid) === */
+#blog-cards .pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+#blog-cards .pagination-container button {
+  background-color: var(--accent);
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+#blog-cards .pagination-container button:disabled {
+  background-color: rgba(212, 175, 55, 0.4);
+  cursor: not-allowed;
+}
+#blog-cards .pagination-container button:hover:not(:disabled) {
+  background-color: var(--accent-hover);
+}
+
+/* === 6) ADAPTAÇÃO RESPONSIVA PARA OS CARDS (BLOG) === */
+@media (max-width: 768px) {
+  #blog-cards .cards-grid {
+    grid-template-columns: 1fr; /* 1 card por linha em celular */
+  }
+}
+@media (max-width: 480px) {
+  #blog-cards .card {
+    flex-direction: column;
+  }
+  #blog-cards .card-img {
+    width: 100%;
+    height: 180px; /* altura fixa no móvel */
+  }
+  #blog-cards .card-content {
+    padding: 0.75rem;
+  }
+}
+
+/*===========================================
+  NOVA INCLUSÃO: BOTÃO “Commit Validado” FLUTUANTE
+  – Fixa um botão visível no canto inferior direito
+  – Permite download/executar commit-validado.bat ao clique
+  – Não impacta demais estilos já validados
+===========================================*/
+.commit-float-container {
+  position: fixed;
+  bottom: 1rem;       /* distância do rodapé */
+  right: 1rem;        /* distância da borda direita */
+  z-index: 9999;      /* garante que fique acima de outros elementos */
+  pointer-events: none; /* impede cliques vazios no container */
+}
+
+.commit-float-button {
+  pointer-events: all;                     /* torna clicável somente o link */
+  background-color: var(--accent);         /* cor principal definida no tema */
+  color: #ffffff;                          /* texto branco */
+  padding: 0.75rem 1.25rem;                /* espaçamento interno */
+  border-radius: var(--radius);            /* mesmo raio de borda usado no site */
+  font-weight: 600;                        /* texto em negrito moderado */
+  text-decoration: none;                   /* sem sublinhado */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); /* sombra sutil para destaque */
+  transition: transform 0.15s ease, background-color 0.15s ease;
+  font-family: "Inter", sans-serif;        /* mantém consistência de fonte */
+  font-size: 0.95rem;                      /* tamanho de fonte um pouco maior */
+}
+
+.commit-float-button:hover {
+  transform: scale(1.05);
+  background-color: #e0a72e; /* tom levemente ajustado sobre a paleta dourada */
+}
+
+/*========================================================================================*/
