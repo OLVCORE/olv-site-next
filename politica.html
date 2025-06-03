@@ -1,68 +1,408 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Politica</title>
-  <meta name="description" content="Descrição de Politica" />
-  <meta name="keywords" content="Politica, OLV, Plataforma" />
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Mantido exatamente o <head> original com metas e links, incluindo meta keywords atualizadas -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política | OLV Internacional</title>
+  <meta name="description" content="Política de Privacidade e LGPD da OLV Internacional: como coletamos, armazenamos, tratamos e protegemos seus dados pessoais, em conformidade com a legislação brasileira e melhores práticas de comércio exterior, supply chain e importação/exportação.">
+  <meta name="keywords" content="Consultoria em exportação, Consultoria em importação, Exportação de produtos, Logística internacional, 3PL, 4PL, Como Exportar Legalmente?, Especialistas em Comex, Abra sua Importadora!, Importação Sem Burocracia, Suporte Total no Comex, Comex para Empresas PME, Planeje sua Exportação, Importar com Segurança, Exportação para Iniciantes, Documentação de Comex, Treinamento em Comércio, Desembaraço Aduaneiro Rápido, Planejamento Tributário Comex, Passo a Passo da Exportação, Exportar Alimentos do Brasil, Importar com Redução Fiscal, Consultoria para Radar SISCOMEX, Regularize sua Empresa Comex, Exportar com Baixo Custo, Importação para Revenda, Exportação Café e Soja, Logística 3PL para Exportação, Montamos sua Operação Comex, Suporte do Radar ao Embarque, Exportação Sem Erros, Reduza Custos de Importação, Exportação Legalizada e Fácil, Exportar com Lucro Real, Reduza erros e custos com nossa consultoria completa em importação e exportação, Ajudamos sua empresa a operar legalmente e com mais eficiência no comércio exterior, Suporte completo: Radar, tributos, logística e operação, Fale com nossos especialistas!, Comex sem mistérios, Tenha acompanhamento em todas as etapas da importação">
+  <meta property="og:title" content="Política | OLV Internacional">
+  <meta property="og:description" content="Política de Privacidade e LGPD da OLV Internacional: como coletamos, armazenamos, tratamos e protegemos seus dados pessoais, em conformidade com a legislação brasileira e melhores práticas de comércio exterior, supply chain e importação/exportação.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon e Estilos -->
+  <link rel="icon" href="icons/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Script JS (tema claro/escuro + menu ativo) -->
+  <script defer src="js/script.js"></script>
 </head>
+
 <body class="theme-dark">
+  <!-- ============================================= -->
+  <!--                  SIDEBAR                      -->
+  <!-- ============================================= -->
   <aside class="sidebar">
-    <ul class="sidebar-list">
-      <li class="sidebar-item" data-tooltip="STRATEVO">
-        <svg class="sidebar-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
-      </li>
-      <li class="sidebar-item" data-tooltip="EXCELTTA">
-        <svg class="sidebar-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 4h16v16H4z" fill="none"/><path d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 14h-4v-4h4v4zm0-6h-4V6h4v4zM10 18H6v-4h4v4zm0-6H6V6h4v6z"/></svg>
-      </li>
-      <li class="sidebar-item" data-tooltip="OLV CONNECTA">
-        <svg class="sidebar-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-5h2v5h-2zm0-7v-2h2v2h-2z"/></svg>
-      </li>
-      <li class="sidebar-item" data-tooltip="OLV ENGAGE">
-        <svg class="sidebar-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l4 8H8l4-8zm0 20l-4-8h8l-4 8zm0-10l4 8H8l4-8z"/></svg>
-      </li>
-    </ul>
-  </aside>
-  <header class="header-wrapper">
-    <a href="index.html" class="logo-link"><img src="images/olv-logo.jpeg" alt="OLV Internacional" class="logo-img"/></a>
-    <nav class="nav-menu">
-      <a href="index.html" class="nav-item">Home</a>
-      <a href="sobre.html" class="nav-item">Sobre</a>
-      <a href="solucoes.html" class="nav-item">Soluções</a>
-      <a href="ecossistema.html" class="nav-item">Ecossistema</a>
-      <a href="radar360.html" class="nav-item">Radar 360</a>
-      <a href="blog.html" class="nav-item">Blog</a>
-      <a href="contato.html" class="nav-item">Contato</a>
+    <nav class="sidebar-nav">
+      <ul>
+        <li>
+          <a href="stratevo.html" class="sidebar-item" data-tooltip="Inteligência de Mercado e Gestão Estratégica">
+            <img src="icons/stratevo-simple.svg" alt="Ícone STRATEVO" class="sidebar-icon" />
+            <span class="sidebar-text">STRATEVO</span>
+          </a>
+        </li>
+        <li>
+          <a href="exceltta.html" class="sidebar-item" data-tooltip="Simuladores de Processo e Otimização Financeira">
+            <img src="icons/exceltta-simple.svg" alt="Ícone EXCELTTA" class="sidebar-icon" />
+            <span class="sidebar-text">EXCELTTA</span>
+          </a>
+        </li>
+        <li>
+          <a href="connecta.html" class="sidebar-item" data-tooltip="Conexões Seguras com Fornecedores Homologados">
+            <img src="icons/connecta.svg" alt="Ícone OLV CONNECTA" class="sidebar-icon" />
+            <span class="sidebar-text">OLV CONNECTA</span>
+          </a>
+        </li>
+        <li>
+          <a href="veritus.html" class="sidebar-item" data-tooltip="Compliance, Due Diligence e Governança">
+            <img src="icons/veritus.svg" alt="Ícone OLV VERITUS" class="sidebar-icon" />
+            <span class="sidebar-text">OLV VERITUS</span>
+          </a>
+        </li>
+        <li>
+          <a href="finx.html" class="sidebar-item" data-tooltip="Gestão Financeira e Otimização de Fluxo de Caixa">
+            <img src="icons/finx.svg" alt="Ícone OLV FINX" class="sidebar-icon" />
+            <span class="sidebar-text">OLV FINX</span>
+          </a>
+        </li>
+        <li>
+          <a href="academy.html" class="sidebar-item" data-tooltip="Educação Corporativa e Desenvolvimento de Talentos">
+            <img src="icons/academy.svg" alt="Ícone OLV ACADEMY" class="sidebar-icon" />
+            <span class="sidebar-text">OLV ACADEMY</span>
+          </a>
+        </li>
+        <li>
+          <a href="labs.html" class="sidebar-item" data-tooltip="Inovação, Pesquisa e Desenvolvimento com IA">
+            <img src="icons/labs.svg" alt="Ícone OLV LABS" class="sidebar-icon" />
+            <span class="sidebar-text">OLV LABS</span>
+          </a>
+        </li>
+        <li>
+          <a href="ventures.html" class="sidebar-item" data-tooltip="Venture Builder e Aceleração de Startups">
+            <img src="icons/ventures.svg" alt="Ícone OLV VENTURES" class="sidebar-icon" />
+            <span class="sidebar-text">OLV VENTURES</span>
+          </a>
+        </li>
+        <li>
+          <a href="core.html" class="sidebar-item" data-tooltip="Cockpit de Gestão 360° e Business Intelligence">
+            <img src="icons/core.svg" alt="Ícone OLV CORE" class="sidebar-icon" />
+            <span class="sidebar-text">OLV CORE</span>
+          </a>
+        </li>
+      </ul>
     </nav>
-    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
-  </header>
-  <main class="main-content">
-    <div class="container">
-      <section class="hero">
-        <div class="hero-text">
-          <h1 class="hero-title">Politica</h1>
-          <p class="hero-description">Conteúdo de Politica.</p>
-        </div>
-      </section>
+  </aside>
+
+  <!-- ============================================= -->
+  <!--                 HEADER FIXO                   -->
+  <!-- ============================================= -->
+  <header class="header-wrapper">
+    <div class="header-inner">
+      <!-- Logo da OLV (círculo – 100 × 100 px) + slogan -->
+      <div class="header-brand">
+        <a href="index.html" class="header-logo-link" title="OLV Internacional">
+          <div class="header-logo-circle">
+            <img src="images/olv-logo.jpeg" alt="OLV Internacional" class="header-logo-img" />
+          </div>
+        </a>
+        <span class="header-slogan">Integramos Estratégia, Operação e Resultado</span>
+      </div>
+
+      <!-- Menu principal -->
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-item" data-page="index">Home</a>
+        <a href="sobre.html" class="nav-item" data-page="sobre">Sobre</a>
+        <a href="solucoes.html" class="nav-item" data-page="solucoes">Soluções</a>
+        <a href="ecossistema.html" class="nav-item" data-page="ecossistema">Ecossistema</a>
+        <a href="radar360.html" class="nav-item" data-page="radar360">Radar 360</a>
+        <a href="blog.html" class="nav-item" data-page="blog">Blog</a>
+        <a href="contato.html" class="nav-item" data-page="contato">Contato</a>
+        <a href="politica.html" class="nav-item active" data-page="politica">Política</a>
+      </nav>
+
+      <!-- Switch de tema (Dark/Light) -->
+      <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="theme-checkbox">
+          <input type="checkbox" id="theme-checkbox" />
+          <div class="switch-inner">
+            <span class="switch-icon moon-icon">
+              <img src="icons/moon.svg" alt="Lua" />
+            </span>
+            <span class="switch-icon sun-icon">
+              <img src="icons/sun.svg" alt="Sol" />
+            </span>
+          </div>
+        </label>
+      </div>
     </div>
+  </header>
+
+  <!-- ============================================= -->
+  <!--                    TICKER                     -->
+  <!-- ============================================= -->
+  <div class="ticker">
+    <div class="ticker-inner" id="ticker-inner">
+      <!-- O conteúdo das manchetes será injetado via JS -->
+    </div>
+  </div>
+
+  <!-- ============================================= -->
+  <!--                 CONTEÚDO PRINCIPAL            -->
+  <!-- ============================================= -->
+  <main class="main-content">
+    <!-- ========== HERO DA PÁGINA POLÍTICA ========== -->
+    <section class="section hero">
+      <div class="container hero-grid">
+        <div class="hero-texto">
+          <h1 class="hero-title">Política de Privacidade e LGPD</h1>
+          <p class="hero-description">
+            Esta Política de Privacidade visa detalhar como a OLV Internacional (“nós”, “nosso”, “nossa”) coleta, armazena, trata e protege os dados pessoais dos usuários do site, em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018) e demais boas práticas de privacidade para sites relacionados a comércio exterior, importação, exportação e supply chain.
+          </p>
+        </div>
+        <div class="hero-banner">
+          <img src="images/olv-policy-banner.webp" alt="Política de Privacidade – OLV Internacional" class="hero-banner-img" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SEÇÃO CONTEÚDO DA POLÍTICA ========== -->
+    <section class="section" id="politica-content">
+      <div class="container">
+        <!-- 1. Introdução -->
+        <article style="margin-bottom: 2rem;">
+          <h2>1. Introdução</h2>
+          <p>
+            A OLV Internacional, inscrita no CNPJ sob o nº 67.867.580/0001-90, com sede na Av. Paulista, 1636 – Bela Vista, São Paulo – SP, CPF 01310-200, Brasil, é especialista em consultoria de Supply Chain, Comércio Exterior, Importação e Exportação.  
+            Esta Política de Privacidade esclarece quais dados pessoais são coletados, para quais finalidades são utilizados, como são armazenados, compartilhados e protegidos, bem como os direitos dos titulares de dados.  
+            Ao acessar ou utilizar nosso site, você concorda com os termos desta política. Caso não concorde com qualquer parte, por favor, não utilize nosso site.
+          </p>
+        </article>
+
+        <!-- 2. Definições -->
+        <article style="margin-bottom: 2rem;">
+          <h2>2. Definições</h2>
+          <ul style="list-style: disc inside; margin-left: 1rem;">
+            <li><strong>Dados Pessoais:</strong> quaisquer informações que identifiquem ou possam identificar uma pessoa natural, direta ou indiretamente.</li>
+            <li><strong>Titular:</strong> pessoa natural a quem se referem os dados pessoais que são objeto de tratamento.</li>
+            <li><strong>Controlador:</strong> pessoa jurídica que toma as decisões sobre o tratamento de dados pessoais (neste caso, a OLV Internacional).</li>
+            <li><strong>Operador:</strong> pessoa jurídica que realiza o tratamento de dados em nome do controlador.<br />
+            Exemplo: empresa de hospedagem de site, sistema de CRM, plataforma de e-mail marketing, ferramentas de analytics.</li>
+            <li><strong>Tratamento:</strong> qualquer operação realizada com dados pessoais, como coleta, produção, recepção, classificação, utilização, acesso, reprodução, transmissão, armazenamento, eliminação, entre outros.</li>
+            <li><strong>LGPD:</strong> Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018).</li>
+          </ul>
+        </article>
+
+        <!-- 3. Quais dados coletamos -->
+        <article style="margin-bottom: 2rem;">
+          <h2>3. Quais dados coletamos</h2>
+          <p>Podemos coletar e tratar as seguintes categorias de dados pessoais:</p>
+          <ul style="list-style: disc inside; margin-left: 1rem;">
+            <li><strong>Informações de identificação:</strong> nome completo, CPF/CNPJ, dados de endereço, telefone, e-mail corporativo;</li>
+            <li><strong>Informações de transação:</strong> histórico de contato, serviços de interesse (ex.: <em>Consultoria em Exportação</em>, <em>Consultoria em Importação</em>, <em>Logística Internacional</em>, <em>Compliance Aduaneiro</em>, <em>Treinamentos</em>, <em>Radar SISCOMEX</em> etc.);</li>
+            <li><strong>Informações de navegação:</strong> dados coletados automaticamente por cookies e tecnologias similares (endereço IP, tipo de dispositivo, sistema operacional, browser, páginas acessadas, tempo de permanência, origem do tráfego, links clicados, localização aproximada);</li>
+            <li><strong>Dados para marketing e publicidade:</strong> perfil de interesse, preferências de comunicação, interação com campanhas de Google Ads (incluindo AI Mode e intenções de busca);</li>
+            <li><strong>Dados de consentimento:</strong> registros de aceite de política de privacidade, opt‐in/opt‐out de newsletters, histórico de atualizações de preferência.</li>
+          </ul>
+        </article>
+
+        <!-- 4. Finalidades do tratamento -->
+        <article style="margin-bottom: 2rem;">
+          <h2>4. Finalidades do tratamento</h2>
+          <p>Os dados coletados podem ser utilizados para as seguintes finalidades pelos sistemas internos e parceiros:</p>
+          <ul style="list-style: disc inside; margin-left: 1rem;">
+            <li>Atendimento de solicitações de contato, orçamentos e suporte de clientes;</li>
+            <li>Envio de e-mails corporativos, newsletters, alertas regulatórios, cotações e relatórios do Radar 360;</li>
+            <li>Personalização de campanhas de Google Ads (incluindo AI Mode, AI Max for Search e estratégias baseadas em intenção de palavra-chave), buscas patrocinadas, remarketing e segmentação comportamental;</li>
+            <li>Envio de materiais institucionais, whitepapers, convites para webinars e treinamentos em Comércio Exterior, Supply Chain e LGPD;</li>
+            <li>Elaboração de propostas comerciais de consultoria em importação, exportação, logística 3PL/4PL, planejamento tributário e compliance;</li>
+            <li>Cumprimento de obrigações legais, fiscais e regulatórias, inclusive para auditorias e fiscalizações;</li>
+            <li>Proteção contra fraudes, spams, ataques cibernéticos e abusos de sistema;</li>
+            <li>Análises estatísticas e de performance interna, indicadores de satisfação, pesquisas de mercado e feedback de clientes;</li>
+            <li>Gerenciamento de listas de e-mails, plataformas de CRM e automação de marketing;</li>
+            <li>Enviar notificações sobre atualizações de políticas, termos de uso, mudanças na LGPD e regulamentos de comércio exterior.</li>
+          </ul>
+        </article>
+
+        <!-- 5. Legitimidade do tratamento -->
+        <article style="margin-bottom: 2rem;">
+          <h2>5. Legitimidade do tratamento</h2>
+          <p>Tratamos dados pessoais com base em uma ou mais das seguintes hipóteses legais elencadas na LGPD:</p>
+          <ul style="list-style: disc inside; margin-left: 1rem;">
+            <li><strong>Consentimento:</strong> quando você preenche formulários de contato, opta por receber newsletters ou autoriza o uso de cookies (ex.: “Li e concordo com a Política de Privacidade”);</li>
+            <li><strong>Execução de contrato:</strong> para entregar serviços contratados, como consultoria em importação e exportação, logística internacional, auditorias de compliance, treinamentos em Comex;</li>
+            <li><strong>Cumprimento de obrigação legal ou regulatória:</strong> compartilhamento de informações com autoridades fiscais, aduaneiras, auditorias e órgãos de controle;</li>
+            <li><strong>Legítimo interesse:</strong> para gestão de relacionamento com clientes (CRM), prevenção à fraude, segurança da informação, análises estatísticas internas, marketing direto (seguindo boas práticas de opt‐out);</li>
+            <li><strong>Proteção à vida ou saúde:</strong> em situações de emergência, saúde ocupacional ou destino sanitário de cargas.</li>
+          </ul>
+        </article>
+
+        <!-- 6. Cookies e Tecnologias Similares -->
+        <article style="margin-bottom: 2rem;">
+          <h2>6. Cookies e Tecnologias Similares</h2>
+          <p>Utilizamos cookies, pixel tags e outras ferramentas para melhorar sua experiência de navegação, entender melhor o comportamento dos visitantes e personalizar campanhas de marketing (inclusive no Google Ads AI Mode). Abaixo, detalhamos como usamos essas tecnologias:</p>
+          <ul style="list-style: disc inside; margin-left: 1rem;">
+            <li><strong>Cookies Estritamente Necessários:</strong> permitem funcionalidades essenciais, como manter sessão de login e lembrar preferências básicas.</li>
+            <li><strong>Cookies de Desempenho e Funcionalidade:</strong> coletam informações anônimas sobre páginas acessadas, tempo de permanência e erros em formulários, para otimizar performance e corrigir falhas.</li>
+            <li><strong>Cookies de Marketing e Analytics:</strong> rastreiam cliques em anúncios (incluindo campanhas de Google Ads com AI Max for Search), identificam padrões de uso e ajudam a segmentar remarketing e lookalike audiences, respeitando a LGPD e o seu direito de opt‐out.</li>
+            <li><strong>Cookies de Terceiros:</strong> podem ser inseridos por serviços externos, tais como Google Analytics, Google Tag Manager, YouTube, Hotjar, Facebook Pixel, e plataformas de e-mail marketing. Esses cookies seguem a política de privacidade dos respectivos fornecedores.</li>
+          </ul>
+          <p><strong>Como Gerenciar ou Desativar Cookies:</strong> você pode configurar seu navegador para bloquear ou limpar cookies a qualquer momento. Consulte as instruções do seu browser (Chrome, Firefox, Edge, Safari etc.). O bloqueio de cookies poderá afetar funcionalidades do site, como formulários de contato e personalização de conteúdo.</p>
+        </article>
+
+        <!-- 7. Compartilhamento de Dados -->
+        <article style="margin-bottom: 2rem;">
+          <h2>7. Compartilhamento de Dados</h2>
+          <p>Seus dados pessoais poderão ser compartilhados com:</p>
+          <ul style="list-style: disc inside; margin-left: 1rem;">
+            <li><strong>Parceiros Operacionais:</strong> sistemas de hospedagem (AWS, Google Cloud), provedores de CRM (ex.: RD Station, HubSpot), plataformas de e-mail (Mailchimp, SendGrid), ferramentas de analytics (Google Analytics). Estes parceiros atuam como operadores sob nosso contrato de processamento de dados;</li>
+            <li><strong>Autoridades Competentes:</strong> Receita Federal, SISCOMEX, órgãos fiscais estaduais e municipais, autoridades aduaneiras, quando houver obrigação legal de prestar informações para fiscalização de importação/exportação;</li>
+            <li><strong>Consultorias e Auditorias:</strong> escritórios de contabilidade, advocacia e auditoria contratados para avaliação de conformidade tributária, regulatória e auditorias de segurança da informação;</li>
+            <li><strong>Agentes de Marketing e Publicidade:</strong> agências de performance que gerenciam campanhas de Google Ads AI Mode, Ferramentas de SEO, otimização de intencionalidade de palavra-chave, remarketing e geração de relatórios de performance. Esses agentes atuam como processadores e seguem estritamente nossos padrões de segurança;</li>
+            <li><strong>Parceiros de Pagamento e Financeiro:</strong> caso você contrate serviços pagos, podemos compartilhar dados com gateways de pagamento, bancos e instituições financeiras para viabilizar transações;</li>
+            <li><strong>Outros Clientes OLV CORE:</strong> em alguns casos de ações coordenadas (ex.: benchmark de indicadores de supply chain) e sempre anonimizados, garantindo que nenhuma informação pessoal seja exposta sem consentimento.</li>
+          </ul>
+          <p>Em hipótese alguma venderemos ou alugaremos seus dados pessoais a terceiros para fins de marketing sem seu consentimento explícito.</p>
+        </article>
+
+        <!-- 8. Segurança e Armazenamento -->
+        <article style="margin-bottom: 2rem;">
+          <h2>8. Segurança e Armazenamento</h2>
+          <p>Adotamos medidas técnicas e organizacionais para proteger seus dados contra acesso não autorizado, alteração, divulgação ou destruição. Entre elas:</p>
+          <ul style="list-style: disc inside; margin-left: 1rem;">
+            <li><strong>Criptografia:</strong> todas as comunicações são feitas via HTTPS (SSL/TLS) para proteger a transmissão de dados;</li>
+            <li><strong>Backups:</strong> realizamos backups periódicos em servidores seguros e redundantes, com controle de acesso restrito;</li>
+            <li><strong>Controle de Acesso:</strong> acesso aos dados restrito a funcionários autorizados, com autenticação de dois fatores e política de senhas fortes;</li>
+            <li><strong>Firewall e Antivírus:</strong> servidores e infraestrutura em nuvem protegidos por firewall, sistemas de detecção de intrusão (IDS/IPS) e antivírus corporativo;</li>
+            <li><strong>Política de Retenção:</strong> mantemos os dados pessoais apenas pelo tempo necessário às finalidades descritas ou para cumprimento de obrigações legais, após o qual são anonimizados ou excluídos;</li>
+            <li><strong>Auditorias Internas:</strong> avaliações periódicas de conformidade com LGPD, testes de penetração e relatórios de vulnerabilidade;</li>
+            <li><strong>Treinamento:</strong> todos os colaboradores recebem treinamento anual sobre boas práticas de segurança da informação e privacidade.</li>
+          </ul>
+        </article>
+
+        <!-- 9. Direitos dos Titulares -->
+        <article style="margin-bottom: 2rem;">
+          <h2>9. Direitos dos Titulares</h2>
+          <p>Conforme a LGPD, você, titular dos dados, possui os seguintes direitos:</p>
+          <ul style="list-style: disc inside; margin-left: 1rem;">
+            <li><strong>Confirmação de Existência de Tratamento:</strong> verificar se há tratamento de seus dados pessoais;</li>
+            <li><strong>Acesso aos Dados:</strong> solicitar cópia dos dados que possuímos sobre você;</li>
+            <li><strong>Correção de Dados Incompletos, Inexatos ou Desatualizados:</strong> solicitar atualização ou retificação de informações;</li>
+            <li><strong>Anonimização, Bloqueio ou Eliminação:</strong> solicitar anonimização, bloqueio ou eliminação de dados desnecessários, excessivos ou tratados em desconformidade;</li>
+            <li><strong>Portabilidade:</strong> solicitar transferência dos dados a outro fornecedor ou prestador de serviço, mediante requisição formal;</li>
+            <li><strong>Revogação do Consentimento:</strong> retirar o consentimento a qualquer momento, sem prejuízo de tratamento já realizado;</li>
+            <li><strong>Informação sobre Compartilhamento:</strong> solicitar informação sobre os agentes com os quais compartilhamos seus dados;</li>
+            <li><strong>Oposição:</strong> opor-se ao tratamento de dados pessoais para fins de marketing direto ou baseados em estudo de perfil (profiling);</li>
+            <li><strong>Revisão de decisões automatizadas:</strong> caso haja tratamento automatizado que gere efeitos jurídicos ou consequências significativas, solicitar revisão por profissional humano;</li>
+            <li><strong>Informação sobre variante de titularidade:</strong> em caso de falecimento, o representante legal poderá exercer direitos em nome do titular.</li>
+          </ul>
+          <p>Para exercer qualquer um desses direitos, entre em contato através do e-mail: <a href="mailto:privacidade@olvinternacional.com.br" style="color: var(--accent);">privacidade@olvinternacional.com.br</a>.  
+          Nosso prazo de resposta é de até 15 dias, conforme LGPD.</p>
+        </article>
+
+        <!-- 10. Uso de Subcontratados e Operadores -->
+        <article style="margin-bottom: 2rem;">
+          <h2>10. Uso de Subcontratados e Operadores</h2>
+          <p>Para viabilizar nossas atividades, podemos contratar fornecedores e parceiros que atuarão como operadores de dados pessoais, tais como:</p>
+          <ul style="list-style: disc inside; margin-left: 1rem;">
+            <li>Hospedagem de servidores e infraestrutura de nuvem (Ex.: AWS, Google Cloud);</li>
+            <li>Plataformas de envio de e-mail marketing e automação de CRM;</li>
+            <li>Ferramentas de análise de métricas e BI;</li>
+            <li>Serviços de manutenção de sistemas e suporte técnico;</li>
+            <li>Empresas responsáveis pela segurança da informação, auditorias e conformidade.</li>
+          </ul>
+          <p>Todo operador cadastrado assina Termo de Confidencialidade e se compromete a seguir as diretrizes da LGPD, garantindo a proteção e confidencialidade dos seus dados.</p>
+        </article>
+
+        <!-- 11. Tempo de Retenção -->
+        <article style="margin-bottom: 2rem;">
+          <h2>11. Tempo de Retenção</h2>
+          <p>
+            Reteremos seus dados pessoais apenas pelo período necessário para cumprir as finalidades para as quais foram coletados, ou para atender obrigações legais, fiscais, contábeis e/ou regulatórias.  
+            Após esse período, seus dados serão anonimizados ou excluídos de nossos bancos de dados, exceto quando houver obrigação legal de mantê-los arquivados para auditoria ou eventual litígio.
+          </p>
+        </article>
+
+        <!-- 12. Transferência Internacional de Dados -->
+        <article style="margin-bottom: 2rem;">
+          <h2>12. Transferência Internacional de Dados</h2>
+          <p>
+            Podemos transferir dados pessoais para empresas parceiras localizadas fora do Brasil, desde que haja mecanismos adequados de proteção, conforme previsto na LGPD, tais como cláusulas contratuais específicas, certificação em normas internacionais de privacidade ou que o país de destino possua legislação compatível.  
+            Você será informado sempre que houver transferência internacional, podendo recusar-se à transferência caso não concorde.
+          </p>
+        </article>
+
+        <!-- 13. Alterações nesta Política -->
+        <article style="margin-bottom: 2rem;">
+          <h2>13. Alterações nesta Política</h2>
+          <p>
+            Reservamo-nos o direito de atualizar esta Política de Privacidade a qualquer momento, para adequá-la a novas práticas, requisitos legais ou melhorias de segurança.  
+            A data da última atualização estará sempre indicada no topo desta página. A versão mais recente será sempre mantida em nosso site.  
+            Recomendamos que você revise periodicamente esta política para acompanhar eventuais mudanças.
+          </p>
+        </article>
+
+        <!-- 14. Contato -->
+        <article style="margin-bottom: 2rem;">
+          <h2>14. Contato</h2>
+          <p>
+            Se você tiver dúvidas, comentários ou quiser exercer seus direitos conforme previsto nesta Política, entre em contato conosco pelo e-mail:  
+            <strong><a href="mailto:privacidade@olvinternacional.com.br" style="color: var(--accent);">privacidade@olvinternacional.com.br</a></strong>  
+            ou pelo telefone: <strong>+55 (11) 2675-1446</strong>.  
+            Nossa equipe analisará sua solicitação e responderá dentro do prazo de até 15 dias úteis.
+          </p>
+        </article>
+      </div>
+    </section>
   </main>
+
+  <!-- ============================================= -->
+  <!--                    FOOTER                     -->
+  <!-- ============================================= -->
   <footer class="footer">
-    <div class="container">
-      <p>&copy; 2025 OLV Internacional. Todos os direitos reservados.</p>
+    <div class="container footer-container">
+      <p>
+        &copy; 2025 OLV INTERNACIONAL | CNPJ 67.867.580/0001-90 | Desenvolvido com excelência pelo Ecossistema OLV CORE
+      </p>
+      <div class="social-icons">
+        <a href="https://instagram.com/olvinternacional" title="Instagram OLV Internacional" target="_blank">
+          <img src="icons/instagram.svg" alt="Instagram" />
+        </a>
+        <a href="https://linkedin.com/in/olvinternacional" title="LinkedIn OLV Internacional" target="_blank">
+          <img src="icons/linkedin.svg" alt="LinkedIn" />
+        </a>
+        <a href="https://facebook.com/olvinternacional" title="Facebook OLV Internacional" target="_blank">
+          <img src="icons/facebook.svg" alt="Facebook" />
+        </a>
+        <a href="mailto:atendimento@olvinternacional.com.br" title="Enviar E-mail para OLV Internacional">
+          <img src="icons/email.svg" alt="E-mail" />
+        </a>
+      </div>
     </div>
   </footer>
+
+  <!-- ============================================= -->
+  <!--               BOTÕES FLUTUANTES               -->
+  <!-- ============================================= -->
   <div class="floating-buttons">
-    <a href="#" class="whatsapp-button"><img src="icons/whatsapp.svg" alt="WhatsApp"/>WhatsApp</a>
-    <a href="#" class="specialist-button">Fale com Especialista</a>
+    <a href="https://wa.me/5511267514469" class="whatsapp-button" title="Fale conosco pelo WhatsApp" target="_blank">
+      <img src="icons/whatsapp.svg" alt="WhatsApp" /> WhatsApp
+    </a>
+    <a href="contato.html" class="specialist-button" title="Fale com um Especialista OLV">
+      <img src="icons/email.svg" alt="E-mail" /> Fale com um Especialista
+    </a>
   </div>
+
+  <!-- ============================================= -->
+  <!--             SCRIPT FOOTER REVEAL              -->
+  <!-- ============================================= -->
   <script>
-    function toggleTheme() { document.body.classList.toggle("theme-dark"); document.body.classList.toggle("theme-light"); }
-    window.addEventListener("DOMContentLoaded", ()=>{ document.body.classList.add("theme-dark"); });
+    document.addEventListener('DOMContentLoaded', function() {
+      const footer = document.querySelector('footer');
+      function checkFooterReveal() {
+        const scrollPosition = window.scrollY + window.innerHeight;
+        const pageHeight     = document.documentElement.scrollHeight;
+        if (scrollPosition >= pageHeight - 2) {
+          footer.classList.add('reveal');
+        } else {
+          footer.classList.remove('reveal');
+        }
+      }
+      window.addEventListener('scroll', checkFooterReveal);
+      checkFooterReveal();
+    });
   </script>
 </body>
 </html>

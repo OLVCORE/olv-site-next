@@ -1,6 +1,7 @@
 /**
  * =============================================================================
- * ARQUIVO: js/script.js (AJUSTADO para isolar ticker e blog)
+ * ARQUIVO: js/script.js (AJUSTADO para isolar ticker e blog, além de
+ * adicionar o “hamburger menu” para mobile)
  * FINALIDADE:
  *  - Controle do tema claro/escuro via toggle switch
  *  - Persistência no localStorage
@@ -8,6 +9,7 @@
  *  - Busca de notícias em tempo real (apenas se existir id="ticker-inner")
  *  - Renderização dinâmica de cards no blog, com filtros, ordenação e paginação
  *  - População automática do ticker (apenas em blog.html, pois lá existe id="ticker-inner")
+ *  - **CRIPTOGRAMAÇÃO DO “HAMBURGER MENU” para mobile**  
  * =============================================================================
  */
 
@@ -89,10 +91,95 @@ document.addEventListener('DOMContentLoaded', () => {
     if (categorySelect) categorySelect.addEventListener('change', applyFiltersAndSort);
     if (sortSelect)   sortSelect.addEventListener('change', applyFiltersAndSort);
   }
+
+  // =====================================================
+  // 5) CONFIGURAÇÃO DO “HAMBURGER MENU” PARA MOBILE
+  // =====================================================
+  // 5.1) Criar dinamicamente o botão de menu e injetar no header
+  const headerInner = document.querySelector('.header-inner');
+  if (headerInner) {
+    const menuBtn = document.createElement('div');
+    menuBtn.classList.add('mobile-menu-button');
+    menuBtn.innerHTML = `<img src="icons/menu.svg" alt="Menu">`;
+    headerInner.appendChild(menuBtn);
+
+    // 5.2) Ao clicar, alterna a classe 'mobile-menu-open' no body
+    menuBtn.addEventListener('click', () => {
+      document.body.classList.toggle('mobile-menu-open');
+    });
+  }
+
+  // =====================================================
+  // 6) SCRIPT PARA FAQ – ABRIR E FECHAR CORRETAMENTE
+  // =====================================================
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    const toggle   = item.querySelector('.faq-toggle');
+    const answer   = item.querySelector('.faq-answer');
+
+    // Inicia sempre fechado
+    answer.style.maxHeight = null;
+    toggle.textContent = "+";
+
+    question.addEventListener('click', () => {
+      const isOpen = item.classList.contains('active');
+
+      // Fecha todos os outros
+      faqItems.forEach(other => {
+        if (other !== item && other.classList.contains('active')) {
+          other.classList.remove('active');
+          other.querySelector('.faq-answer').style.maxHeight = null;
+          other.querySelector('.faq-toggle').textContent = "+";
+        }
+      });
+
+      if (!isOpen) {
+        // Abre este item
+        item.classList.add('active');
+        toggle.textContent = "−";
+        answer.style.maxHeight = answer.scrollHeight + "px";
+      } else {
+        // Fecha este item
+        item.classList.remove('active');
+        toggle.textContent = "+";
+        answer.style.maxHeight = null;
+      }
+    });
+  });
+
+  // =====================================================
+  // 7) VALIDAÇÃO E ENVIO DO FORMULÁRIO DE CONTATO
+  // =====================================================
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Aqui, integrar a lógica real de envio (AJAX, backend, etc.)
+      alert('Mensagem enviada com sucesso! Em breve, um de nossos especialistas entrará em contato.');
+      contactForm.reset();
+    });
+  }
+
+  // =====================================================
+  // 8) FOOTER REVEAL
+  // =====================================================
+  const footer = document.querySelector('footer');
+  function checkFooterReveal() {
+    const scrollPosition = window.scrollY + window.innerHeight;
+    const pageHeight = document.documentElement.scrollHeight;
+    if (scrollPosition >= pageHeight - 50) {
+      footer.classList.add('reveal');
+    } else {
+      footer.classList.remove('reveal');
+    }
+  }
+  window.addEventListener('scroll', checkFooterReveal);
+  checkFooterReveal();
 }); // fim do DOMContentLoaded
 
 // =====================================================
-// 5) BUSCA DE NOTÍCIAS (API ou fallback)
+// 9) BUSCA DE NOTÍCIAS (API ou fallback)
 // =====================================================
 let allNews = [];       // Array completo de notícias
 let filteredNews = [];  // Array após aplicação de filtro/ordenação
@@ -128,7 +215,7 @@ async function fetchNews() {
 }
 
 // =====================================================
-// 6) POPULAÇÃO DO TICKER (APENAS EM BLOG.CARDs)
+// 10) POPULAÇÃO DO TICKER (APENAS EM BLOG.CARDs)
 // =====================================================
 /**
  * populateTicker:
@@ -190,7 +277,7 @@ function populateTicker() {
 }
 
 // =====================================================
-// 7) RENDERIZAÇÃO DE CARDS NO BLOG (paginação + filtros)
+// 11) RENDERIZAÇÃO DE CARDS NO BLOG (paginação + filtros)
 // =====================================================
 function renderNewsCards() {
   const container = document.getElementById('cards-container');

@@ -363,9 +363,9 @@ body.theme-light .sidebar-icon {
   align-items: center;
 }
 
-/* ==========================================
+/* =========================================
    TICKER – ajustes para borda dourada contínua
-   ========================================== */
+   ========================================= */
 /* ------------------------------------------------------------------------
    5) TICKER – imediatamente abaixo do header, sem gap, borda dourada unida
    ------------------------------------------------------------------------ */
@@ -1120,3 +1120,129 @@ body.theme-light .card-list img {
 }
 
 /*========================================================================================*/
+
+/* ===================================================================
+   === MOBILE RESPONSIVE ADDITIONS ===
+   (Não modifique nada acima deste comentário; as regras abaixo
+    complementarão o CSS existente, sem sobrepor ou remover código.
+   =================================================================== */
+
+/*--------------------------------------------------------------------------------
+  1) ESCONDER SIDEBAR E AJUSTES GERAIS PARA MOBILE (até 768px)
+--------------------------------------------------------------------------------*/
+@media (max-width: 768px) {
+  /* 1.1) Esconder a sidebar por completo no mobile */
+  .sidebar {
+    display: none !important;
+  }
+
+  /* 1.2) Header deve ocupar toda a largura (sem margin-left) */
+  .header-wrapper {
+    left: 0 !important;
+  }
+
+  /* 1.3) Ajustar .main-content para ocupar 100% da largura, sem margin-left */
+  .main-content {
+    margin-left: 0 !important;
+    padding: 0 1rem; /* espaçamento lateral para não tocar borda */
+  }
+
+  /* 1.4) Botões flutuantes posicionados mais acima, para não se sobrepor ao footer */
+  .floating-buttons {
+    bottom: 80px;
+    right: 12px;
+  }
+}
+
+/*--------------------------------------------------------------------------------
+  2) TRANSFORMAR .nav-menu EM OVERLAY RESPONSIVO
+--------------------------------------------------------------------------------*/
+/* 
+  - Ao clicar no botão “hamburger” (injetado via JS), a classe ‘mobile-menu-open’
+    será adicionada ao <body> e exibirá o nav-menu como coluna em overlay.
+*/
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none; /* esconde por padrão */
+    position: fixed;
+    top: var(--height-header);
+    left: 0;
+    right: 0;
+    background-color: var(--bg-secondary);
+    flex-direction: column;
+    padding: 1rem 2rem;
+    z-index: 2000; /* acima de tudo, exceto a sidebar (que já estará escondida) */
+  }
+  /* Quando <body> tiver .mobile-menu-open, mostramos o nav-menu */
+  body.mobile-menu-open .nav-menu {
+    display: flex;
+  }
+}
+
+/*--------------------------------------------------------------------------------
+  3) BOTÃO “HAMBURGER” VISÍVEL NO HEADER APENAS EM MOBILE
+--------------------------------------------------------------------------------*/
+/*
+  - O JS criará dinamicamente um elemento com classe .mobile-menu-button,
+    que ficará dentro de .header-inner. Quando clicado, alterna 
+    body.classList.toggle('mobile-menu-open').
+*/
+.mobile-menu-button {
+  display: none;
+}
+@media (max-width: 768px) {
+  .mobile-menu-button {
+    display: block;
+    cursor: pointer;
+  }
+  .mobile-menu-button img {
+    width: 24px;
+    height: 24px;
+    filter: invert(100%);
+  }
+}
+
+/*--------------------------------------------------------------------------------
+  4) REDUÇÃO DE FONTES E ESPAÇAMENTOS PARA TELAS MENORES
+--------------------------------------------------------------------------------*/
+@media (max-width: 600px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  .hero-description {
+    font-size: 0.9rem;
+  }
+  .section-heading {
+    font-size: 1.6rem;
+  }
+  .cta-button {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+  .nav-menu .nav-item {
+    font-size: 1rem;
+    padding: 0.5rem 0;
+  }
+  .hero-grid {
+    gap: 1rem;
+  }
+}
+
+/*--------------------------------------------------------------------------------
+  5) AJUSTE NO FOOTER REVEAL (evitar invadir CTAs)
+--------------------------------------------------------------------------------*/
+@media (max-width: 768px) {
+  .footer {
+    /* Aparecer um pouco antes de chegar no final, para não invadir imediatamente */
+    transition: transform 0.3s ease;
+  }
+}
+
+/*--------------------------------------------------------------------------------
+  6) GARANTIR QUE O FAQ ABRA E FECHE CORRETAMENTE (CSS)
+--------------------------------------------------------------------------------*/
+/* 
+  - Já existe .faq-answer com max-height: 0 e transition no HTML/JS;
+    não é necessário sobrescrever nada aqui, pois o JS irá controlar
+    max-height via inline-style quando abrir/fechar.
+*/
