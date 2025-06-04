@@ -5,8 +5,8 @@
    - Ajustes pontuais para isolar o Blog e restaurar o ticker estático
      nas páginas principais (index, ecossistema, etc.).
    - NOVA CLASSE: .ecossistema-cards-grid (para o grid de plataformas).
-   - TODO o CSS de cards-notícias (blog) foi "movido" para #blog-cards .cards-grid.
-   - Alterações marcadas com comentários específicos.
+   - TODO o CSS de cards-notícias (blog) foi “movido” para #blog-cards .cards-grid.
+   - Alterações marcadas com /* === AQUI FOI ALTERADO === */
    ======================================================================== */
 
 /*--------------------------------------------------------------------------- 
@@ -75,7 +75,7 @@ body {
   --height-header: 120px;                 /* comporta logo 100px + slogan */
   --sidebar-collapsed-width: 60px;        /* largura da sidebar fechada */
   --sidebar-expanded-width: 220px;        /* largura quando expande no hover */
-  --sidebar-mobile-height: 60px;          /* altura do "top bar" em mobile */
+  --sidebar-mobile-height: 60px;          /* altura do “top bar” em mobile */
   --radius: 8px;
 
   /* Sombras */
@@ -150,8 +150,8 @@ img {
   transform: translateY(-2px);
 }
 
-/*=========================================== 
-  SIDEBAR (ícones sobre a barra + tooltip descritivo) 
+/*===========================================
+  SIDEBAR (SEM LOGO NO TOPO) – ajustado
 ===========================================*/
 .sidebar {
   position: fixed;
@@ -305,6 +305,9 @@ body.theme-light .sidebar-icon {
 /* ==========================================
    HEADER FIXO – ajustes no logo e posicionamento
    ========================================== */
+/* ========================================================================
+   1) HEADER FIXO – já existente, mas reforçamos a borda inferior dourada
+   ------------------------------------------------------------------------ */
 .header-wrapper {
   position: fixed;
   top: 0;
@@ -399,107 +402,29 @@ body.theme-light .sidebar-icon {
 /* Menu principal */
 .nav-menu {
   display: flex;
-  gap: 2rem;
-  margin-left: auto;
-  transform: translate(6cm, 0.7cm); /* Move 6cm para direita e 0.7cm para baixo */
+  gap: 1.5rem;       /* espaçamento entre itens */
+  margin-left: auto; /* empurra para a direita */
+  margin-right: 0;   /* zero, para ficar colado ao final do container */
+  padding: 0;        /* sem padding vertical extra */
 }
 
-.nav-item {
-  color: var(--txt);
-  text-decoration: none;
-  font-size: 1rem;
-  padding: 0.5rem 0;
-  position: relative;
-  transition: color 0.2s ease;
+/* Garante que cada nav-item não quebre o alinhamento vertical */
+.nav-menu .nav-item {
+  line-height: 1;  /* evita diferença de altura que possa deslocar o link */
+  padding: 0;      /* sem padding vertical extra */
 }
 
-.nav-item:hover,
-.nav-item.active {
-  color: var(--accent);
-}
-
-.nav-item.active::after {
-  content: '';
+/* ------------------------------------------------------------------------
+   4) SWITCH DE TEMA – posicionado acima do menu, alinhado à margem direita
+   ------------------------------------------------------------------------ */
+.theme-switch-wrapper {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: var(--accent);
-}
-
-/* Responsividade do header */
-@media (max-width: 768px) {
-  .header-inner {
-    padding: 0 2cm;
-  }
-
-  .header-brand {
-    gap: 1rem;
-  }
-
-  .header-logo-circle {
-    width: 80px;
-    height: 80px;
-  }
-
-  .header-logo-circle:hover {
-    transform: scale(1.08);
-    box-shadow: 
-      0 6px 20px rgba(0, 0, 0, 0.25),
-      0 0 10px rgba(212, 175, 55, 0.35),
-      0 0 20px rgba(212, 175, 55, 0.15);
-  }
-
-  .header-logo-img {
-    transform: scale(1.15);
-  }
-
-  .header-slogan {
-    font-size: 0.9rem;
-    max-width: 150px; /* Evita que o slogan fique muito largo no mobile */
-  }
-
-  .nav-menu {
-    transform: translate(3cm, 0.35cm); /* Metade dos valores em mobile */
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    flex-direction: column;
-    background-color: var(--bg-secondary);
-    padding: 1rem;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-dark);
-  }
-
-  .nav-menu.show {
-    display: flex;
-  }
-}
-
-@media (max-width: 480px) {
-  .header-brand {
-    gap: 0.75rem;
-  }
-
-  .header-logo-circle {
-    width: 60px;
-    height: 60px;
-  }
-
-  .header-logo-circle:hover {
-    transform: scale(1.1);
-    box-shadow: 
-      0 4px 16px rgba(0, 0, 0, 0.2),
-      0 0 8px rgba(212, 175, 55, 0.3),
-      0 0 16px rgba(212, 175, 55, 0.1);
-  }
-
-  .header-slogan {
-    font-size: 0.8rem;
-    max-width: 120px;
-  }
+  /* Ajusta a posição vertical para ficar centralizado no header */
+  top: calc(50% - 1.5rem); /* ~1.5rem é metade da altura do switch (ajustável) */
+  right: 0;                /* colado na borda direita interna do container */
+  z-index: 1900;           /* acima do nav-menu, mas abaixo de elementos que precisem ficar no topo */
+  display: flex;
+  align-items: center;
 }
 
 /* ==========================================
@@ -510,55 +435,68 @@ body.theme-light .sidebar-icon {
    ------------------------------------------------------------------------ */
 .ticker {
   position: fixed;
-  top: var(--height-header);
+  top: var(--height-header);      /* exatamente abaixo do header (120px) */
   left: var(--sidebar-collapsed-width);
   right: 0;
-  height: 45px;
+  height: 45px;                    /* altura do ticker */
   background-color: var(--bg-secondary);
-  border-bottom: 1px solid var(--accent);
+  border-top: 2px solid var(--accent);   /* borda dourada contínua com o header */
+  border-bottom: 1px solid var(--accent);/* mantém a borda inferior original */
   overflow: hidden;
-  z-index: 1700;
+  z-index: 1700;                   /* abaixo do header, acima do main-content */
   transition: left 0.3s ease;
+  margin-top: 0;                   /* garante nenhum gap */
+  padding-top: 0;                  /* sem padding extra */
 }
 
+/* Quando a sidebar expande, desloca também o ticker */
 .sidebar:hover ~ .ticker {
   left: var(--sidebar-expanded-width);
 }
 
+/* Conteúdo interno do ticker (por exemplo, o <p> rolando) */
+/* Observação: para não sobrepor o ticker estático das páginas principais,
+   só “populamos” esse bloco via JS quando existe id="ticker-inner". */
 .ticker-inner {
   display: flex;
   align-items: center;
   height: 100%;
-  padding: 0 2rem;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
+/* Se havia regras de animação do ticker, elas permanecem intactas */
 .ticker-inner p {
   display: inline-block;
   white-space: nowrap;
   font-size: 0.9rem;
   color: var(--accent);
-  margin: 0;
+  transform: translateX(100%);
   animation: ticker-scroll 20s linear infinite;
+  margin: 0;
 }
-
-.ticker-inner span {
-  margin-right: 2rem;
+.ticker-inner p:hover {
+  animation-play-state: paused;
 }
-
 .ticker-inner a {
-  color: var(--accent);
   text-decoration: none;
-  transition: color 0.2s ease;
+  color: var(--accent);
 }
-
 .ticker-inner a:hover {
-  color: var(--accent-hover);
+  color: #e9eef5;  /* azul claro ao passar o mouse */
   text-decoration: underline;
 }
-
+.ticker-inner span {
+  display: inline-block;
+  margin-right: 3rem;
+}
 @keyframes ticker-scroll {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 /*===============================
@@ -566,66 +504,45 @@ body.theme-light .sidebar-icon {
 ===============================*/
 @media (max-width: 768px) {
   /* === AQUI FOI ALTERADO === 
-     Antes havia ".sidebar { display: none; }" aqui. Removemos para manter sempre
-     a sidebar visível mesmo no mobile. */
+     Antes havia “.sidebar { display: none; }” aqui. Removemos por completo.
+     Agora mostramos a sidebar no topo e a transformamos em uma barra horizontal. */
   .sidebar {
     display: flex !important;
     width: 100%;
-    height: var(--sidebar-mobile-height); /* 60px */
+    height: var(--sidebar-mobile-height);
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    overflow-x: auto;    /* scroll horizontal, se necessário */
-    overflow-y: hidden;  /* impede overflow vertical */
+    overflow-x: auto;
     z-index: 2000;
     padding: 0 0.5rem;
-    top: 0;               /* empilhar no topo em mobile */
   }
-
   .sidebar-nav ul {
     display: flex;
-    flex-direction: row;
-    align-items: center;
     gap: 1rem;
-    margin: 0;
-    padding: 0;
   }
-
   .sidebar-item {
     padding: 8px 12px;
-    flex: 0 0 auto;
   }
-
   .sidebar-icon {
     width: 20px;
     height: 20px;
   }
-
   .sidebar-text {
     opacity: 1;
     font-size: 0.9rem;
-    white-space: nowrap;
   }
-
-  /* Ajusta o header para ficar abaixo da barra mobile */
+  /* Ajusta o header para não ficar “escondido” pela nova barra */
   .header-wrapper {
     left: 0;
-    top: var(--sidebar-mobile-height); /* 60px abaixo do topo */
+    margin-top: var(--sidebar-mobile-height);
   }
-
-  /* Ajusta o ticker para ficar abaixo da barra mobile + header */
+  /* Ajusta o ticker para considerar a altura da sidebar mobile */
   .ticker {
+    top: calc(var(--sidebar-mobile-height) + var(--height-header) - 120px);
+    /* A barra mobile “empilha” 60px no topo, depois vem o header */
     left: 0;
-    top: calc(var(--sidebar-mobile-height) + var(--height-header)); /* 60 + 120 = 180px */
-  }
-
-  /* === AQUI FOI ALTERADO ===
-     Em mobile, não "empurra" a main-content para a esquerda: ocupa 100% da largura.
-     Recalculamos a margem superior para ficar abaixo do ticker (180 + 45 = 225px). */
-  .main-content {
-    margin-left: 0;
-    margin-top: calc(var(--sidebar-mobile-height) + var(--height-header) + 45px);
-    /* = 60px (barra móvel) + 120px (header) + 45px (ticker) = 225px */
+    right: 0;
   }
 }
 
@@ -636,21 +553,20 @@ body.theme-light .sidebar-icon {
   .nav-menu {
     flex-wrap: wrap;     /* se não couber em uma linha, quebrar */
     gap: 1rem;           /* espaçamento entre itens reduzido */
-    margin-left: 0;
+    margin-right: 0;
   }
   .theme-switch-wrapper {
     top: calc(50% - 1.5rem);
     right: 0;
   }
 }
-
 @media (max-width: 768px) {
   .nav-menu {
     display: none; /* será exibido via hamburger menu no JS */
   }
   .theme-switch-wrapper {
-    top: 5px !important;
-    right: 10px !important;
+    top: calc(50% - 1.5rem); /* ajuste para switch no mobile */
+    right: 1rem;
   }
 
   /* No mobile, o ticker ocupa toda a largura (já abaixo do header) */
@@ -664,7 +580,7 @@ body.theme-light .sidebar-icon {
   HAMBURGER MENU – ícone sempre visível
 ===========================================*/
 /* =======================================
-   Inserimos o ícone "menu" no HTML dentro do header (veja no JS/HTML),
+   Inserimos o ícone “menu” no HTML dentro do header (veja no JS/HTML),
    mas aqui garantimos que fique legível em ambos os temas.
    ======================================= */
 .menu-toggle {
@@ -672,20 +588,19 @@ body.theme-light .sidebar-icon {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 10px;
-  z-index: 2000;
+  padding: 8px;
+  margin-left: 1rem;
+  transition: opacity 0.2s ease;
+  z-index: 1900;
 }
-
-.menu-toggle span {
-  display: block;
+.menu-toggle img {
   width: 24px;
-  height: 2px;
-  margin: 5px 0;
-  background-color: var(--accent);
-  transition: all 0.3s ease;
+  height: 24px;
+  filter: invert(1);       /* ícone branco no tema escuro */
 }
-
-/* Mobile Styles */
+body.theme-light .menu-toggle img {
+  filter: invert(0);       /* ícone escuro no tema claro */
+}
 @media (max-width: 768px) {
   /* Sidebar mobile elegante */
   .sidebar {
@@ -855,7 +770,6 @@ body.theme-light .sidebar-icon {
     height: 20px;
   }
 }
-
 /*===========================================
   SWITCH DE TEMA (LIGA/DESLIGA) – Ícones mais visíveis
 ===========================================*/
@@ -970,8 +884,6 @@ body.theme-light .sidebar-icon {
 .main-content {
   margin-left: var(--sidebar-collapsed-width);
   margin-top: calc(var(--height-header) + 45px);
-  padding: 2rem;
-  min-height: calc(100vh - var(--height-header) - 45px);
   background-color: var(--bg);
   transition: margin-left 0.3s ease;
 }
@@ -979,12 +891,17 @@ body.theme-light .sidebar-icon {
 .sidebar:hover ~ .main-content {
   margin-left: var(--sidebar-expanded-width);
 }
-
+/* === AQUI FOI ALTERADO ===
+   Em mobile, não “empurra” a main-content para a esquerda: ocupa 100% da largura. */
 @media (max-width: 768px) {
   .main-content {
     margin-left: 0;
-    margin-top: calc(var(--sidebar-mobile-height) + var(--height-header) + 45px);
-    padding: 1rem;
+    margin-top: calc(var(--height-header) + var(--sidebar-mobile-height) + 45px - 120px);
+    /* Recalculamos para “empurrar” o conteúdo:
+       - sidebar-mobile-height (60px)
+       - + header (120px)
+       - + ticker (45px)
+       - menos 120px porque o header interno já inclui certa altura em mobile */
   }
 }
 
@@ -1172,6 +1089,38 @@ body.theme-light .card-list img {
   filter: invert(0%);
 }
 
+/* --------------------------------------
+   Ícones do switch de tema (moon & sun)
+   -------------------------------------- */
+
+/* Ajusta o tamanho do SVG */
+.switch-icon img {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+/* ==================================================
+   MODO ESCURO: sol em dourado e lua em branco/azul-claro
+   ================================================== */
+body.theme-dark .sun-icon {
+  color: var(--accent); /* var(--accent) é seu dourado definido no :root */
+}
+
+body.theme-dark .moon-icon {
+  color: #FFFFFF; /* ou um azul-claro se preferir algo menos “brigante” */
+}
+
+/* ==================================================
+   MODO CLARO: sol em tom escuro, lua em tom escuro
+   ================================================== */
+body.theme-light .sun-icon {
+  color: #333333; /* tom de texto escuro */
+}
+
+body.theme-light .moon-icon {
+  color: #333333;
+}
 /*===========================================
   CONTATO RÁPIDO – card único-linha e flexível
 ===========================================*/
@@ -1274,11 +1223,11 @@ body.theme-light .card-list img {
 }
 
 /*===========================================
-  BOTÕES FLUTUANTES – ajustes de z-index
+  BOTÕES FLUTUANTES – sem alterações 
 ===========================================*/
 .floating-buttons {
   position: fixed;
-  bottom: 20px;
+  bottom: 10px;   /* === AQUI FOI ALTERADO – ficou 10px, antes era 20px */
   right: 20px;
   display: flex;
   gap: 12px;
@@ -1333,47 +1282,12 @@ body.theme-light .card-list img {
 
 @media (max-width: 768px) {
   /* === AQUI FOI ALTERADO === 
-     Mantivemos a sidebar no topo em mobile, para que nunca desapareça. */
+     Removi o “.sidebar { display: none }” que escondia a barra lateral.
+     Agora a sidebar fica visível no topo como uma barra horizontal */
   .sidebar {
     display: flex !important;
-    width: 100%;
-    height: var(--sidebar-mobile-height);
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    overflow-x: auto;
-    overflow-y: hidden;
-    z-index: 2000;
-    padding: 0 0.5rem;
-    top: 0;
   }
-
-  .sidebar-nav ul {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1rem;
-    margin: 0;
-    padding: 0;
-  }
-
-  .sidebar-item {
-    padding: 8px 12px;
-    flex: 0 0 auto;
-  }
-
-  .sidebar-icon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .sidebar-text {
-    opacity: 1;
-    font-size: 0.9rem;
-    white-space: nowrap;
-  }
-
-  /* Ajusta o header para ficar abaixo da barra mobile */
+  /* Faz o layout mobile do header e nav-menu rodar via JS */
   .header-wrapper {
     left: 0;
     top: var(--sidebar-mobile-height); /* 60px abaixo do topo */
@@ -1393,8 +1307,6 @@ body.theme-light .card-list img {
     margin-top: calc(var(--sidebar-mobile-height) + var(--height-header) + 45px);
     /* = 60px (barra móvel) + 120px (header) + 45px (ticker) = 225px */
   }
-
-  /* Faz o layout mobile do header e nav-menu rodar via JS */
   .nav-menu {
     display: none;
     gap: 1rem;
