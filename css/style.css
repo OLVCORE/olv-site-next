@@ -5,7 +5,7 @@
    - Ajustes pontuais para isolar o Blog e restaurar o ticker estático
      nas páginas principais (index, ecossistema, etc.).
    - NOVA CLASSE: .ecossistema-cards-grid (para o grid de plataformas).
-   - TODO o CSS de cards-notícias (blog) foi “movido” para #blog-cards .cards-grid.
+   - TODO o CSS de cards-notícias (blog) foi "movido" para #blog-cards .cards-grid.
    - Alterações marcadas com /* === AQUI FOI ALTERADO === */
    ======================================================================== */
 
@@ -72,15 +72,23 @@ body {
   --sidebar-active-bg: var(--accent);
 
   /* Dimensões fixas */
-  --height-header: 120px;                 /* comporta logo 100px + slogan */
+  --height-header: 80px;                  /* Reduzido para mobile-first */
   --sidebar-collapsed-width: 60px;        /* largura da sidebar fechada */
   --sidebar-expanded-width: 220px;        /* largura quando expande no hover */
-  --sidebar-mobile-height: 60px;          /* altura do “top bar” em mobile */
+  --sidebar-mobile-height: 60px;          /* altura do "top bar" em mobile */
+  --header-mobile-height: 80px;           /* altura do header em mobile */
   --radius: 8px;
 
   /* Sombras */
   --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1);
   --shadow-dark: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Desktop Overrides */
+@media (min-width: 769px) {
+  :root {
+    --height-header: 120px;
+  }
 }
 
 /* Tema claro × escuro (sem alterações) */
@@ -253,55 +261,6 @@ body.theme-light .sidebar-icon {
   z-index: 2002; /* Acima dos ícones */
 }
 
-/* Responsividade do sidebar */
-@media (max-width: 768px) {
-  .sidebar {
-    display: flex !important;
-    width: 100%;
-    height: var(--sidebar-mobile-height);
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding: 0 0.5rem;
-    top: 0;
-  }
-
-  .sidebar-nav ul {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .sidebar-item {
-    padding: 8px 12px;
-    flex: 0 0 auto;
-  }
-
-  .sidebar-icon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .sidebar-text {
-    opacity: 1;
-    font-size: 0.9rem;
-  }
-
-  /* Ajuste do tooltip em mobile */
-  .sidebar-item[data-tooltip]:hover::after {
-    left: 50%;
-    top: 100%;
-    transform: translateX(-50%);
-    margin-top: 8px;
-    width: 200px;
-    font-size: 0.85rem;
-    padding: 8px 12px;
-  }
-}
-
 /* ==========================================
    HEADER FIXO – ajustes no logo e posicionamento
    ========================================== */
@@ -456,7 +415,7 @@ body.theme-light .sidebar-icon {
 
 /* Conteúdo interno do ticker (por exemplo, o <p> rolando) */
 /* Observação: para não sobrepor o ticker estático das páginas principais,
-   só “populamos” esse bloco via JS quando existe id="ticker-inner". */
+   só "populamos" esse bloco via JS quando existe id="ticker-inner". */
 .ticker-inner {
   display: flex;
   align-items: center;
@@ -499,12 +458,12 @@ body.theme-light .sidebar-icon {
   }
 }
 
-/*===============================
+/*===========================================
   RESPONSIVIDADE (ticker e sidebar)
 ===============================*/
 @media (max-width: 768px) {
   /* === AQUI FOI ALTERADO === 
-     Antes havia “.sidebar { display: none; }” aqui. Removemos por completo.
+     Antes havia ".sidebar { display: none; }" aqui. Removemos por completo.
      Agora mostramos a sidebar no topo e a transformamos em uma barra horizontal. */
   .sidebar {
     display: flex !important;
@@ -519,10 +478,13 @@ body.theme-light .sidebar-icon {
   }
   .sidebar-nav ul {
     display: flex;
+    flex-direction: row;
+    align-items: center;
     gap: 1rem;
   }
   .sidebar-item {
     padding: 8px 12px;
+    flex: 0 0 auto;
   }
   .sidebar-icon {
     width: 20px;
@@ -532,17 +494,15 @@ body.theme-light .sidebar-icon {
     opacity: 1;
     font-size: 0.9rem;
   }
-  /* Ajusta o header para não ficar “escondido” pela nova barra */
-  .header-wrapper {
-    left: 0;
-    margin-top: var(--sidebar-mobile-height);
-  }
-  /* Ajusta o ticker para considerar a altura da sidebar mobile */
-  .ticker {
-    top: calc(var(--sidebar-mobile-height) + var(--height-header) - 120px);
-    /* A barra mobile “empilha” 60px no topo, depois vem o header */
-    left: 0;
-    right: 0;
+  /* Ajuste do tooltip em mobile */
+  .sidebar-item[data-tooltip]:hover::after {
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    margin-top: 8px;
+    width: 200px;
+    font-size: 0.85rem;
+    padding: 8px 12px;
   }
 }
 
@@ -580,7 +540,7 @@ body.theme-light .sidebar-icon {
   HAMBURGER MENU – ícone sempre visível
 ===========================================*/
 /* =======================================
-   Inserimos o ícone “menu” no HTML dentro do header (veja no JS/HTML),
+   Inserimos o ícone "menu" no HTML dentro do header (veja no JS/HTML),
    mas aqui garantimos que fique legível em ambos os temas.
    ======================================= */
 .menu-toggle {
@@ -891,19 +851,6 @@ body.theme-light .menu-toggle img {
 .sidebar:hover ~ .main-content {
   margin-left: var(--sidebar-expanded-width);
 }
-/* === AQUI FOI ALTERADO ===
-   Em mobile, não “empurra” a main-content para a esquerda: ocupa 100% da largura. */
-@media (max-width: 768px) {
-  .main-content {
-    margin-left: 0;
-    margin-top: calc(var(--height-header) + var(--sidebar-mobile-height) + 45px - 120px);
-    /* Recalculamos para “empurrar” o conteúdo:
-       - sidebar-mobile-height (60px)
-       - + header (120px)
-       - + ticker (45px)
-       - menos 120px porque o header interno já inclui certa altura em mobile */
-  }
-}
 
 /*===========================================
   SEÇÃO HERO 
@@ -1108,7 +1055,7 @@ body.theme-dark .sun-icon {
 }
 
 body.theme-dark .moon-icon {
-  color: #FFFFFF; /* ou um azul-claro se preferir algo menos “brigante” */
+  color: #FFFFFF; /* ou um azul-claro se preferir algo menos "brigante" */
 }
 
 /* ==================================================
@@ -1282,7 +1229,7 @@ body.theme-light .moon-icon {
 
 @media (max-width: 768px) {
   /* === AQUI FOI ALTERADO === 
-     Removi o “.sidebar { display: none }” que escondia a barra lateral.
+     Removi o ".sidebar { display: none }" que escondia a barra lateral.
      Agora a sidebar fica visível no topo como uma barra horizontal */
   .sidebar {
     display: flex !important;
@@ -1753,5 +1700,146 @@ body.theme-light .moon-icon {
 
   .header-wrapper {
     height: 70px !important;
+  }
+}
+
+/* Mobile Layout Base */
+@media (max-width: 768px) {
+  /* Sidebar Mobile */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--sidebar-mobile-height);
+    background-color: var(--bg-sidebar);
+    border-bottom: 2px solid var(--accent);
+    display: flex;
+    align-items: center;
+    padding: 0;
+    z-index: 2000;
+    overflow-x: auto;
+  }
+
+  .sidebar-nav ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 15px;
+    gap: 20px;
+    margin: 0;
+    height: 100%;
+  }
+
+  .sidebar-item {
+    padding: 8px;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    white-space: nowrap;
+  }
+
+  .sidebar-text {
+    display: none;
+  }
+
+  /* Header Mobile */
+  .header-wrapper {
+    top: var(--sidebar-mobile-height);
+    left: 0;
+    height: 80px;
+    padding: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--accent);
+  }
+
+  /* Menu Toggle */
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    top: calc(var(--sidebar-mobile-height) + 20px);
+    right: 15px;
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    z-index: 2001;
+    gap: 4px;
+  }
+
+  .menu-toggle span {
+    width: 20px;
+    height: 2px;
+    background: var(--accent);
+    transition: 0.3s;
+  }
+
+  /* Navigation Menu */
+  .nav-menu {
+    display: none;
+    position: fixed;
+    top: calc(var(--sidebar-mobile-height) + 80px);
+    right: 15px;
+    width: 250px;
+    background: var(--bg);
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-menu.show {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-item {
+    padding: 12px 15px;
+    color: var(--txt);
+    border-radius: 8px;
+    background: rgba(212, 175, 55, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    text-align: left;
+    width: 100%;
+  }
+
+  /* Main Content */
+  .main-content {
+    margin-left: 0;
+    margin-top: calc(var(--sidebar-mobile-height) + 80px);
+    padding: 15px;
+  }
+
+  /* Ticker Adjustments */
+  .ticker {
+    top: calc(var(--sidebar-mobile-height) + 80px);
+    left: 0;
+    right: 0;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .nav-menu {
+    width: calc(100% - 30px);
+    right: 15px;
+  }
+
+  .sidebar-item {
+    padding: 6px 10px;
+  }
+
+  .menu-toggle {
+    width: 35px;
+    height: 35px;
   }
 }
