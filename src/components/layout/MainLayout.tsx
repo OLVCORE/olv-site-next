@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import ThemeSwitch from './ThemeSwitch';
 import BetaVersion from './BetaVersion';
+import QuickLinks from './QuickLinks';
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -87,6 +88,11 @@ const MainLayout: React.FC<MainLayoutProps> = ({
         
         {/* Beta Version Box - only on platform pages and below ticker */}
         {isPlatformPage || isCurrentPagePlatform ? <BetaVersion /> : null}
+        
+        {/* Mobile Quick Links Navigation */}
+        <div className="mobile-navigation">
+          <QuickLinks />
+        </div>
         
         <main className={`main-content ${isPageLoaded ? 'fade-in' : ''} min-h-screen pb-36`}>
           {children}

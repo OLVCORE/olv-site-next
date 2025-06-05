@@ -71,6 +71,7 @@ const platforms = [
 const Sidebar: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   
   const handleMouseEnter = () => {
@@ -90,48 +91,89 @@ const Sidebar: React.FC = () => {
     setActiveTooltip(null);
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
-    <aside 
-      className="sidebar"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <nav className="sidebar-nav">
-        <ul>
-          {platforms.map((platform) => {
-            const isActive = pathname === platform.href;
-            return (
-              <li key={platform.name} className="relative" onMouseEnter={() => handleItemMouseEnter(platform.name)} onMouseLeave={handleItemMouseLeave}>
-                <Link 
-                  href={platform.href} 
-                  className={`sidebar-item ${isActive ? 'active' : ''}`}
-                >
-                  <Image 
-                    src={platform.icon} 
-                    alt={`Ícone ${platform.name}`} 
-                    width={24} 
-                    height={24} 
-                    className="sidebar-icon" 
-                  />
-                  <span className="sidebar-text">{platform.name}</span>
-                </Link>
-                {activeTooltip === platform.name && (
-                  <div className="sidebar-tooltip" style={{
-                    opacity: 1,
-                    visibility: 'visible',
-                    boxShadow: '0 0 15px rgba(212, 175, 55, 0.7)',
-                    border: '2px solid #d4af37',
-                    animation: 'tooltipGlow 2s infinite'
-                  }}>
-                    {platform.tooltip}
-                  </div>
-                )}
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-    </aside>
+    <>
+      {/* Mobile Toggle Button - Only visible on mobile */}
+      <button 
+        className="mobile-sidebar-toggle"
+        onClick={toggleMobileMenu}
+        aria-label="Toggle Platforms Menu"
+      >
+        <Image 
+          src="/icons/platforms.svg" 
+          alt="Platforms" 
+          width={24} 
+          height={24}
+        />
+        <span>Plataformas</span>
+      </button>
+
+      <aside 
+        className={`sidebar ${isMobileMenuOpen ? 'mobile-open' : ''}`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <nav className="sidebar-nav">
+          <div className="sidebar-header-mobile">
+            <h3>Plataformas</h3>
+            <button 
+              onClick={toggleMobileMenu}
+              className="close-sidebar-mobile"
+              aria-label="Close Platforms Menu"
+            >
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+          <ul>
+            {platforms.map((platform) => {
+              const isActive = pathname === platform.href;
+              return (
+                <li key={platform.name} className="relative" onMouseEnter={() => handleItemMouseEnter(platform.name)} onMouseLeave={handleItemMouseLeave}>
+                  <Link 
+                    href={platform.href} 
+                    className={`sidebar-item ${isActive ? 'active' : ''}`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <Image 
+                      src={platform.icon} 
+                      alt={`Ícone ${platform.name}`} 
+                      width={24} 
+                      height={24} 
+                      className="sidebar-icon" 
+                    />
+                    <span className="sidebar-text">{platform.name}</span>
+                  </Link>
+                  {activeTooltip === platform.name && (
+                    <div className="sidebar-tooltip" style={{
+                      opacity: 1,
+                      visibility: 'visible',
+                      boxShadow: '0 0 15px rgba(212, 175, 55, 0.7)',
+                      border: '2px solid #d4af37',
+                      animation: 'tooltipGlow 2s infinite'
+                    }}>
+                      {platform.tooltip}
+                    </div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </aside>
+
+      {/* Overlay for mobile - closes sidebar when clicked outside */}
+      {isMobileMenuOpen && (
+        <div 
+          className="sidebar-overlay" 
+          onClick={toggleMobileMenu}
+        ></div>
+      )}
+    </>
   );
 };
 

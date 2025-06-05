@@ -12,14 +12,9 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
   const pathname = usePathname();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   const isActive = (path: string) => {
     return pathname === path || (pathname?.startsWith(path) && path !== '/');
-  };
-
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
   };
 
   return (
@@ -47,8 +42,8 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
             </div>
           </div>
 
-          {/* Menu Principal */}
-          <nav className={`nav-menu ${mobileMenuOpen ? 'show' : ''}`}>
+          {/* Menu Principal - Visible only on desktop */}
+          <nav className="nav-menu desktop-only">
             <Link href="/" className={`nav-item ${isActive('/') ? 'active' : ''}`} data-page="home">Home</Link>
             <Link href="/sobre" className={`nav-item ${isActive('/sobre') ? 'active' : ''}`} data-page="sobre">Sobre</Link>
             <Link href="/solucoes" className={`nav-item ${isActive('/solucoes') ? 'active' : ''}`} data-page="solucoes">Soluções</Link>
@@ -88,16 +83,6 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
               </div>
             </label>
           </div>
-          
-          {/* Menu Mobile Toggle */}
-          <button 
-            className={`menu-toggle ${mobileMenuOpen ? 'active' : ''}`}
-            onClick={toggleMobileMenu}
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
         </div>
       </header>
     </>
