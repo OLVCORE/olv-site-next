@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "node scripts/fix-encoding.js && next dev -p 3999",
-    "build": "node scripts/pre-build-cleanup.js && node scripts/fix-encoding.js && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "fix:encoding": "node scripts/fix-encoding.js",
