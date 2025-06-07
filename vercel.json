@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "node scripts/fix-encoding.js && next build",
+  "buildCommand": null,
   "ignoreCommand": null,
   "git": {
     "deploymentEnabled": {
