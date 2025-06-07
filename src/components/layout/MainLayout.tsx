@@ -5,12 +5,14 @@ import Header from './Header/index';
 import Footer from './Footer/index';
 import Sidebar from './Sidebar/index';
 import WhatsAppButton from '../layout/WhatsAppButton';
+import ChatWidget from '../ChatWidget';
 import Ticker from './Ticker';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import ThemeSwitch from './ThemeSwitch';
 import BetaVersion from './BetaVersion';
 import QuickLinks from './QuickLinks';
+import Script from 'next/script';
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -23,7 +25,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({
   className = '',
   isPlatformPage = false 
 }) => {
-  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [showFooter, setShowFooter] = useState(false);
   const [isPageLoaded, setIsPageLoaded] = useState(false);
   
@@ -39,15 +40,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({
   ].includes(pathname);
 
   useEffect(() => {
-    // Set theme from localStorage or default to dark
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.body.classList.add(`theme-${savedTheme}`);
-    } else {
-      document.body.classList.add('theme-dark');
-    }
-
     // Show footer after 500ms
     const footerTimer = setTimeout(() => {
       setShowFooter(true);
@@ -64,26 +56,12 @@ const MainLayout: React.FC<MainLayoutProps> = ({
     };
   }, []);
 
-  // Toggle theme function
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    
-    // Remove current theme class
-    document.body.classList.remove('theme-light', 'theme-dark');
-    // Add new theme class
-    document.body.classList.add(`theme-${newTheme}`);
-    
-    // Save to localStorage
-    localStorage.setItem('theme', newTheme);
-  };
-
   return (
     <div className={`app-container ${className} ${isPageLoaded ? 'loaded' : ''}`}>
       <ThemeSwitch />
       <Sidebar />
       <div className="content-wrapper">
-        <Header theme={theme} toggleTheme={toggleTheme} />
+        <Header />
         <Ticker />
         
         {/* Beta Version Box - only on platform pages and below ticker */}
@@ -105,7 +83,13 @@ const MainLayout: React.FC<MainLayoutProps> = ({
         
         {/* Fixed buttons */}
         <WhatsAppButton phoneNumber="5511999999999" message="Olá! Vim do site da OLV Internacional e gostaria de saber mais sobre os serviços." />
+        
+        {/* Chatbot Widget */}
+        <ChatWidget />
       </div>
+      
+      {/* Script para gerenciar o layout e as colisões */}
+      <Script src="/scripts/footer-handler.js" strategy="afterInteractive" />
     </div>
   );
 };

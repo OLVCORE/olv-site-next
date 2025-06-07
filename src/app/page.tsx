@@ -38,16 +38,16 @@ export default function HomePage() {
         <div className="container">
           <div className="flex flex-col md:flex-row items-center gap-4 mb-2 bg-[#141c2f] p-5 rounded-lg border border-[#2a3448] shadow-lg">
             <div className="flex-1">
-              <h2 className="text-3xl font-bold mb-2 text-white">Integramos Estratégia, Operação e Resultado</h2>
-              <p className="mb-2 text-gray-300">
+              <h2 className="text-4xl md:text-5xl font-bold mb-3 text-white">Integramos Estratégia, Operação e Resultado</h2>
+              <p className="mb-2 text-gray-300 text-base">
                 <span className="text-[#d4af37] font-semibold">35 anos</span> integrando estratégia, operações e resultados. Somos especialistas em Supply Chain, Comércio Exterior, Logística Internacional e Desenvolvimento de Negócios.
               </p>
-              <p className="mb-2 text-gray-300">
+              <p className="mb-2 text-gray-300 text-base">
                 Atuamos como o braço consultivo do Ecossistema OLV, oferecendo suporte completo para
                 empresas que querem importar, exportar, expandir seus negócios, operar com segurança e alta performance no
                 mercado global.
               </p>
-              <p className="mb-2 text-gray-300">
+              <p className="mb-2 text-gray-300 text-base">
                 Nossa missão é simplificar operações complexas, acelerar negócios e integrar estratégias com resultados.
                 Atuamos como uma extensão do seu negócio, sem ativos próprios, focando exclusivamente na entrega de valor.
               </p>
@@ -71,7 +71,7 @@ export default function HomePage() {
 
           {/* Pilares de Atuação em mini-cards */}
           <div className="mb-2">
-            <h3 className="text-2xl font-semibold mb-2 text-[#d4af37]">Pilares da Nossa Atuação</h3>
+            <h3 className="text-3xl font-semibold mb-3 text-[#d4af37]">Pilares da Nossa Atuação</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {keyPoints.map((point, index) => (
                 <div 
@@ -97,7 +97,7 @@ export default function HomePage() {
             <div className="w-14 h-14 mx-auto mb-1 rounded-full bg-[#0a0f1d] border-2 border-[#d4af37] flex items-center justify-center">
               <Image src="/icons/solutions-icon.svg" alt="Ícone de Soluções" width={28} height={28} className="text-[#d4af37]" />
             </div>
-            <h2 className="text-2xl font-bold text-center mb-2">Nossas Soluções Estratégicas</h2>
+            <h2 className="text-4xl font-bold text-center mb-3">Nossas Soluções Estratégicas</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {/* Card 1 - Consultoria Estratégica em Comex */}
@@ -106,7 +106,7 @@ export default function HomePage() {
                 <div className="w-14 h-14 rounded-full bg-[#0a0f1d] border-2 border-[#d4af37] flex items-center justify-center mb-3">
                   <Image src="/icons/strategy.svg" alt="Ícone de Estratégia" width={28} height={28} />
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-white">Consultoria Estratégica em Comex</h3>
+                <h3 className="text-2xl font-semibold mb-2 text-white">Consultoria Estratégica em Comex</h3>
                 <p className="text-gray-300 mb-3 text-sm">
                   Análise profunda de cenários, estruturação de operações internacionais e desenho de estratégias
                   personalizadas para cada perfil de empresa. Desenvolvemos roadmaps completos para
@@ -136,7 +136,7 @@ export default function HomePage() {
                 <div className="w-14 h-14 rounded-full bg-[#0a0f1d] border-2 border-[#d4af37] flex items-center justify-center mb-3">
                   <Image src="/icons/operations.svg" alt="Ícone de Operações" width={28} height={28} />
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-white">Soluções Operacionais para Exportação e Importação</h3>
+                <h3 className="text-2xl font-semibold mb-2 text-white">Soluções Operacionais para Exportação e Importação</h3>
                 <p className="text-gray-300 mb-3 text-sm">
                   Condução completa de todos os processos operacionais de comércio exterior, desde
                   habilitações e registros até o fechamento de câmbio, documentação e desembaraço
@@ -166,7 +166,7 @@ export default function HomePage() {
                 <div className="w-14 h-14 rounded-full bg-[#0a0f1d] border-2 border-[#d4af37] flex items-center justify-center mb-3">
                   <Image src="/icons/supply-chain.svg" alt="Ícone Supply Chain" width={28} height={28} />
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-white">Gestão de Supply Chain Integrado</h3>
+                <h3 className="text-2xl font-semibold mb-2 text-white">Gestão de Supply Chain Integrado</h3>
                 <p className="text-gray-300 mb-3 text-sm">
                   Planejamento e otimização de toda a cadeia de suprimentos internacional, desde
                   a identificação de fornecedores até a entrega ao cliente final, com foco em
@@ -196,7 +196,7 @@ export default function HomePage() {
                 <div className="w-14 h-14 rounded-full bg-[#0a0f1d] border-2 border-[#d4af37] flex items-center justify-center mb-3">
                   <Image src="/icons/tech.svg" alt="Ícone de Tecnologia" width={28} height={28} />
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-white">Tecnologia Aplicada à Competitividade</h3>
+                <h3 className="text-2xl font-semibold mb-2 text-white">Tecnologia Aplicada à Competitividade</h3>
                 <p className="text-gray-300 mb-3 text-sm">
                   Implementação de soluções tecnológicas que automatizam processos e geram
                   insights estratégicos para tomada de decisão baseada em dados. Nossa abordagem
@@ -226,7 +226,7 @@ export default function HomePage() {
                 <div className="w-14 h-14 rounded-full bg-[#0a0f1d] border-2 border-[#d4af37] flex items-center justify-center mb-3">
                   <Image src="/icons/compliance-icon.svg" alt="Ícone de Compliance" width={28} height={28} />
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-white">Compliance e Governança</h3>
+                <h3 className="text-2xl font-semibold mb-2 text-white">Compliance e Governança</h3>
                 <p className="text-gray-300 mb-3 text-sm">
                   Implementação de estruturas de compliance e governança corporativa adaptadas
                   a operações internacionais, garantindo conformidade com legislações locais
@@ -254,54 +254,54 @@ export default function HomePage() {
       </section>
 
       {/* O Fator Humano na Nossa Atuação */}
-      <section className="section py-0 mb-0">
-        <div className="container">
+      <section className="section py-0 mb-32">
+        <div className="container mx-auto max-w-7xl px-4 pb-16">
           <div className="bg-[#141c2f] rounded-lg border border-[#2a3448] overflow-hidden shadow-xl">
-            <div className="p-6">
-              <div className="section-heading mb-3">
-                <h2 className="text-2xl font-bold text-white text-center mb-2">O Fator Humano</h2>
-                <p className="text-gray-300 text-center max-w-3xl mx-auto">
+            <div className="p-8 md:p-10">
+              <div className="section-heading mb-8">
+                <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-6">O Fator Humano</h2>
+                <p className="text-gray-300 text-center max-w-3xl mx-auto text-base">
                   Nossa abordagem é fundamentada na combinação de expertise técnica com inteligência emocional. 
                   Acreditamos que por trás de cada operação há pessoas, e compreender suas necessidades 
                   é essencial para entregar resultados excepcionais.
                 </p>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-                <div className="bg-[#0a0f1d] p-4 rounded-lg border border-[#2a3448] hover:border-[#d4af37] transition-colors duration-300">
-                  <div className="flex items-center mb-2">
-                    <div className="w-10 h-10 rounded-full bg-[#141c2f] border border-[#d4af37] flex items-center justify-center mr-3">
-                      <Image src="/icons/team.svg" alt="Ícone de Equipe" width={20} height={20} />
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-10">
+                <div className="bg-[#0a0f1d] p-5 rounded-lg border border-[#2a3448] hover:border-[#d4af37] transition-colors duration-300 shadow-md card-hover-effect">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 rounded-full bg-[#141c2f] border border-[#d4af37] flex items-center justify-center mr-4">
+                      <Image src="/icons/team.svg" alt="Ícone de Equipe" width={24} height={24} />
                     </div>
-                    <h3 className="text-lg font-semibold text-white">Expertise Humana</h3>
+                    <h3 className="text-2xl font-semibold text-white">Expertise Humana</h3>
                   </div>
-                  <p className="text-gray-300 text-sm">
+                  <p className="text-gray-300 text-base">
                     Nossa equipe multidisciplinar combina conhecimento técnico com habilidades interpessoais 
                     para construir relacionamentos de confiança e entregar soluções personalizadas.
                   </p>
                 </div>
                 
-                <div className="bg-[#0a0f1d] p-4 rounded-lg border border-[#2a3448] hover:border-[#d4af37] transition-colors duration-300">
-                  <div className="flex items-center mb-2">
-                    <div className="w-10 h-10 rounded-full bg-[#141c2f] border border-[#d4af37] flex items-center justify-center mr-3">
-                      <Image src="/icons/handshake.svg" alt="Ícone de Parceria" width={20} height={20} />
+                <div className="bg-[#0a0f1d] p-5 rounded-lg border border-[#2a3448] hover:border-[#d4af37] transition-colors duration-300 shadow-md card-hover-effect">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 rounded-full bg-[#141c2f] border border-[#d4af37] flex items-center justify-center mr-4">
+                      <Image src="/icons/handshake.svg" alt="Ícone de Parceria" width={24} height={24} />
                     </div>
-                    <h3 className="text-lg font-semibold text-white">Parceria de Longo Prazo</h3>
+                    <h3 className="text-2xl font-semibold text-white">Parceria de Longo Prazo</h3>
                   </div>
-                  <p className="text-gray-300 text-sm">
+                  <p className="text-gray-300 text-base">
                     Não somos apenas prestadores de serviço, mas parceiros estratégicos comprometidos 
                     com o crescimento sustentável e o sucesso contínuo dos nossos clientes.
                   </p>
                 </div>
                 
-                <div className="bg-[#0a0f1d] p-4 rounded-lg border border-[#2a3448] hover:border-[#d4af37] transition-colors duration-300">
-                  <div className="flex items-center mb-2">
-                    <div className="w-10 h-10 rounded-full bg-[#141c2f] border border-[#d4af37] flex items-center justify-center mr-3">
-                      <Image src="/icons/culture.svg" alt="Ícone de Cultura" width={20} height={20} />
+                <div className="bg-[#0a0f1d] p-5 rounded-lg border border-[#2a3448] hover:border-[#d4af37] transition-colors duration-300 shadow-md card-hover-effect">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 rounded-full bg-[#141c2f] border border-[#d4af37] flex items-center justify-center mr-4">
+                      <Image src="/icons/culture.svg" alt="Ícone de Cultura" width={24} height={24} />
                     </div>
-                    <h3 className="text-lg font-semibold text-white">Sensibilidade Cultural</h3>
+                    <h3 className="text-2xl font-semibold text-white">Sensibilidade Cultural</h3>
                   </div>
-                  <p className="text-gray-300 text-sm">
+                  <p className="text-gray-300 text-base">
                     Entendemos as nuances culturais dos diferentes mercados e facilitamos a 
                     comunicação e negociação em ambientes internacionais diversos.
                   </p>

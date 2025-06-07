@@ -4,17 +4,18 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { HiMenu, HiX } from 'react-icons/hi';
 
-interface HeaderProps {
-  theme: 'light' | 'dark';
-  toggleTheme: () => void;
-}
-
-const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
+const Header: React.FC = () => {
   const pathname = usePathname();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   const isActive = (path: string) => {
     return pathname === path || (pathname?.startsWith(path) && path !== '/');
+  };
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
   };
 
   return (
@@ -54,36 +55,97 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
             <Link href="/politica" className={`nav-item ${isActive('/politica') ? 'active' : ''}`} data-page="politica">Política</Link>
           </nav>
 
-          {/* Switch de Tema */}
-          <div className="theme-switch-wrapper">
-            <label className="theme-switch" htmlFor="theme-checkbox">
-              <input 
-                type="checkbox" 
-                id="theme-checkbox" 
-                checked={theme === 'light'}
-                onChange={toggleTheme}
-              />
-              <div className="switch-inner">
-                <span className="switch-icon moon-icon">
-                  <Image 
-                    src="/icons/moon.svg" 
-                    alt="Lua" 
-                    width={16} 
-                    height={16}
-                  />
-                </span>
-                <span className="switch-icon sun-icon">
-                  <Image 
-                    src="/icons/sun.svg" 
-                    alt="Sol" 
-                    width={16} 
-                    height={16}
-                  />
-                </span>
-              </div>
-            </label>
-          </div>
+          {/* Mobile Menu Button */}
+          <button 
+            className="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 text-white"
+            onClick={toggleMobileMenu}
+            aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+          >
+            {mobileMenuOpen ? <HiX size={24} /> : <HiMenu size={24} />}
+          </button>
         </div>
+        
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 right-0 bg-gray-900 z-50 border-t border-gray-800 shadow-lg">
+            <nav className="py-4 px-6">
+              <ul className="space-y-3">
+                <li>
+                  <Link 
+                    href="/" 
+                    className={`block py-2 px-3 rounded ${isActive('/') ? 'bg-blue-900 text-white' : 'text-gray-200'}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/sobre" 
+                    className={`block py-2 px-3 rounded ${isActive('/sobre') ? 'bg-blue-900 text-white' : 'text-gray-200'}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Sobre
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/solucoes" 
+                    className={`block py-2 px-3 rounded ${isActive('/solucoes') ? 'bg-blue-900 text-white' : 'text-gray-200'}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Soluções
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/ecossistema" 
+                    className={`block py-2 px-3 rounded ${isActive('/ecossistema') ? 'bg-blue-900 text-white' : 'text-gray-200'}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Ecossistema
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/radar360" 
+                    className={`block py-2 px-3 rounded ${isActive('/radar360') ? 'bg-blue-900 text-white' : 'text-gray-200'}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Radar 360
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/blog" 
+                    className={`block py-2 px-3 rounded ${isActive('/blog') ? 'bg-blue-900 text-white' : 'text-gray-200'}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/contato" 
+                    className={`block py-2 px-3 rounded ${isActive('/contato') ? 'bg-blue-900 text-white' : 'text-gray-200'}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Contato
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/politica" 
+                    className={`block py-2 px-3 rounded ${isActive('/politica') ? 'bg-blue-900 text-white' : 'text-gray-200'}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Política
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        )}
       </header>
     </>
   );

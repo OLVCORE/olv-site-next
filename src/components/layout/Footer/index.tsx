@@ -3,11 +3,71 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaPhone, FaWhatsapp, FaMapMarkerAlt, FaEnvelope } from 'react-icons/fa';
+import { FaPhone, FaWhatsapp, FaMapMarkerAlt, FaEnvelope, FaCogs, FaChartLine, FaUsers, FaNetworkWired, FaGraduationCap, FaMoneyCheckAlt } from 'react-icons/fa';
+
+// Objeto com informações das plataformas
+const platforms = [
+  {
+    id: 'stratevo',
+    name: 'STRATEVO',
+    url: '/stratevo',
+    icon: <FaChartLine size={16} className="text-blue-400" />,
+    description: 'Inteligência de Mercado e Gestão Estratégica'
+  },
+  {
+    id: 'exceltta',
+    name: 'EXCELTTA',
+    url: '/exceltta',
+    icon: <FaCogs size={16} className="text-blue-400" />,
+    description: 'Análise de Visão para Tomada de Decisão'
+  },
+  {
+    id: 'connecta',
+    name: 'CONNECTA',
+    url: '/connecta',
+    icon: <FaNetworkWired size={16} className="text-blue-400" />,
+    description: 'Conexões Seguras com Fornecedores Homologados'
+  },
+  {
+    id: 'engage',
+    name: 'ENGAGE',
+    url: '/engage',
+    icon: <FaUsers size={16} className="text-blue-400" />,
+    description: 'CRM e qualificação de leads inteligente'
+  },
+  {
+    id: 'finx',
+    name: 'FINX',
+    url: '/finx',
+    icon: <FaMoneyCheckAlt size={16} className="text-blue-400" />,
+    description: 'Gestão Financeira e Otimização de Fluxo de Caixa'
+  },
+  {
+    id: 'academy',
+    name: 'ACADEMY',
+    url: '/academy',
+    icon: <FaGraduationCap size={16} className="text-blue-400" />,
+    description: 'Educação Corporativa e Desenvolvimento de Talentos'
+  }
+];
 
 const Footer: React.FC = () => {
   const [showFooter, setShowFooter] = useState(false);
   const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detectar se é dispositivo móvel
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    // Verificar no carregamento e no redimensionamento
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Efeito para mostrar o footer quando o usuário rolar até o final da página
   useEffect(() => {
@@ -17,7 +77,7 @@ const Footer: React.FC = () => {
       const documentHeight = document.documentElement.scrollHeight;
       
       // Show footer when near the end of the page (300px from bottom)
-      if (position + windowHeight > documentHeight - 300) {
+      if (position + windowHeight > documentHeight - 400) {
         setShowFooter(true);
       } else {
         setShowFooter(false);
@@ -32,9 +92,16 @@ const Footer: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Função para alternar o tooltip no mobile (touch)
+  const toggleTooltip = (id: string) => {
+    if (isMobile) {
+      setActiveTooltip(activeTooltip === id ? null : id);
+    }
+  };
+
   return (
     <footer className={`footer-reveal ${showFooter ? 'reveal' : ''}`}>
-      <div className="footer-container max-w-7xl mx-auto px-4 py-8">
+      <div className="footer-container max-w-7xl mx-auto px-4 py-12 mt-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Coluna 1 - Sobre */}
           <div>
@@ -93,132 +160,42 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-xl font-bold mb-4 text-blue-400">Nossas Plataformas</h3>
             <ul className="space-y-2">
-              <li className="relative group">
-                <Link 
-                  href="/stratevo" 
-                  className="text-white hover:text-[#d4af37] transition-colors border-b border-transparent hover:border-[#d4af37] inline-block"
-                  onMouseEnter={() => setActiveTooltip('stratevo')}
-                  onMouseLeave={() => setActiveTooltip(null)}
-                >
-                  STRATEVO
-                </Link>
-                {activeTooltip === 'stratevo' && (
-                  <div className="absolute left-0 top-full mt-0 bg-blue-900 text-white text-xs p-2 rounded shadow-lg z-10 w-max max-w-[250px] sidebar-tooltip" style={{
-                    opacity: 1,
-                    visibility: 'visible',
-                    boxShadow: '0 0 15px rgba(212, 175, 55, 0.7)',
-                    border: '2px solid #d4af37',
-                    animation: 'tooltipGlow 2s infinite'
-                  }}>
-                    Inteligência de Mercado e Gestão Estratégica
+              {platforms.map(platform => (
+                <li key={platform.id} className="relative group block mb-2">
+                  <div 
+                    className="flex items-center"
+                    onClick={() => toggleTooltip(platform.id)}
+                    onMouseEnter={() => !isMobile && setActiveTooltip(platform.id)}
+                    onMouseLeave={() => !isMobile && setActiveTooltip(null)}
+                  >
+                    {/* Ícone da plataforma - visível em dispositivos móveis */}
+                    <div className="w-8 h-8 bg-gray-800 rounded-full p-1.5 mr-2 flex items-center justify-center">
+                      {platform.icon}
+                    </div>
+                    
+                    {/* Nome da plataforma */}
+                    <Link 
+                      href={platform.url} 
+                      className="text-white hover:text-[#d4af37] transition-colors border-b border-transparent hover:border-[#d4af37] inline-block"
+                    >
+                      {platform.name}
+                    </Link>
                   </div>
-                )}
-              </li>
-              <li className="relative group">
-                <Link 
-                  href="/exceltta" 
-                  className="text-white hover:text-[#d4af37] transition-colors border-b border-transparent hover:border-[#d4af37] inline-block"
-                  onMouseEnter={() => setActiveTooltip('exceltta')}
-                  onMouseLeave={() => setActiveTooltip(null)}
-                >
-                  EXCELTTA
-                </Link>
-                {activeTooltip === 'exceltta' && (
-                  <div className="absolute left-0 top-full mt-0 bg-blue-900 text-white text-xs p-2 rounded shadow-lg z-10 w-max max-w-[250px] sidebar-tooltip" style={{
-                    opacity: 1,
-                    visibility: 'visible',
-                    boxShadow: '0 0 15px rgba(212, 175, 55, 0.7)',
-                    border: '2px solid #d4af37',
-                    animation: 'tooltipGlow 2s infinite'
-                  }}>
-                    Análise de Visão para Tomada de Decisão
-                  </div>
-                )}
-              </li>
-              <li className="relative group">
-                <Link 
-                  href="/connecta" 
-                  className="text-white hover:text-[#d4af37] transition-colors border-b border-transparent hover:border-[#d4af37] inline-block"
-                  onMouseEnter={() => setActiveTooltip('connecta')}
-                  onMouseLeave={() => setActiveTooltip(null)}
-                >
-                  CONNECTA
-                </Link>
-                {activeTooltip === 'connecta' && (
-                  <div className="absolute left-0 top-full mt-0 bg-blue-900 text-white text-xs p-2 rounded shadow-lg z-10 w-max max-w-[250px] sidebar-tooltip" style={{
-                    opacity: 1,
-                    visibility: 'visible',
-                    boxShadow: '0 0 15px rgba(212, 175, 55, 0.7)',
-                    border: '2px solid #d4af37',
-                    animation: 'tooltipGlow 2s infinite'
-                  }}>
-                    Conexões Seguras com Fornecedores Homologados
-                  </div>
-                )}
-              </li>
-              <li className="relative group">
-                <Link 
-                  href="/engage" 
-                  className="text-white hover:text-[#d4af37] transition-colors border-b border-transparent hover:border-[#d4af37] inline-block"
-                  onMouseEnter={() => setActiveTooltip('engage')}
-                  onMouseLeave={() => setActiveTooltip(null)}
-                >
-                  ENGAGE
-                </Link>
-                {activeTooltip === 'engage' && (
-                  <div className="absolute left-0 top-full mt-0 bg-blue-900 text-white text-xs p-2 rounded shadow-lg z-10 w-max max-w-[250px] sidebar-tooltip" style={{
-                    opacity: 1,
-                    visibility: 'visible',
-                    boxShadow: '0 0 15px rgba(212, 175, 55, 0.7)',
-                    border: '2px solid #d4af37',
-                    animation: 'tooltipGlow 2s infinite'
-                  }}>
-                    CRM e qualificação de leads inteligente
-                  </div>
-                )}
-              </li>
-              <li className="relative group">
-                <Link 
-                  href="/finx" 
-                  className="text-white hover:text-[#d4af37] transition-colors border-b border-transparent hover:border-[#d4af37] inline-block"
-                  onMouseEnter={() => setActiveTooltip('finx')}
-                  onMouseLeave={() => setActiveTooltip(null)}
-                >
-                  FINX
-                </Link>
-                {activeTooltip === 'finx' && (
-                  <div className="absolute left-0 top-full mt-0 bg-blue-900 text-white text-xs p-2 rounded shadow-lg z-10 w-max max-w-[250px] sidebar-tooltip" style={{
-                    opacity: 1,
-                    visibility: 'visible',
-                    boxShadow: '0 0 15px rgba(212, 175, 55, 0.7)',
-                    border: '2px solid #d4af37',
-                    animation: 'tooltipGlow 2s infinite'
-                  }}>
-                    Gestão Financeira e Otimização de Fluxo de Caixa
-                  </div>
-                )}
-              </li>
-              <li className="relative group">
-                <Link 
-                  href="/academy" 
-                  className="text-white hover:text-[#d4af37] transition-colors border-b border-transparent hover:border-[#d4af37] inline-block"
-                  onMouseEnter={() => setActiveTooltip('academy')}
-                  onMouseLeave={() => setActiveTooltip(null)}
-                >
-                  ACADEMY
-                </Link>
-                {activeTooltip === 'academy' && (
-                  <div className="absolute left-0 top-full mt-0 bg-blue-900 text-white text-xs p-2 rounded shadow-lg z-10 w-max max-w-[250px] sidebar-tooltip" style={{
-                    opacity: 1,
-                    visibility: 'visible',
-                    boxShadow: '0 0 15px rgba(212, 175, 55, 0.7)',
-                    border: '2px solid #d4af37',
-                    animation: 'tooltipGlow 2s infinite'
-                  }}>
-                    Educação Corporativa e Desenvolvimento de Talentos
-                  </div>
-                )}
-              </li>
+                  
+                  {/* Tooltip */}
+                  {activeTooltip === platform.id && (
+                    <div className="absolute left-auto top-1/2 transform -translate-y-1/2 ml-[0.3cm] bg-blue-900 text-white text-xs p-2 rounded shadow-lg z-10 w-max max-w-[250px] sidebar-tooltip" style={{
+                      opacity: 1,
+                      visibility: 'visible',
+                      boxShadow: '0 0 15px rgba(212, 175, 55, 0.7)',
+                      border: '2px solid #d4af37',
+                      animation: 'tooltipGlow 2s infinite'
+                    }}>
+                      {platform.description}
+                    </div>
+                  )}
+                </li>
+              ))}
             </ul>
           </div>
 
