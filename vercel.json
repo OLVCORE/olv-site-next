@@ -1,15 +1,19 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "package.json", "use": "@vercel/next" }
-  ],
   "buildCommand": "node scripts/fix-encoding.js && next build",
-  "ignoreCommand": "git diff HEAD^ HEAD --quiet ./src ./public",
-  "routes": [
-    { "src": "/(.*)", "dest": "/$1" }
-  ],
+  "ignoreCommand": null,
+  "git": {
+    "deploymentEnabled": {
+      "main": true
+    }
+  },
   "github": {
     "enabled": true,
     "silent": false
-  }
+  },
+  "excludeFiles": [
+    "backup-olv-site-current/**",
+    "olvsite-full/**",
+    "olv-site-next/**"
+  ]
 }
