@@ -1,1 +1,15 @@
-{"version":2,"builds":[{"src":"package.json","use":"@vercel/next"}],"routes":[{"src":"/(.*)","dest":"/$1"}]}
+{
+  "version": 2,
+  "builds": [
+    { "src": "package.json", "use": "@vercel/next" }
+  ],
+  "buildCommand": "node scripts/fix-encoding.js && next build",
+  "ignoreCommand": "git diff HEAD^ HEAD --quiet ./src ./public",
+  "routes": [
+    { "src": "/(.*)", "dest": "/$1" }
+  ],
+  "github": {
+    "enabled": true,
+    "silent": false
+  }
+}
