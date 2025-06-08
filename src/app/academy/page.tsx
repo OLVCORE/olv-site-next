@@ -4,9 +4,31 @@ import Link from 'next/link';
 import PlatformLayout from '../../components/platforms/PlatformLayout';
 
 export const metadata = {
-  title: 'ACADEMY - OLV Internacional | Capacitação em Comércio Internacional',
-  description: 'ACADEMY é a plataforma educacional da OLV Internacional, oferecendo treinamentos e capacitação em comércio exterior, operações internacionais e desenvolvimento de competências globais.',
-  keywords: 'treinamento comércio exterior, capacitação internacional, cursos exportação, educação executiva global, desenvolvimento competências internacionais',
+  title: 'ACADEMY | Capacitação em Exportação e Comércio Internacional',
+  description: 'Cursos e treinamentos práticos em importação, exportação e negócios internacionais. Aprenda com especialistas a operar no mercado global com segurança e eficiência.',
+  keywords: [
+    'Curso de Exportação',
+    'Treinamento em Comércio Exterior',
+    'Capacitação para Importadores',
+    'MBA Comércio Internacional',
+    'Formação em Logística Internacional',
+    'Curso de Negociação com Fornecedores Estrangeiros',
+    'Treinamento em Compliance Internacional',
+    'Desenvolvimento de Competências para Exportação',
+    'Especialização em Operações Aduaneiras',
+    'Workshops de Comércio Exterior'
+  ],
+  openGraph: {
+    title: 'ACADEMY | Capacitação em Comércio Internacional | OLV Internacional',
+    description: 'Desenvolva as competências necessárias para expandir seu negócio globalmente com cursos práticos ministrados por especialistas de mercado.',
+    url: 'https://olv-site.vercel.app/academy',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'ACADEMY | Capacitação em Comércio Exterior',
+    description: 'Aprenda a operar no mercado internacional com cursos práticos e aplicados ao seu negócio.'
+  }
 };
 
 export default function AcademyPage() {

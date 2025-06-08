@@ -4,9 +4,31 @@ import Link from 'next/link';
 import PlatformLayout from '../../components/platforms/PlatformLayout';
 
 export const metadata = {
-  title: 'ENGAGE - OLV Internacional | Engajamento e Relacionamento com Clientes',
-  description: 'ENGAGE é a plataforma de relacionamento da OLV Internacional que automatiza e aprimora a jornada do cliente, convertendo leads em negócios através de automação e inteligência de dados.',
-  keywords: 'CRM internacional, engajamento clientes, automação marketing, jornada cliente, leads comércio exterior, relacionamento comercial',
+  title: 'ENGAGE | Marketing Internacional para Exportadores Brasileiros',
+  description: 'Expanda seu negócio globalmente com estratégias de marketing adaptadas a diferentes culturas. Comunique-se efetivamente com clientes internacionais e aumente suas vendas no exterior.',
+  keywords: [
+    'Marketing para Exportação',
+    'Comunicação Internacional para Empresas',
+    'Estratégia de Marketing Global',
+    'Adaptação Cultural de Marca',
+    'Comunicação Multicultural para Negócios',
+    'Marketing Digital para Exportadores',
+    'SEO Internacional',
+    'Posicionamento de Marca em Mercados Globais',
+    'Campanhas Multilíngues',
+    'Estratégia de Conteúdo para Exportadores'
+  ],
+  openGraph: {
+    title: 'ENGAGE | Marketing Internacional para Exportadores | OLV Internacional',
+    description: 'Estratégias de marketing e comunicação que respeitam diferenças culturais e conectam sua marca com clientes em mercados globais.',
+    url: 'https://olv-site.vercel.app/engage',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'ENGAGE | Marketing Internacional',
+    description: 'Comunique-se efetivamente com clientes globais e expanda seu negócio internacionalmente.'
+  }
 };
 
 export default function EngagePage() {

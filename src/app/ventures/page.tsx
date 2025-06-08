@@ -4,9 +4,31 @@ import Link from 'next/link';
 import PlatformLayout from '../../components/platforms/PlatformLayout';
 
 export const metadata = {
-  title: 'VENTURES - OLV Internacional | Investimentos Estratégicos em Comércio Internacional',
-  description: 'VENTURES é a plataforma de investimentos da OLV Internacional, conectando empresas inovadoras do comércio exterior com capital estratégico para acelerar seu crescimento global.',
-  keywords: 'investimento comércio exterior, venture capital internacional, financiamento expansão global, capital para exportação, aceleração negócios internacionais',
+  title: 'VENTURES | Investimentos para Expansão Internacional de Empresas',
+  description: 'Capital estratégico para startups e empresas que desejam expandir globalmente. Investimentos, aceleração e conexões internacionais para impulsionar seu crescimento no exterior.',
+  keywords: [
+    'Investimento para Internacionalização',
+    'Capital para Expansão Global',
+    'Financiamento para Exportação',
+    'Venture Capital Comércio Exterior',
+    'Aceleração de Startups Internacionais',
+    'Investidores para Empresas Exportadoras',
+    'Captação de Recursos para Exportação',
+    'Funding para Crescimento Internacional',
+    'Investimento em Logística Internacional',
+    'Acesso a Capital para Mercados Globais'
+  ],
+  openGraph: {
+    title: 'VENTURES | Investimentos para Expansão Internacional | OLV Internacional',
+    description: 'Capital estratégico, mentoria especializada e conexões globais para empresas brasileiras que desejam crescer em mercados internacionais.',
+    url: 'https://olv-site.vercel.app/ventures',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'VENTURES | Investimento para Expansão Global',
+    description: 'Capital e mentoria para empresas brasileiras conquistarem mercados internacionais.'
+  }
 };
 
 export default function VenturesPage() {
