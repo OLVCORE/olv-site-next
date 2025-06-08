@@ -1,10 +1,10 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
 
 interface WhatsAppButtonProps {
-  position?: 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left';
+  position?: 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left' | 'mobile-right';
   phoneNumber?: string;
   message?: string;
 }
@@ -14,22 +14,52 @@ const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
   phoneNumber = '5511999999999',
   message = 'Olá! Vim do site da OLV Internacional e gostaria de saber mais sobre os serviços.',
 }) => {
+  const [showTooltip, setShowTooltip] = useState(false);
+  
+  // Different position classes based on the position prop
   const positionClasses = {
-    'bottom-right': 'bottom-6 right-6',
-    'bottom-left': 'bottom-6 left-6',
-    'top-right': 'top-24 right-6',
-    'top-left': 'top-24 left-6',
+    'bottom-right': 'fixed bottom-6 right-6',
+    'bottom-left': 'fixed bottom-6 left-6',
+    'top-right': 'fixed top-24 right-6',
+    'top-left': 'fixed top-24 left-6',
+    'mobile-right': 'mobile-button'
   };
 
   const handleClick = () => {
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
   };
+  
+  const toggleTooltip = () => {
+    setShowTooltip(!showTooltip);
+  };
 
+  // If position is mobile-right, use the mobile button style
+  if (position === 'mobile-right') {
+    return (
+      <button
+        onClick={handleClick}
+        onMouseEnter={() => setShowTooltip(true)}
+        onMouseLeave={() => setShowTooltip(false)}
+        className="mobile-button bg-green-600 hover:bg-green-700 flex items-center justify-center relative"
+        aria-label="Contato via WhatsApp"
+      >
+        <FaWhatsapp className="text-white text-xl" />
+        
+        {showTooltip && (
+          <div className="mobile-button-tooltip right-tooltip">
+            Fale conosco via WhatsApp
+          </div>
+        )}
+      </button>
+    );
+  }
+
+  // Default desktop version
   return (
     <button
       onClick={handleClick}
-      className={`fixed ${positionClasses[position]} z-50 flex items-center justify-center w-14 h-14 rounded-full bg-green-500 text-white shadow-lg hover:bg-green-600 hover:shadow-xl hover:scale-105 transition-all duration-300 focus:outline-none group overflow-visible`}
+      className={`${positionClasses[position]} z-50 flex items-center justify-center w-14 h-14 rounded-full bg-green-500 text-white shadow-lg hover:bg-green-600 hover:shadow-xl hover:scale-105 transition-all duration-300 focus:outline-none group overflow-visible`}
       aria-label="Contato via WhatsApp"
     >
       <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 group-hover:animate-pulse rounded-full"></span>

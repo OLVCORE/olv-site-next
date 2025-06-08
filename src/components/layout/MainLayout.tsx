@@ -13,17 +13,20 @@ import ThemeSwitch from './ThemeSwitch';
 import BetaVersion from './BetaVersion';
 import QuickLinks from './QuickLinks';
 import Script from 'next/script';
+import { Locale } from '@/i18n';
 
 interface MainLayoutProps {
   children: React.ReactNode;
   className?: string;
   isPlatformPage?: boolean;
+  locale: Locale;
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({ 
   children, 
   className = '',
-  isPlatformPage = false 
+  isPlatformPage = false,
+  locale
 }) => {
   const [showFooter, setShowFooter] = useState(false);
   const [isPageLoaded, setIsPageLoaded] = useState(false);
@@ -56,19 +59,98 @@ const MainLayout: React.FC<MainLayoutProps> = ({
     };
   }, []);
 
+  // CSS styles for the floating action buttons container
+  const mobileButtonsStyle = `
+    @media (max-width: 768px) {
+      .mobile-left-buttons {
+        position: fixed;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 50;
+        padding: 8px;
+      }
+      
+      .mobile-right-buttons {
+        position: fixed;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 50;
+        padding: 8px;
+      }
+      
+      .mobile-button {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        background: linear-gradient(135deg, #141c2f, #0a0f1d);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .mobile-button:hover, .mobile-button:focus {
+        transform: scale(1.05);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+      }
+      
+      .mobile-button-tooltip {
+        position: absolute;
+        background: #0a0f1d;
+        color: #fff;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 12px;
+        white-space: nowrap;
+        opacity: 0;
+        transition: all 0.3s ease;
+        pointer-events: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        border: 1px solid #d4af37;
+      }
+      
+      .left-tooltip {
+        left: 100%;
+        margin-left: 12px;
+      }
+      
+      .right-tooltip {
+        right: 100%;
+        margin-right: 12px;
+      }
+      
+      .mobile-button:hover .mobile-button-tooltip,
+      .mobile-button:focus .mobile-button-tooltip {
+        opacity: 1;
+      }
+    }
+  `;
+
   return (
     <div className={`app-container ${className} ${isPageLoaded ? 'loaded' : ''}`}>
+      <style dangerouslySetInnerHTML={{ __html: mobileButtonsStyle }} />
+      
       <ThemeSwitch />
       <Sidebar />
       <div className="content-wrapper">
-        <Header />
+        <Header locale={locale} />
         <Ticker />
         
         {/* Beta Version Box - only on platform pages and below ticker */}
         {isPlatformPage || isCurrentPagePlatform ? <BetaVersion /> : null}
         
-        {/* Mobile Quick Links Navigation */}
-        <div className="mobile-navigation">
+        {/* Mobile Quick Links Navigation - Now hidden, we'll use floating buttons instead */}
+        <div className="hidden">
           <QuickLinks />
         </div>
         
@@ -76,16 +158,34 @@ const MainLayout: React.FC<MainLayoutProps> = ({
           {children}
         </main>
         
+        {/* Mobile floating buttons - Left side (visible only on mobile) */}
+        <div className="mobile-left-buttons md:hidden">
+          {/* Quick Links Button */}
+          <QuickLinks />
+          
+          {/* Platforms Button */}
+          <Sidebar />
+        </div>
+        
+        {/* Mobile floating buttons - Right side (visible only on mobile) */}
+        <div className="mobile-right-buttons md:hidden">
+          {/* WhatsApp Button - Now managed inside the component with mobile optimized position */}
+          <WhatsAppButton position="mobile-right" phoneNumber="5511999999999" message="Olá! Vim do site da OLV Internacional e gostaria de saber mais sobre os serviços." />
+          
+          {/* Chat Widget - Now managed inside the component with mobile optimized position */}
+          <ChatWidget isMobile={true} />
+        </div>
+        
         {/* Reduzindo o espaçamento antes do footer para evitar muito espaço */}
         <div className="h-12"></div>
         
         {showFooter && <Footer />}
         
-        {/* Fixed buttons */}
-        <WhatsAppButton phoneNumber="5511999999999" message="Olá! Vim do site da OLV Internacional e gostaria de saber mais sobre os serviços." />
-        
-        {/* Chatbot Widget */}
-        <ChatWidget />
+        {/* Fixed buttons - Now hidden on mobile, shown on desktop */}
+        <div className="hidden md:block">
+          <WhatsAppButton position="bottom-right" phoneNumber="5511999999999" message="Olá! Vim do site da OLV Internacional e gostaria de saber mais sobre os serviços." />
+          <ChatWidget isMobile={false} />
+        </div>
       </div>
       
       {/* Script para gerenciar o layout e as colisões */}
