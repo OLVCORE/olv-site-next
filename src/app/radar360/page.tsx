@@ -9,265 +9,387 @@ export const metadata = {
 };
 
 export default function Radar360Page() {
+  // Benefícios do Radar360
+  const beneficios = [
+    {
+      titulo: "Monitoramento Contínuo",
+      descricao: "Acompanhamento em tempo real de todas as variáveis que afetam sua operação internacional.",
+      icon: "/icons/dashboard-chart.svg"
+    },
+    {
+      titulo: "Inteligência de Mercado",
+      descricao: "Análises exclusivas e insights estratégicos para identificar oportunidades e evitar riscos.",
+      icon: "/icons/link-document.svg"
+    },
+    {
+      titulo: "Alertas Personalizados",
+      descricao: "Notificações imediatas sobre mudanças regulatórias, tributárias e de mercado que impactam seu negócio.",
+      icon: "/icons/notification.svg"
+    },
+    {
+      titulo: "Atuação Preventiva",
+      descricao: "Antecipação a problemas e identificação de oportunidades antes da concorrência.",
+      icon: "/icons/clock.svg"
+    },
+    {
+      titulo: "Dados Georreferenciados",
+      descricao: "Informações estratégicas mapeadas por região, país e setor para decisões mais precisas.",
+      icon: "/icons/location.svg"
+    },
+    {
+      titulo: "Consultoria Especializada",
+      descricao: "Análises conduzidas por especialistas com mais de 35 anos de experiência em comércio internacional.",
+      icon: "/icons/user-profile.svg"
+    }
+  ];
+
+  // Módulos do Radar360
+  const modulos = [
+    {
+      id: "regulatorio",
+      titulo: "Radar Regulatório",
+      descricao: "Monitoramento constante de mudanças em legislações, normas e regulamentos que afetam operações de comércio exterior, tanto no Brasil quanto em países-alvo.",
+      features: [
+        "Acompanhamento de novas legislações e normativas",
+        "Alertas sobre mudanças regulatórias impactantes",
+        "Análise de impacto regulatório personalizada",
+        "Orientação para adaptação a novos cenários normativos",
+        "Mapeamento de oportunidades em regimes especiais"
+      ],
+      cor: "bg-blue-600"
+    },
+    {
+      id: "tributario",
+      titulo: "Radar Tributário",
+      descricao: "Vigilância sobre alterações tributárias, incentivos fiscais e regimes especiais que podem gerar economia ou aumentar custos em operações internacionais.",
+      features: [
+        "Monitoramento de alíquotas e tributos aduaneiros",
+        "Identificação de oportunidades de economia fiscal",
+        "Alertas sobre aumentos de carga tributária",
+        "Análise comparativa de regimes tributários",
+        "Orientação para planejamento tributário"
+      ],
+      cor: "bg-green-600"
+    },
+    {
+      id: "mercado",
+      titulo: "Radar de Mercado",
+      descricao: "Acompanhamento de tendências, movimentos competitivos, variações de preços e demanda em mercados globais relevantes para seu negócio.",
+      features: [
+        "Análise de tendências e ciclos de mercado",
+        "Monitoramento de preços e condições comerciais",
+        "Identificação de novos players e movimentos competitivos",
+        "Alertas sobre oportunidades de negócios",
+        "Insights sobre comportamento de consumo global"
+      ],
+      cor: "bg-purple-600"
+    },
+    {
+      id: "logistico",
+      titulo: "Radar Logístico",
+      descricao: "Monitoramento de rotas, custos de frete, tempo de trânsito, capacidade e disponibilidade em diferentes modais de transporte internacional.",
+      features: [
+        "Acompanhamento de condições de frete internacional",
+        "Alertas sobre congestionamentos e gargalos logísticos",
+        "Previsão de impactos em lead time e custos",
+        "Identificação de rotas alternativas",
+        "Monitoramento de capacidade e disponibilidade"
+      ],
+      cor: "bg-amber-600"
+    },
+    {
+      id: "geopolitico",
+      titulo: "Radar Geopolítico",
+      descricao: "Análise de cenários políticos, conflitos, acordos comerciais e outros fatores geopolíticos que podem impactar operações internacionais.",
+      features: [
+        "Monitoramento de tensões e acordos internacionais",
+        "Análise de impacto de eleições e mudanças políticas",
+        "Alertas sobre sanções e restrições comerciais",
+        "Avaliação de riscos geopolíticos por região",
+        "Orientação para diversificação estratégica"
+      ],
+      cor: "bg-red-600"
+    },
+    {
+      id: "cambial",
+      titulo: "Radar Cambial",
+      descricao: "Acompanhamento de tendências e movimentos cambiais, políticas monetárias e fatores que influenciam a valorização ou desvalorização de moedas.",
+      features: [
+        "Monitoramento de variações cambiais relevantes",
+        "Alertas sobre movimentos significativos de mercado",
+        "Análise de impacto cambial em operações",
+        "Orientação para estratégias de proteção (hedge)",
+        "Previsões baseadas em análise técnica e fundamentalista"
+      ],
+      cor: "bg-indigo-600"
+    }
+  ];
+
   return (
     <MainLayout>
-      <div className="main-content">
-        {/* SEÇÃO HERO RADAR 360 */}
-        <section className="section">
-          <div className="container">
-            <div className="bg-gray-800 dark:bg-gray-900 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-              <h2 className="flex items-center gap-2 text-2xl md:text-3xl font-bold text-white mb-4">
-                <span className="text-blue-400">🚀</span> OLV Radar 360 – Central de Inteligência & Dados
-              </h2>
-              <p className="text-lg text-gray-300 mb-6">
-                Bem-vindo ao Radar 360, nossa central de inteligência e dados para negócios internacionais. 
-                Aqui você encontra ferramentas essenciais para tomada de decisão: cotações em tempo real, 
-                simuladores de custos, indicadores econômicos e recursos estratégicos para operações globais.
-                Transforme dados em decisões inteligentes para seu negócio.
-              </p>
-              <Link 
-                href="/contato" 
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg inline-block transition-colors"
+      {/* Banner principal */}
+      <section className="pt-8 pb-12 bg-[#0a0f1d]">
+        <div className="container mx-auto max-w-7xl px-4">
+          <div className="bg-[#141c2f] p-6 md:p-8 rounded-lg border border-[#2a3448] shadow-lg">
+            <div className="flex flex-col md:flex-row items-start gap-6">
+              <div className="md:w-2/3">
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  Radar 360° - Inteligência de Mercado Global
+                </h1>
+                <p className="text-gray-300 mb-4">
+                  O Radar 360° é um sistema exclusivo de inteligência e monitoramento contínuo que permite a sua empresa acompanhar em tempo real todas as variáveis críticas que afetam suas operações internacionais.
+                </p>
+                <p className="text-gray-300 mb-6">
+                  Regulatório, Tributário, Logístico, Cambial, Geopolítico, Mercadológico — monitoramos todos os ângulos para garantir que você tome decisões baseadas em informações precisas e atualizadas, antecipando-se a riscos e identificando oportunidades antes da concorrência.
+                </p>
+                <div className="flex flex-wrap gap-3 mt-4">
+                  <Link 
+                    href="/contato?servico=radar360" 
+                    className="inline-block bg-[#d4af37] hover:bg-[#b8941f] text-black font-bold py-2 px-6 rounded-lg transition-colors duration-300"
+                  >
+                    Solicitar Demonstração
+                  </Link>
+                  <a 
+                    href="#modulos" 
+                    className="inline-block bg-transparent border border-[#d4af37] hover:bg-[#d4af37]/10 text-[#d4af37] font-bold py-2 px-6 rounded-lg transition-colors duration-300"
+                  >
+                    Ver Módulos
+                  </a>
+                </div>
+              </div>
+              <div className="md:w-1/3 flex justify-center">
+                <div className="w-48 h-48 flex items-center justify-center rounded-full bg-[#0a0f1d] border border-[#2a3448] p-4">
+                  <Image 
+                    src="/icons/radar-icon.svg" 
+                    alt="Radar 360°" 
+                    width={120} 
+                    height={120} 
+                    className="object-contain" 
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Por que o Radar 360° */}
+      <section className="py-12 bg-[#0a0f1d]">
+        <div className="container mx-auto max-w-7xl px-4">
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">
+            Por Que Sua Empresa Precisa do Radar 360°
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {beneficios.map((beneficio, index) => (
+              <div 
+                key={index} 
+                className="bg-[#141c2f] p-6 rounded-lg border border-[#2a3448] shadow-lg transition-transform hover:-translate-y-1"
               >
-                Fale com um Especialista
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-[#0a0f1d] border border-[#2a3448] p-2">
+                    <Image 
+                      src={beneficio.icon} 
+                      alt={beneficio.titulo} 
+                      width={24} 
+                      height={24} 
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold text-white">{beneficio.titulo}</h3>
+                </div>
+                <p className="text-gray-300">
+                  {beneficio.descricao}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Como funciona */}
+      <section className="py-12 bg-[#0a0f1d]">
+        <div className="container mx-auto max-w-7xl px-4">
+          <div className="bg-[#141c2f] p-8 rounded-lg border border-[#2a3448] shadow-lg">
+            <h2 className="text-2xl font-bold text-white mb-6 text-center">
+              Como Funciona o Radar 360°
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 rounded-full bg-[#d4af37] flex items-center justify-center mb-4">
+                  <span className="text-black text-2xl font-bold">1</span>
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-3">Diagnóstico Personalizado</h3>
+                <p className="text-gray-300">
+                  Realizamos um diagnóstico completo das operações internacionais da sua empresa para identificar quais variáveis são críticas para seu negócio.
+                </p>
+              </div>
+              
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 rounded-full bg-[#d4af37] flex items-center justify-center mb-4">
+                  <span className="text-black text-2xl font-bold">2</span>
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-3">Configuração do Sistema</h3>
+                <p className="text-gray-300">
+                  Configuramos o Radar 360° de acordo com as necessidades específicas da sua operação, definindo parâmetros de monitoramento e alertas.
+                </p>
+              </div>
+              
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 rounded-full bg-[#d4af37] flex items-center justify-center mb-4">
+                  <span className="text-black text-2xl font-bold">3</span>
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-3">Monitoramento Contínuo</h3>
+                <p className="text-gray-300">
+                  Nossa equipe de especialistas monitora continuamente todas as variáveis relevantes, enviando alertas e análises personalizadas para sua equipe.
+                </p>
+              </div>
+            </div>
+            
+            <div className="text-center mt-6">
+              <p className="text-gray-300 mb-6 max-w-3xl mx-auto">
+                O Radar 360° combina tecnologia avançada com expertise humana para garantir que sua empresa esteja sempre um passo à frente no complexo cenário do comércio internacional.
+              </p>
+              
+              <Link 
+                href="/contato?servico=radar360" 
+                className="inline-block bg-[#d4af37] hover:bg-[#b8941f] text-black font-bold py-3 px-8 rounded-lg transition-colors duration-300"
+              >
+                Quero Conhecer Melhor
               </Link>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* BLOCOS DE CONTEÚDO DO RADAR 360 */}
-        <div className="container">
-          {/* Cotações em Tempo Real */}
-          <section className="section" id="cotacoes">
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-              <h2 className="flex items-center gap-2 text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                <span className="text-blue-600 dark:text-blue-400">💱</span> Cotações em Tempo Real
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                  <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-white">Dólar Comercial</h3>
-                  <p className="text-gray-700 dark:text-gray-300">R$ [valor]</p>
-                  <small className="text-gray-500 dark:text-gray-400">* Integração de API em desenvolvimento.</small>
+      {/* Módulos do Radar 360° */}
+      <section id="modulos" className="py-12 bg-[#0a0f1d]">
+        <div className="container mx-auto max-w-7xl px-4">
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">
+            Módulos do Radar 360°
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            {modulos.map((modulo) => (
+              <div 
+                key={modulo.id} 
+                className="bg-[#141c2f] rounded-lg border border-[#2a3448] shadow-lg overflow-hidden"
+              >
+                <div className={`p-4 ${modulo.cor}`}>
+                  <h3 className="text-xl font-bold text-white">{modulo.titulo}</h3>
                 </div>
-                <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                  <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-white">Euro</h3>
-                  <p className="text-gray-700 dark:text-gray-300">R$ [valor]</p>
-                  <small className="text-gray-500 dark:text-gray-400">* Integração de API em desenvolvimento.</small>
-                </div>
-                <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                  <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-white">Bitcoin (BTC)</h3>
-                  <p className="text-gray-700 dark:text-gray-300">R$ [valor]</p>
-                  <small className="text-gray-500 dark:text-gray-400">* Integração de API em desenvolvimento.</small>
-                </div>
-                <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                  <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-white">Outras Moedas</h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-2">Consulte cotações de outras moedas globais.</p>
-                  <a 
-                    href="https://www.xe.com/currencyconverter/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-blue-600 dark:text-blue-400 hover:underline"
-                  >
-                    Acessar Conversor
-                  </a>
+                
+                <div className="p-6">
+                  <p className="text-gray-300 mb-4">
+                    {modulo.descricao}
+                  </p>
+                  
+                  <h4 className="text-[#d4af37] font-semibold mb-3">Principais recursos:</h4>
+                  <ul className="space-y-2 mb-4">
+                    {modulo.features.map((feature, index) => (
+                      <li key={index} className="flex items-start">
+                        <Image 
+                          src="/icons/check.svg" 
+                          alt="Checkmark" 
+                          width={20} 
+                          height={20} 
+                          className="mr-2 mt-1 flex-shrink-0" 
+                        />
+                        <span className="text-gray-300">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
-            </div>
-          </section>
+            ))}
+          </div>
+          
+          <div className="text-center">
+            <p className="text-gray-300 mb-6 max-w-3xl mx-auto">
+              Cada módulo pode ser contratado individualmente ou como parte do pacote completo Radar 360°. 
+              Nossos consultores podem ajudar a identificar quais módulos são mais relevantes para o seu negócio.
+            </p>
+            
+            <Link 
+              href="/contato?servico=radar360" 
+              className="inline-block bg-[#d4af37] hover:bg-[#b8941f] text-black font-bold py-3 px-8 rounded-lg transition-colors duration-300"
+            >
+              Solicitar Proposta Personalizada
+            </Link>
+          </div>
+        </div>
+      </section>
 
-          {/* Simuladores e Calculadoras */}
-          <section className="section" id="simuladores">
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-              <h2 className="flex items-center gap-2 text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                <span className="text-blue-600 dark:text-blue-400">🧮</span> Simuladores e Calculadoras
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                  <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-white">Simulador de Custos de Importação</h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">Calcule impostos, fretes e taxas para sua operação de importação.</p>
-                  <button className="bg-blue-600 text-white text-sm py-2 px-3 rounded hover:bg-blue-700 transition-colors">
-                    Abrir Simulador
-                  </button>
+      {/* Depoimentos */}
+      <section className="py-12 bg-[#0a0f1d]">
+        <div className="container mx-auto max-w-7xl px-4">
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">
+            O Que Nossos Clientes Dizem
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-[#141c2f] p-6 rounded-lg border border-[#2a3448] shadow-lg">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-14 h-14 rounded-full bg-[#0a0f1d] flex items-center justify-center">
+                  <span className="text-[#d4af37] text-2xl font-bold">MC</span>
                 </div>
-                <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                  <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-white">Calculadora de Fretes Internacionais</h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">Estime custos de frete aéreo, marítimo e rodoviário.</p>
-                  <button className="bg-blue-600 text-white text-sm py-2 px-3 rounded hover:bg-blue-700 transition-colors">
-                    Abrir Calculadora
-                  </button>
-                </div>
-                <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                  <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-white">Simulador Cambial</h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-2">Converta valores entre diferentes moedas com taxas atualizadas.</p>
-                  <a 
-                    href="https://www.oanda.com/currency/converter/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-blue-600 dark:text-blue-400 hover:underline"
-                  >
-                    Acessar Simulador
-                  </a>
-                </div>
-                <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                  <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-white">Simulador Tributário Comex</h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">Entenda a carga tributária para seus produtos na importação e exportação.</p>
-                  <button className="bg-blue-600 text-white text-sm py-2 px-3 rounded hover:bg-blue-700 transition-colors">
-                    Abrir Simulador
-                  </button>
+                <div>
+                  <h3 className="text-lg font-bold text-white">Marcos Costa</h3>
+                  <p className="text-gray-400 text-sm">CEO, Importadora Global Tech</p>
                 </div>
               </div>
-            </div>
-          </section>
-
-          {/* Monitoramento Logístico & Freight Rates (Em breve) */}
-          <section className="section" id="monitoramento">
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-              <h2 className="flex items-center gap-2 text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                <span className="text-blue-600 dark:text-blue-400">🚚</span> Monitoramento Logístico & Freight Rates (Em breve)
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                  <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-white">Monitor de Fretes Internacionais</h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-2">Acompanhe spot rates, rotas e tendências de fretes aéreos e marítimos.</p>
-                  <small className="text-yellow-600 dark:text-yellow-400">🚧 Em desenvolvimento.</small>
-                </div>
-                <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                  <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-white">Status de Portos e Aeroportos</h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-2">Informações sobre congestionamentos, greves e status operacional.</p>
-                  <small className="text-yellow-600 dark:text-yellow-400">🚧 Em desenvolvimento.</small>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Dashboard Econômico & Logístico (Fase 2) */}
-          <section className="section" id="dashboard">
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-              <h2 className="flex items-center gap-2 text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                <span className="text-blue-600 dark:text-blue-400">📊</span> Dashboard Econômico & Logístico (Fase 2)
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                  <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-white">Indicadores de Comércio Exterior</h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-2">Balança comercial, fluxo de exportação/importação por setor e país.</p>
-                  <small className="text-yellow-600 dark:text-yellow-400">🚧 Em desenvolvimento.</small>
-                </div>
-                <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                  <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-white">Indicadores Macroeconômicos</h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-2">PIB, inflação, taxa de juros e outros dados relevantes para negócios globais.</p>
-                  <small className="text-yellow-600 dark:text-yellow-400">🚧 Em desenvolvimento.</small>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Legislação, Compliance & Recursos Oficiais */}
-          <section className="section" id="compliance">
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-              <h2 className="flex items-center gap-2 text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                <span className="text-blue-600 dark:text-blue-400">📋</span> Legislação, Compliance & Recursos Oficiais
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <a 
-                  href="https://www.gov.br/receitafederal" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-                >
-                  <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-white">Receita Federal</h3>
-                  <p className="text-gray-700 dark:text-gray-300">Legislação aduaneira, tributária e normas.</p>
-                </a>
-                <a 
-                  href="https://comexstat.mdic.gov.br/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-                >
-                  <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-white">Comex Stat</h3>
-                  <p className="text-gray-700 dark:text-gray-300">Estatísticas detalhadas de importação e exportação do Brasil.</p>
-                </a>
-                <a 
-                  href="https://www.aladi.org/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-                >
-                  <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-white">ALADI</h3>
-                  <p className="text-gray-700 dark:text-gray-300">Associação Latino-Americana de Integração.</p>
-                </a>
-                <a 
-                  href="https://www.incoterms2020.org/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-                >
-                  <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-white">Incoterms 2020</h3>
-                  <p className="text-gray-700 dark:text-gray-300">Regras oficiais para o uso de termos comerciais.</p>
-                </a>
-                <a 
-                  href="https://www.portosdobrasil.gov.br/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-                >
-                  <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-white">Portos do Brasil</h3>
-                  <p className="text-gray-700 dark:text-gray-300">Informações sobre portos e terminais brasileiros.</p>
-                </a>
-                <a 
-                  href="https://www.anvisa.gov.br/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-                >
-                  <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-white">ANVISA</h3>
-                  <p className="text-gray-700 dark:text-gray-300">Regulamentação sanitária para importação/exportação.</p>
-                </a>
-                <a 
-                  href="https://www.gov.br/agricultura/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-                >
-                  <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-white">MAPA – Agricultura</h3>
-                  <p className="text-gray-700 dark:text-gray-300">Normas e procedimentos para produtos agrícolas.</p>
-                </a>
-              </div>
-            </div>
-          </section>
-
-          {/* Notícias & Insights */}
-          <section className="section" id="noticias">
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-              <h2 className="flex items-center gap-2 text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                <span className="text-blue-600 dark:text-blue-400">📰</span> Notícias & Insights
-              </h2>
-              <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-white">Feed de Notícias do Mercado Global</h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-2">Atualizações sobre Comércio Exterior, Logística, Supply Chain, Economia e PMEs.</p>
-                <small className="text-yellow-600 dark:text-yellow-400">🚧 Feed automatizado em desenvolvimento.</small>
-              </div>
-            </div>
-          </section>
-
-          {/* CTA Final */}
-          <section className="section">
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center">
-              <h2 className="text-xl md:text-2xl font-bold mb-4 text-gray-900 dark:text-white">
-                Quer ir além dos dados?
-              </h2>
-              <p className="text-gray-700 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
-                O Radar 360 é uma amostra da inteligência que a OLV Internacional entrega. Fale com nossos especialistas para soluções personalizadas.
+              <p className="text-gray-300 italic">
+                "O Radar 360° transformou nossa operação internacional. Conseguimos antecipar mudanças regulatórias que teriam causado atrasos significativos em nossas importações. O retorno sobre o investimento foi imediato."
               </p>
+            </div>
+            
+            <div className="bg-[#141c2f] p-6 rounded-lg border border-[#2a3448] shadow-lg">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-14 h-14 rounded-full bg-[#0a0f1d] flex items-center justify-center">
+                  <span className="text-[#d4af37] text-2xl font-bold">AS</span>
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-white">Ana Silva</h3>
+                  <p className="text-gray-400 text-sm">Diretora de Operações, Exportadora Brasileira</p>
+                </div>
+              </div>
+              <p className="text-gray-300 italic">
+                "Graças ao módulo de Radar Logístico, conseguimos identificar gargalos em rotas marítimas com antecedência e replanejar nossos embarques, evitando atrasos e multas contratuais. A consultoria especializada fez toda a diferença."
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA final */}
+      <section className="py-12 bg-[#0a0f1d]">
+        <div className="container mx-auto max-w-7xl px-4">
+          <div className="bg-[#141c2f] p-8 rounded-lg border border-[#2a3448] shadow-lg text-center">
+            <h2 className="text-2xl font-bold text-white mb-4">
+              Pronto para Transformar sua Visibilidade Global?
+            </h2>
+            <p className="text-gray-300 mb-6 max-w-3xl mx-auto">
+              Solicite uma demonstração do Radar 360° e descubra como nossa solução pode ajudar sua empresa a navegar com mais segurança no complexo cenário do comércio internacional.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                href="/contato?servico=radar360" 
+                className="inline-block bg-[#d4af37] hover:bg-[#b8941f] text-black font-bold py-3 px-8 rounded-lg transition-colors duration-300"
+              >
+                Solicitar Demonstração
+              </Link>
+              
               <Link 
                 href="/contato" 
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg inline-block transition-colors"
+                className="inline-block bg-transparent border border-[#d4af37] hover:bg-[#d4af37]/10 text-[#d4af37] font-bold py-3 px-8 rounded-lg transition-colors duration-300"
               >
-                Fale com um Especialista
+                Falar com um Consultor
               </Link>
             </div>
-          </section>
+          </div>
         </div>
-      </div>
+      </section>
     </MainLayout>
   );
 }

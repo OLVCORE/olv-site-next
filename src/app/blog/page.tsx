@@ -9,280 +9,354 @@ export const metadata = {
 };
 
 export default function BlogPage() {
-  const posts = [
+  // Dados dos artigos do blog
+  const articles = [
     {
-      id: 1,
-      title: 'Como as PMEs podem acessar o mercado internacional com segurança',
-      excerpt: 'Descubra as estratégias e ferramentas essenciais para que pequenas e médias empresas possam iniciar suas operações internacionais com menor risco e maior retorno.',
-      image: '/images/blog/pme-internacional.jpg',
-      author: 'Equipe OLV',
-      date: '10 Jan 2023',
-      category: 'Estratégia Internacional',
-      slug: 'pmes-mercado-internacional'
+      id: "comercio-exterior-2025",
+      image: "/images/blog/comercio-exterior-2025.jpg",
+      title: "Tendências de Comércio Exterior para 2025",
+      excerpt: "Análise das principais tendências que moldarão o comércio internacional no próximo ano, incluindo novas rotas, tecnologias e acordos comerciais.",
+      author: "André Santos",
+      date: "12 de maio de 2025",
+      category: "Tendências",
+      readTime: "6 min de leitura"
     },
     {
-      id: 2,
-      title: 'Inteligência de dados: o combustível para decisões de negócios globais',
-      excerpt: 'A análise de dados se tornou fundamental para empresas que operam internacionalmente. Veja como utilizar dados para obter vantagem competitiva e mitigar riscos.',
-      image: '/images/blog/inteligencia-dados.jpg',
-      author: 'Equipe OLV',
-      date: '24 Fev 2023',
-      category: 'Business Intelligence',
-      slug: 'inteligencia-dados-negocios-globais'
+      id: "logistica-internacional",
+      image: "/images/blog/logistica-internacional.jpg",
+      title: "Desafios da Logística Internacional Pós-Pandemia",
+      excerpt: "Como empresas estão superando gargalos logísticos e adaptando suas estratégias de supply chain para um mundo em constante mudança.",
+      author: "Camila Rocha",
+      date: "5 de maio de 2025",
+      category: "Logística",
+      readTime: "8 min de leitura"
     },
     {
-      id: 3,
-      title: 'Importação sem mistérios: guia completo para novos importadores',
-      excerpt: 'Um passo a passo detalhado para empresas que desejam iniciar suas operações de importação, desde a pesquisa de fornecedores até o desembaraço aduaneiro.',
-      image: '/images/blog/importacao-guia.jpg',
-      author: 'Equipe OLV',
-      date: '17 Mar 2023',
-      category: 'Importação',
-      slug: 'guia-completo-importacao'
+      id: "importacao-tecnologia",
+      image: "/images/blog/importacao-tecnologia.jpg",
+      title: "Guia Completo para Importação de Tecnologia",
+      excerpt: "Passo a passo para empresas que desejam importar equipamentos tecnológicos, incluindo aspectos regulatórios e tributários.",
+      author: "Ricardo Mendes",
+      date: "28 de abril de 2025",
+      category: "Importação",
+      readTime: "10 min de leitura"
     },
     {
-      id: 4,
-      title: 'Compliance internacional: protegendo sua empresa em operações globais',
-      excerpt: 'Entenda como implementar práticas de compliance eficazes para garantir a segurança jurídica, fiscal e operacional em transações internacionais.',
-      image: '/images/blog/compliance-internacional.jpg',
-      author: 'Equipe OLV',
-      date: '05 Abr 2023',
-      category: 'Compliance',
-      slug: 'compliance-operacoes-globais'
+      id: "internacionalizacao-pmes",
+      image: "/images/blog/internacionalizacao-pmes.jpg",
+      title: "Estratégias de Internacionalização para PMEs",
+      excerpt: "Como pequenas e médias empresas podem expandir suas operações globalmente com recursos limitados e riscos calculados.",
+      author: "Juliana Costa",
+      date: "20 de abril de 2025",
+      category: "Estratégia",
+      readTime: "7 min de leitura"
     },
     {
-      id: 5,
-      title: 'Logística 4.0: o futuro do transporte internacional de cargas',
-      excerpt: 'Novas tecnologias estão transformando a logística internacional. Conheça as inovações que estão reduzindo custos e aumentando a eficiência nas operações.',
-      image: '/images/blog/logistica-4-0.jpg',
-      author: 'Equipe OLV',
-      date: '22 Mai 2023',
-      category: 'Logística',
-      slug: 'logistica-4-0-transporte-internacional'
+      id: "compliance-global",
+      image: "/images/blog/compliance-global.jpg",
+      title: "Compliance Global: Além das Fronteiras",
+      excerpt: "A importância de uma estratégia de compliance que abrange múltiplas jurisdições e como implementá-la de forma eficiente.",
+      author: "Marcos Oliveira",
+      date: "15 de abril de 2025",
+      category: "Compliance",
+      readTime: "9 min de leitura"
     },
     {
-      id: 6,
-      title: 'Estratégias de financiamento para operações de comércio exterior',
-      excerpt: 'Descubra as diferentes opções de financiamento disponíveis para empresas que atuam no comércio internacional e como escolher a mais adequada.',
-      image: '/images/blog/financiamento-comex.jpg',
-      author: 'Equipe OLV',
-      date: '14 Jun 2023',
-      category: 'Finanças',
-      slug: 'financiamento-comercio-exterior'
-    },
+      id: "inovacao-supply-chain",
+      image: "/images/blog/inovacao-supply-chain.jpg",
+      title: "Inovação em Supply Chain: Casos de Sucesso",
+      excerpt: "Exemplos reais de empresas que revolucionaram suas cadeias de suprimentos com tecnologias emergentes e abordagens inovadoras.",
+      author: "Fernanda Lima",
+      date: "8 de abril de 2025",
+      category: "Inovação",
+      readTime: "8 min de leitura"
+    }
   ];
 
+  // Categorias do blog
   const categories = [
-    'Estratégia Internacional',
-    'Business Intelligence',
-    'Importação',
-    'Exportação',
-    'Compliance',
-    'Logística',
-    'Finanças',
-    'Supply Chain',
-    'Gestão'
+    "Todos",
+    "Tendências",
+    "Logística",
+    "Importação",
+    "Exportação",
+    "Estratégia",
+    "Compliance",
+    "Inovação",
+    "Tributário",
+    "Geopolítica"
+  ];
+
+  // Newsletter
+  const newsletterBenefits = [
+    "Análises exclusivas de especialistas",
+    "Alertas sobre mudanças regulatórias",
+    "Cases de sucesso e benchmarks",
+    "Tendências e oportunidades de mercado",
+    "Convites para eventos e webinars exclusivos"
   ];
 
   return (
     <MainLayout>
-      <div className="main-content">
-        {/* SEÇÃO HERO BLOG */}
-        <section className="section">
-          <div className="container">
-            <div className="bg-gray-800 dark:bg-gray-900 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-              <h2 className="flex items-center gap-2 text-2xl md:text-3xl font-bold text-white mb-4">
-                <span className="text-blue-400">📚</span> Blog OLV Internacional
-              </h2>
-              <p className="text-lg text-gray-300 mb-6">
-                Conteúdo especializado sobre comércio exterior, operações internacionais, estratégia e soluções para PMEs no mercado global.
-              </p>
-              <div className="relative">
-                <input 
-                  type="text" 
-                  placeholder="Buscar no blog..." 
-                  className="w-full px-4 py-3 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:border-blue-500"
-                />
-                <button className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
-                </button>
+      {/* Banner principal */}
+      <section className="pt-8 pb-12 bg-[#0a0f1d]">
+        <div className="container mx-auto max-w-7xl px-4">
+          <div className="bg-[#141c2f] p-6 md:p-8 rounded-lg border border-[#2a3448] shadow-lg">
+            <div className="flex flex-col md:flex-row items-start gap-6">
+              <div className="md:w-2/3">
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  Blog OLV Internacional
+                </h1>
+                <p className="text-gray-300 mb-4">
+                  Insights, análises e conhecimento prático sobre comércio exterior, logística internacional, 
+                  supply chain e estratégias de internacionalização para empresas que buscam crescimento global.
+                </p>
+                <p className="text-gray-300 mb-6">
+                  Acompanhe nosso conteúdo especializado e mantenha-se atualizado sobre as tendências, 
+                  oportunidades e desafios do mercado internacional.
+                </p>
+                <div className="flex flex-wrap gap-3 mt-4">
+                  <Link 
+                    href="#newsletter" 
+                    className="inline-block bg-[#d4af37] hover:bg-[#b8941f] text-black font-bold py-2 px-6 rounded-lg transition-colors duration-300"
+                  >
+                    Assinar Newsletter
+                  </Link>
+                  <a 
+                    href="#articles" 
+                    className="inline-block bg-transparent border border-[#d4af37] hover:bg-[#d4af37]/10 text-[#d4af37] font-bold py-2 px-6 rounded-lg transition-colors duration-300"
+                  >
+                    Ver Artigos
+                  </a>
+                </div>
+              </div>
+              <div className="md:w-1/3 flex justify-center">
+                <div className="w-48 h-48 flex items-center justify-center rounded-full bg-[#0a0f1d] border border-[#2a3448] p-4">
+                  <Image 
+                    src="/icons/blog-icon.svg" 
+                    alt="Blog OLV" 
+                    width={120} 
+                    height={120} 
+                    className="object-contain" 
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <div className="container">
-          <div className="flex flex-col lg:flex-row gap-8">
-            {/* CONTEÚDO PRINCIPAL */}
-            <div className="w-full lg:w-2/3">
-              <section className="section">
-                <h2 className="text-xl md:text-2xl font-bold mb-6 text-gray-900 dark:text-white">
-                  Artigos Recentes
-                </h2>
-                <div className="grid gap-8">
-                  {posts.map((post) => (
-                    <article key={post.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                      <div className="md:flex">
-                        <div className="md:w-1/3 relative h-48 md:h-auto">
-                          <div className="w-full h-full bg-gray-300 dark:bg-gray-700">
-                            {/* Placeholder para imagem (em produção usaria Image do Next.js) */}
-                            <div className="absolute inset-0 flex items-center justify-center text-gray-500 dark:text-gray-400">
-                              <span>{post.image}</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="p-6 md:w-2/3">
-                          <div className="flex flex-wrap gap-2 mb-3">
-                            <span className="text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-2.5 py-0.5 rounded">
-                              {post.category}
-                            </span>
-                            <span className="text-xs text-gray-500 dark:text-gray-400">
-                              {post.date}
-                            </span>
-                          </div>
-                          <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
-                            <Link href={`/blog/${post.slug}`} className="hover:text-blue-600 dark:hover:text-blue-400">
-                              {post.title}
-                            </Link>
-                          </h3>
-                          <p className="text-gray-700 dark:text-gray-300 mb-4">
-                            {post.excerpt}
-                          </p>
-                          <div className="flex items-center justify-between">
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              Por {post.author}
-                            </span>
-                            <Link 
-                              href={`/blog/${post.slug}`}
-                              className="text-blue-600 dark:text-blue-400 font-medium hover:underline"
-                            >
-                              Ler mais →
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </article>
-                  ))}
+      {/* Filtro de categorias */}
+      <section className="py-8 bg-[#0a0f1d]">
+        <div className="container mx-auto max-w-7xl px-4">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl font-bold text-white">Filtrar por categoria:</h2>
+            <div className="relative">
+              <select
+                className="bg-[#141c2f] text-white border border-[#2a3448] rounded-lg py-2 px-4 pr-8 appearance-none focus:outline-none focus:border-[#d4af37]"
+              >
+                <option>Mais recentes</option>
+                <option>Mais antigos</option>
+                <option>Mais lidos</option>
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">
+                <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+          
+          <div className="flex flex-wrap gap-2">
+            {categories.map((category, index) => (
+              <button
+                key={index}
+                className={`py-2 px-4 rounded-full text-sm font-medium transition-colors ${
+                  index === 0
+                    ? "bg-[#d4af37] text-black"
+                    : "bg-[#141c2f] text-white hover:bg-[#1f2b4a]"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Lista de artigos */}
+      <section id="articles" className="py-12 bg-[#0a0f1d]">
+        <div className="container mx-auto max-w-7xl px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {articles.map((article) => (
+              <article 
+                key={article.id} 
+                className="bg-[#141c2f] rounded-lg border border-[#2a3448] overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl"
+              >
+                <div className="h-52 relative">
+                  <Image 
+                    src={article.image} 
+                    alt={article.title} 
+                    fill
+                    className="object-cover" 
+                  />
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-[#d4af37] text-black text-xs font-bold px-3 py-1 rounded-full">
+                      {article.category}
+                    </span>
+                  </div>
                 </div>
                 
-                {/* Paginação */}
-                <div className="mt-8 flex justify-center">
-                  <nav className="flex items-center gap-1">
-                    <button className="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-md text-gray-700 dark:text-gray-300">
-                      Anterior
-                    </button>
-                    <button className="px-3 py-1 bg-blue-600 text-white rounded-md">1</button>
-                    <button className="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-md text-gray-700 dark:text-gray-300">2</button>
-                    <button className="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-md text-gray-700 dark:text-gray-300">3</button>
-                    <button className="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-md text-gray-700 dark:text-gray-300">
-                      Próxima
-                    </button>
-                  </nav>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-white mb-3 line-clamp-2">
+                    {article.title}
+                  </h3>
+                  <p className="text-gray-300 mb-4 line-clamp-3">
+                    {article.excerpt}
+                  </p>
+                  
+                  <div className="flex items-center justify-between text-sm text-gray-400 mb-4">
+                    <span>{article.date}</span>
+                    <span>{article.readTime}</span>
+                  </div>
+                  
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center">
+                      <div className="w-8 h-8 rounded-full bg-[#0a0f1d] flex items-center justify-center mr-2">
+                        <span className="text-[#d4af37] text-xs font-bold">
+                          {article.author.split(' ').map(word => word[0]).join('')}
+                        </span>
+                      </div>
+                      <span className="text-gray-300 text-sm">{article.author}</span>
+                    </div>
+                    
+                    <Link
+                      href={`/blog/${article.id}`}
+                      className="text-[#d4af37] hover:text-[#b8941f] font-medium flex items-center"
+                    >
+                      Ler mais
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </div>
                 </div>
-              </section>
-            </div>
-            
-            {/* SIDEBAR */}
-            <div className="w-full lg:w-1/3">
-              {/* Categorias */}
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-8">
-                <h3 className="text-lg font-bold mb-4 text-gray-900 dark:text-white">
-                  Categorias
-                </h3>
-                <ul className="space-y-2">
-                  {categories.map((category, index) => (
-                    <li key={index}>
-                      <Link 
-                        href={`/blog/categoria/${category.toLowerCase().replace(/\s+/g, '-')}`}
-                        className="flex items-center justify-between text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
-                      >
-                        <span>{category}</span>
-                        <span className="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-medium px-2.5 py-0.5 rounded-full">
-                          {Math.floor(Math.random() * 10) + 1}
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              
-              {/* Posts Populares */}
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-8">
-                <h3 className="text-lg font-bold mb-4 text-gray-900 dark:text-white">
-                  Posts Populares
-                </h3>
-                <ul className="space-y-4">
-                  {posts.slice(0, 3).map((post) => (
-                    <li key={post.id} className="flex gap-3">
-                      <div className="w-16 h-16 flex-shrink-0 bg-gray-200 dark:bg-gray-700 rounded">
-                        {/* Placeholder para imagem miniatura */}
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-medium text-gray-900 dark:text-white">
-                          <Link 
-                            href={`/blog/${post.slug}`}
-                            className="hover:text-blue-600 dark:hover:text-blue-400"
-                          >
-                            {post.title}
-                          </Link>
-                        </h4>
-                        <span className="text-xs text-gray-500 dark:text-gray-400">
-                          {post.date}
-                        </span>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              
-              {/* Newsletter */}
-              <div className="bg-blue-600 p-6 rounded-lg shadow-md text-white">
-                <h3 className="text-lg font-bold mb-2">
-                  Inscreva-se na nossa Newsletter
-                </h3>
-                <p className="mb-4 text-blue-100">
-                  Receba conteúdo exclusivo sobre comércio exterior e negócios internacionais.
+              </article>
+            ))}
+          </div>
+          
+          <div className="mt-12 flex justify-center">
+            <button className="bg-[#141c2f] hover:bg-[#1f2b4a] text-white font-medium py-3 px-8 rounded-lg transition-colors border border-[#2a3448]">
+              Carregar mais artigos
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter */}
+      <section id="newsletter" className="py-12 bg-[#0a0f1d]">
+        <div className="container mx-auto max-w-7xl px-4">
+          <div className="bg-[#141c2f] p-8 rounded-lg border border-[#2a3448] shadow-lg">
+            <div className="flex flex-col md:flex-row gap-8">
+              <div className="md:w-1/2">
+                <h2 className="text-2xl font-bold text-white mb-4">
+                  Assine nossa Newsletter
+                </h2>
+                <p className="text-gray-300 mb-6">
+                  Receba conteúdo exclusivo, análises de mercado e insights valiosos diretamente em seu e-mail. 
+                  Mantenha-se à frente com informações privilegiadas sobre comércio exterior e negócios internacionais.
                 </p>
-                <form className="space-y-3">
-                  <input 
-                    type="email" 
-                    placeholder="Seu melhor e-mail" 
-                    className="w-full px-4 py-2 rounded text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-300"
-                  />
+                
+                <h3 className="text-[#d4af37] font-bold mb-3">
+                  O que você receberá:
+                </h3>
+                <ul className="space-y-2 mb-6">
+                  {newsletterBenefits.map((benefit, index) => (
+                    <li key={index} className="flex items-start">
+                      <Image 
+                        src="/icons/check.svg" 
+                        alt="Checkmark" 
+                        width={20} 
+                        height={20} 
+                        className="mr-2 mt-1 flex-shrink-0" 
+                      />
+                      <span className="text-gray-300">{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              <div className="md:w-1/2">
+                <form className="bg-[#0a0f1d] p-6 rounded-lg border border-[#2a3448]">
+                  <div className="mb-4">
+                    <label htmlFor="name" className="block text-gray-300 mb-2 font-medium">Nome</label>
+                    <input 
+                      type="text" 
+                      id="name" 
+                      className="w-full bg-[#141c2f] border border-[#2a3448] rounded-lg py-3 px-4 text-white focus:outline-none focus:border-[#d4af37]" 
+                      placeholder="Seu nome completo" 
+                    />
+                  </div>
+                  
+                  <div className="mb-4">
+                    <label htmlFor="email" className="block text-gray-300 mb-2 font-medium">E-mail</label>
+                    <input 
+                      type="email" 
+                      id="email" 
+                      className="w-full bg-[#141c2f] border border-[#2a3448] rounded-lg py-3 px-4 text-white focus:outline-none focus:border-[#d4af37]" 
+                      placeholder="seu@email.com" 
+                    />
+                  </div>
+                  
+                  <div className="mb-6">
+                    <label htmlFor="company" className="block text-gray-300 mb-2 font-medium">Empresa (opcional)</label>
+                    <input 
+                      type="text" 
+                      id="company" 
+                      className="w-full bg-[#141c2f] border border-[#2a3448] rounded-lg py-3 px-4 text-white focus:outline-none focus:border-[#d4af37]" 
+                      placeholder="Nome da sua empresa" 
+                    />
+                  </div>
+                  
                   <button 
-                    type="submit"
-                    className="w-full px-4 py-2 bg-white text-blue-600 font-bold rounded hover:bg-blue-50 transition-colors"
+                    type="submit" 
+                    className="w-full bg-[#d4af37] hover:bg-[#b8941f] text-black font-bold py-3 px-6 rounded-lg transition-colors"
                   >
-                    Inscrever-se
+                    Assinar Newsletter
                   </button>
+                  
+                  <p className="text-xs text-gray-400 mt-4 text-center">
+                    Ao assinar, você concorda com nossa Política de Privacidade. 
+                    Prometemos não enviar spam e você pode cancelar a qualquer momento.
+                  </p>
                 </form>
               </div>
             </div>
           </div>
         </div>
-        
-        {/* CTA FINAL */}
-        <section className="section">
-          <div className="container">
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center">
-              <h2 className="text-xl md:text-2xl font-bold mb-4 text-gray-900 dark:text-white">
-                Busca conteúdo específico para sua empresa?
-              </h2>
-              <p className="text-gray-700 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
-                Nossos especialistas podem desenvolver análises e conteúdos customizados para o seu setor e desafios específicos.
-              </p>
-              <Link 
-                href="/contato" 
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg inline-block transition-colors"
-              >
-                Solicitar Consultoria de Conteúdo
-              </Link>
-            </div>
+      </section>
+
+      {/* CTA final */}
+      <section className="py-12 bg-[#0a0f1d]">
+        <div className="container mx-auto max-w-7xl px-4">
+          <div className="bg-[#141c2f] p-8 rounded-lg border border-[#2a3448] shadow-lg text-center">
+            <h2 className="text-2xl font-bold text-white mb-4">
+              Precisa de ajuda com sua estratégia internacional?
+            </h2>
+            <p className="text-gray-300 mb-6 max-w-3xl mx-auto">
+              Além de conteúdo, oferecemos consultoria especializada para empresas que desejam expandir seus negócios globalmente. 
+              Fale com nossos especialistas e descubra como podemos ajudar sua empresa a alcançar novos mercados.
+            </p>
+            
+            <Link 
+              href="/contato" 
+              className="inline-block bg-[#d4af37] hover:bg-[#b8941f] text-black font-bold py-3 px-8 rounded-lg transition-colors duration-300"
+            >
+              Falar com um Especialista
+            </Link>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </MainLayout>
   );
 }

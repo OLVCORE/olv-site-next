@@ -9,143 +9,265 @@ export const metadata = {
 };
 
 export default function PoliticaPage() {
+  // Data da última atualização
+  const ultimaAtualizacao = "15 de maio de 2025";
+
+  // Seções da política
+  const secoes = [
+    {
+      id: "introducao",
+      titulo: "Introdução",
+      conteudo: "A OLV Internacional ('nós', 'nosso' ou 'empresa') está comprometida em proteger a privacidade dos dados pessoais que coletamos de nossos clientes, parceiros e visitantes do nosso site. Esta Política de Privacidade explica como coletamos, usamos, armazenamos e protegemos suas informações pessoais em conformidade com a Lei Geral de Proteção de Dados (LGPD) e outras regulamentações aplicáveis de privacidade."
+    },
+    {
+      id: "dados-coletados",
+      titulo: "Dados que Coletamos",
+      conteudo: "Podemos coletar diferentes tipos de informações pessoais dependendo de como você interage conosco:",
+      itens: [
+        "Informações de identificação (nome, cargo, empresa)",
+        "Informações de contato (e-mail, telefone, endereço)",
+        "Informações profissionais (histórico profissional, área de atuação)",
+        "Dados de interação com nosso site (páginas visitadas, ações realizadas)",
+        "Preferências e interesses relacionados aos nossos serviços",
+        "Comunicações e interações que você tem conosco"
+      ]
+    },
+    {
+      id: "finalidades",
+      titulo: "Finalidades do Tratamento",
+      conteudo: "Utilizamos suas informações pessoais para as seguintes finalidades:",
+      itens: [
+        "Fornecer e personalizar nossos serviços conforme suas necessidades",
+        "Processar transações e gerenciar seu relacionamento conosco",
+        "Enviar comunicações relevantes sobre nossos serviços",
+        "Fornecer suporte técnico e atendimento ao cliente",
+        "Melhorar nossos serviços e desenvolver novos produtos",
+        "Cumprir obrigações legais e regulatórias",
+        "Proteger nossos direitos, propriedade ou segurança"
+      ]
+    },
+    {
+      id: "base-legal",
+      titulo: "Base Legal para o Tratamento",
+      conteudo: "O tratamento de seus dados pessoais é realizado com base nas seguintes justificativas legais:",
+      itens: [
+        "Execução de contrato: quando o tratamento for necessário para cumprir nossas obrigações contratuais com você",
+        "Consentimento: quando você nos autoriza expressamente a tratar seus dados para finalidades específicas",
+        "Interesse legítimo: quando o tratamento é necessário para atender aos interesses legítimos da nossa empresa",
+        "Obrigação legal: quando o tratamento for necessário para cumprir uma obrigação legal ou regulatória",
+        "Proteção ao crédito: para atividades de análise de risco e proteção ao crédito, quando aplicável"
+      ]
+    },
+    {
+      id: "compartilhamento",
+      titulo: "Compartilhamento de Dados",
+      conteudo: "Podemos compartilhar suas informações pessoais com as seguintes categorias de destinatários:",
+      itens: [
+        "Empresas do grupo OLV: para fins administrativos e prestação de serviços integrados",
+        "Prestadores de serviços: que nos auxiliam na operação de nossos negócios",
+        "Parceiros comerciais: quando necessário para fornecer os serviços solicitados",
+        "Autoridades governamentais: quando exigido por lei ou processo legal",
+        "Em caso de reorganização empresarial: como fusão, aquisição ou venda de ativos"
+      ]
+    },
+    {
+      id: "seguranca",
+      titulo: "Medidas de Segurança",
+      conteudo: "Implementamos medidas técnicas e organizacionais apropriadas para proteger suas informações pessoais contra acesso não autorizado, perda, alteração ou destruição acidental. Algumas das medidas que adotamos incluem:",
+      itens: [
+        "Criptografia de dados sensíveis",
+        "Controles de acesso rigorosos e autenticação multifator",
+        "Monitoramento e testes regulares de segurança",
+        "Treinamento de conscientização em segurança para funcionários",
+        "Avaliações regulares de risco e auditorias de segurança"
+      ]
+    },
+    {
+      id: "retencao",
+      titulo: "Período de Retenção",
+      conteudo: "Mantemos suas informações pessoais pelo tempo necessário para cumprir as finalidades para as quais foram coletadas, a menos que um período de retenção mais longo seja exigido ou permitido por lei. Os critérios utilizados para determinar nossos períodos de retenção incluem:",
+      itens: [
+        "O período necessário para fornecer os serviços solicitados",
+        "Obrigações legais, fiscais e regulatórias aplicáveis",
+        "Períodos de prescrição aplicáveis sob as leis relevantes",
+        "Resolução de disputas ou para fazer cumprir nossos acordos"
+      ]
+    },
+    {
+      id: "direitos",
+      titulo: "Seus Direitos",
+      conteudo: "De acordo com a LGPD e outras leis de proteção de dados aplicáveis, você pode ter os seguintes direitos em relação aos seus dados pessoais:",
+      itens: [
+        "Direito de acesso: obter confirmação de que tratamos seus dados e acessar seus dados pessoais",
+        "Direito de retificação: corrigir dados incompletos, inexatos ou desatualizados",
+        "Direito de exclusão: solicitar a exclusão de seus dados, exceto em situações previstas em lei",
+        "Direito de restrição: solicitar a limitação do tratamento de seus dados",
+        "Direito de portabilidade: receber seus dados em formato estruturado para transferência a outro controlador",
+        "Direito de oposição: opor-se ao tratamento baseado em interesses legítimos",
+        "Direito de não ser submetido a decisões automatizadas: solicitar revisão humana de decisões tomadas exclusivamente com base em tratamento automatizado"
+      ]
+    },
+    {
+      id: "cookies",
+      titulo: "Cookies e Tecnologias Semelhantes",
+      conteudo: "Nosso site utiliza cookies e tecnologias semelhantes para melhorar sua experiência de navegação, analisar o uso do site e personalizar conteúdos. Você pode gerenciar suas preferências de cookies através das configurações do seu navegador. Para mais informações sobre como utilizamos cookies, consulte nossa Política de Cookies.",
+    },
+    {
+      id: "internacional",
+      titulo: "Transferências Internacionais",
+      conteudo: "Suas informações pessoais podem ser transferidas para, e processadas em, países fora do Brasil. Nesses casos, implementamos salvaguardas apropriadas para garantir que seus dados recebam um nível adequado de proteção, incluindo cláusulas contratuais padrão aprovadas pelas autoridades competentes.",
+    },
+    {
+      id: "criancas",
+      titulo: "Proteção de Dados de Crianças",
+      conteudo: "Nossos serviços não são direcionados a crianças menores de 18 anos e não coletamos intencionalmente informações pessoais de crianças. Se acredita que coletamos informações de uma criança, entre em contato conosco imediatamente.",
+    },
+    {
+      id: "alteracoes",
+      titulo: "Alterações a esta Política",
+      conteudo: "Podemos atualizar esta Política de Privacidade periodicamente para refletir mudanças em nossas práticas de privacidade. Encorajamos você a revisar esta política regularmente. As alterações significativas serão notificadas através do nosso site ou por outros meios apropriados.",
+    },
+    {
+      id: "contato",
+      titulo: "Entre em Contato",
+      conteudo: "Se você tiver dúvidas, preocupações ou solicitações relacionadas a esta Política de Privacidade ou ao tratamento de seus dados pessoais, entre em contato com nosso Encarregado de Proteção de Dados (DPO) pelos seguintes canais:",
+      itens: [
+        "E-mail: privacidade@olvinternacional.com.br",
+        "Telefone: +55 (11) 3000-7000",
+        "Endereço: Av. Brigadeiro Faria Lima, 1234, 15º andar, São Paulo - SP, CEP 01452-001"
+      ]
+    }
+  ];
+
   return (
     <MainLayout>
-      <div className="main-content">
-        {/* HERO DA PÁGINA POLÍTICA */}
-        <section className="section hero">
-          <div className="container">
-            <div className="flex flex-col lg:flex-row items-center gap-8">
-              <div className="lg:w-1/2">
-                <h1 className="text-3xl md:text-4xl font-bold mb-6 text-white">Política de Privacidade e LGPD</h1>
-                <p className="text-gray-300 text-lg">
-                  A OLV Internacional está comprometida com a segurança e privacidade dos seus dados. Nesta página, 
-                  detalhamos de forma transparente como tratamos as informações pessoais e corporativas que nos são 
-                  confiadas, seguindo rigorosamente a Lei Geral de Proteção de Dados (LGPD) e as melhores práticas 
-                  internacionais de segurança da informação.
+      {/* Banner principal */}
+      <section className="pt-8 pb-12 bg-[#0a0f1d]">
+        <div className="container mx-auto max-w-7xl px-4">
+          <div className="bg-[#141c2f] p-6 md:p-8 rounded-lg border border-[#2a3448] shadow-lg">
+            <div className="flex flex-col md:flex-row items-start gap-6">
+              <div className="md:w-2/3">
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  Política de Privacidade
+                </h1>
+                <p className="text-gray-300 mb-4">
+                  Nesta página, detalhamos como coletamos, utilizamos, armazenamos e protegemos seus dados pessoais quando você interage com a OLV Internacional.
                 </p>
+                <p className="text-gray-300 mb-6">
+                  Nossa política está em conformidade com a Lei Geral de Proteção de Dados (LGPD) e outras regulamentações aplicáveis, garantindo transparência e segurança no tratamento de suas informações.
+                </p>
+                <div className="flex items-center gap-2 text-gray-400 text-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <span>Última atualização: {ultimaAtualizacao}</span>
+                </div>
               </div>
-              <div className="lg:w-1/2">
-                <div className="relative h-64 md:h-80 w-full">
+              <div className="md:w-1/3 flex justify-center">
+                <div className="w-48 h-48 flex items-center justify-center rounded-full bg-[#0a0f1d] border border-[#2a3448] p-4">
                   <Image 
-                    src="/images/olv-policy-banner.webp" 
-                    alt="Política de Privacidade – OLV Internacional" 
-                    fill
-                    className="object-cover rounded-lg"
+                    src="/icons/privacy-icon.svg" 
+                    alt="Política de Privacidade" 
+                    width={120} 
+                    height={120} 
+                    className="object-contain" 
                   />
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* SEÇÃO CONTEÚDO DA POLÍTICA */}
-        <section className="section" id="politica-content">
-          <div className="container mx-auto px-4 py-8">
-            {/* 1. Introdução */}
-            <article className="bg-gray-800 p-6 rounded-lg mb-8">
-              <h2 className="text-2xl font-bold mb-4 text-white">1. Introdução</h2>
-              <p className="text-gray-300 mb-4">
-                A OLV Internacional, inscrita no CNPJ sob o nº 67.867.580/0001-90, com sede na Av. Paulista, 1636 – Bela Vista, São Paulo – SP, CPF 01310-200, Brasil, é especialista em consultoria de Supply Chain, Comércio Exterior, Importação e Exportação.
-              </p>
-              <p className="text-gray-300 mb-4">
-                Esta Política de Privacidade esclarece quais dados pessoais são coletados, para quais finalidades são utilizados, como são armazenados, compartilhados e protegidos, bem como os direitos dos titulares de dados.
-              </p>
-              <p className="text-gray-300">
-                Ao acessar ou utilizar nosso site, você concorda com os termos desta política. Caso não concorde com qualquer parte, por favor, não utilize nosso site.
-              </p>
-            </article>
-
-            {/* 2. Definições */}
-            <article className="bg-gray-800 p-6 rounded-lg mb-8">
-              <h2 className="text-2xl font-bold mb-4 text-white">2. Definições</h2>
-              <ul className="space-y-2 text-gray-300 list-disc pl-5">
-                <li><strong className="text-white">Dados Pessoais:</strong> quaisquer informações que identifiquem ou possam identificar uma pessoa natural, direta ou indiretamente.</li>
-                <li><strong className="text-white">Titular:</strong> pessoa natural a quem se referem os dados pessoais que são objeto de tratamento.</li>
-                <li><strong className="text-white">Controlador:</strong> pessoa jurídica que toma as decisões sobre o tratamento de dados pessoais (neste caso, a OLV Internacional).</li>
-                <li>
-                  <strong className="text-white">Operador:</strong> pessoa jurídica que realiza o tratamento de dados em nome do controlador.<br />
-                  Exemplo: empresa de hospedagem de site, sistema de CRM, plataforma de e-mail marketing, ferramentas de analytics.
-                </li>
-                <li><strong className="text-white">Tratamento:</strong> qualquer operação realizada com dados pessoais, como coleta, produção, recepção, classificação, utilização, acesso, reprodução, transmissão, armazenamento, eliminação, entre outros.</li>
-                <li><strong className="text-white">LGPD:</strong> Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018).</li>
-              </ul>
-            </article>
-
-            {/* 3. Quais dados coletamos */}
-            <article className="bg-gray-800 p-6 rounded-lg mb-8">
-              <h2 className="text-2xl font-bold mb-4 text-white">3. Quais dados coletamos</h2>
-              <p className="text-gray-300 mb-4">Podemos coletar e tratar as seguintes categorias de dados pessoais:</p>
-              <ul className="space-y-2 text-gray-300 list-disc pl-5">
-                <li><strong className="text-white">Informações de identificação:</strong> nome completo, CPF/CNPJ, dados de endereço, telefone, e-mail corporativo;</li>
-                <li><strong className="text-white">Informações de transação:</strong> histórico de contato, serviços de interesse (ex.: <em>Consultoria em Exportação</em>, <em>Consultoria em Importação</em>, <em>Logística Internacional</em>, <em>Compliance Aduaneiro</em>, <em>Treinamentos</em>, <em>Radar SISCOMEX</em> etc.);</li>
-                <li><strong className="text-white">Informações de navegação:</strong> dados coletados automaticamente por cookies e tecnologias similares (endereço IP, tipo de dispositivo, sistema operacional, browser, páginas acessadas, tempo de permanência, origem do tráfego, links clicados, localização aproximada);</li>
-                <li><strong className="text-white">Dados para marketing e publicidade:</strong> perfil de interesse, preferências de comunicação, interação com campanhas de Google Ads (incluindo AI Mode e intenções de busca);</li>
-                <li><strong className="text-white">Dados de consentimento:</strong> registros de aceite de política de privacidade, opt‐in/opt‐out de newsletters, histórico de atualizações de preferência.</li>
-              </ul>
-            </article>
-
-            {/* 4. Finalidades do tratamento */}
-            <article className="bg-gray-800 p-6 rounded-lg mb-8">
-              <h2 className="text-2xl font-bold mb-4 text-white">4. Finalidades do tratamento</h2>
-              <p className="text-gray-300 mb-4">Utilizamos seus dados pessoais para as seguintes finalidades:</p>
-              <ul className="space-y-2 text-gray-300 list-disc pl-5">
-                <li>Fornecer os serviços solicitados de consultoria em comércio exterior;</li>
-                <li>Responder a solicitações e prestar suporte adequado;</li>
-                <li>Enviar comunicações sobre nossos serviços, atualizações e novidades;</li>
-                <li>Melhorar nossos serviços e a experiência do usuário;</li>
-                <li>Realizar análises estatísticas e estudos de mercado;</li>
-                <li>Cumprir obrigações legais e regulatórias;</li>
-                <li>Prevenir fraudes e proteger nossos direitos e os dos usuários.</li>
-              </ul>
-            </article>
-
-            {/* 5. Base legal */}
-            <article className="bg-gray-800 p-6 rounded-lg mb-8">
-              <h2 className="text-2xl font-bold mb-4 text-white">5. Base legal</h2>
-              <p className="text-gray-300 mb-4">O tratamento de seus dados pessoais é realizado com base nas seguintes hipóteses legais previstas na LGPD:</p>
-              <ul className="space-y-2 text-gray-300 list-disc pl-5">
-                <li><strong className="text-white">Consentimento:</strong> quando você concorda expressamente com o tratamento de seus dados para finalidades específicas;</li>
-                <li><strong className="text-white">Execução de contrato:</strong> quando o tratamento é necessário para a prestação dos serviços contratados;</li>
-                <li><strong className="text-white">Interesse legítimo:</strong> quando o tratamento é necessário para atender aos interesses legítimos da OLV Internacional, respeitando seus direitos e liberdades fundamentais;</li>
-                <li><strong className="text-white">Cumprimento de obrigação legal:</strong> quando o tratamento é necessário para cumprir uma obrigação legal ou regulatória.</li>
-              </ul>
-            </article>
-
-            {/* 6. Cookies e tecnologias similares */}
-            <article className="bg-gray-800 p-6 rounded-lg mb-8">
-              <h2 className="text-2xl font-bold mb-4 text-white">6. Cookies e tecnologias similares</h2>
-              <p className="text-gray-300 mb-4">
-                Utilizamos cookies e tecnologias similares para melhorar sua experiência em nosso site. Eles nos permitem reconhecer seu dispositivo, lembrar suas preferências, analisar o uso do site e personalizar conteúdos.
-              </p>
-              <p className="text-gray-300 mb-4">Os tipos de cookies que utilizamos incluem:</p>
-              <ul className="space-y-2 text-gray-300 list-disc pl-5">
-                <li><strong className="text-white">Cookies essenciais:</strong> necessários para o funcionamento básico do site;</li>
-                <li><strong className="text-white">Cookies de preferências:</strong> permitem que o site lembre suas escolhas e preferências;</li>
-                <li><strong className="text-white">Cookies de estatísticas:</strong> coletam informações anônimas sobre como você utiliza o site, permitindo melhorar seu funcionamento;</li>
-                <li><strong className="text-white">Cookies de marketing:</strong> utilizados para exibir anúncios relevantes com base em seus interesses.</li>
-              </ul>
-              <p className="text-gray-300">
-                Você pode gerenciar ou desativar cookies através das configurações do seu navegador. No entanto, isso pode afetar a funcionalidade do site.
-              </p>
-            </article>
-
-            {/* CTA para contato */}
-            <div className="bg-blue-700 p-6 rounded-lg text-center">
-              <h2 className="text-2xl font-bold mb-4 text-white">Dúvidas sobre nossa política?</h2>
-              <p className="text-white mb-6">
-                Se você tiver qualquer dúvida sobre como tratamos seus dados pessoais ou quiser exercer seus direitos, entre em contato conosco.
-              </p>
-              <Link
-                href="/contato"
-                className="inline-block bg-white text-blue-700 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition-colors"
-              >
-                Fale Conosco
-              </Link>
+      {/* Conteúdo principal - Política de privacidade */}
+      <section className="py-12 bg-[#0a0f1d]">
+        <div className="container mx-auto max-w-7xl px-4">
+          <div className="flex flex-col lg:flex-row gap-8">
+            {/* Índice lateral (navegação) */}
+            <div className="lg:w-1/4">
+              <div className="bg-[#141c2f] p-6 rounded-lg border border-[#2a3448] shadow-lg sticky top-24">
+                <h3 className="text-xl font-bold text-white mb-4">Índice</h3>
+                <nav className="space-y-2">
+                  {secoes.map((secao) => (
+                    <a 
+                      key={secao.id} 
+                      href={`#${secao.id}`} 
+                      className="block py-2 px-3 text-gray-300 hover:bg-[#1a2642] hover:text-white rounded-lg transition-colors"
+                    >
+                      {secao.titulo}
+                    </a>
+                  ))}
+                </nav>
+                <div className="mt-6 p-4 bg-[#0a0f1d] rounded-lg border border-[#2a3448]">
+                  <p className="text-gray-300 text-sm">
+                    <span className="text-[#d4af37] font-bold">Dúvidas?</span> Entre em contato com nosso encarregado de proteção de dados (DPO).
+                  </p>
+                  <a 
+                    href="mailto:privacidade@olvinternacional.com.br" 
+                    className="inline-block mt-2 text-[#d4af37] hover:underline font-medium text-sm"
+                  >
+                    privacidade@olvinternacional.com.br
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            {/* Conteúdo principal da política */}
+            <div className="lg:w-3/4">
+              <div className="bg-[#141c2f] p-8 rounded-lg border border-[#2a3448] shadow-lg">
+                {secoes.map((secao) => (
+                  <div key={secao.id} id={secao.id} className="mb-10 last:mb-0 scroll-mt-28">
+                    <h2 className="text-2xl font-bold text-white mb-4">
+                      {secao.titulo}
+                    </h2>
+                    <p className="text-gray-300 mb-4">
+                      {secao.conteudo}
+                    </p>
+                    {secao.itens && (
+                      <ul className="list-disc pl-6 space-y-2 text-gray-300">
+                        {secao.itens.map((item, index) => (
+                          <li key={index}>{item}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                ))}
+                
+                {/* Rodapé do documento */}
+                <div className="mt-12 pt-6 border-t border-[#2a3448]">
+                  <p className="text-gray-400 text-sm">
+                    © 2025 OLV Internacional. Todos os direitos reservados.
+                  </p>
+                  <p className="text-gray-400 text-sm mt-2">
+                    Para obter mais informações ou esclarecer dúvidas sobre esta política, entre em contato com nosso Encarregado de Proteção de Dados através do e-mail <a href="mailto:privacidade@olvinternacional.com.br" className="text-[#d4af37] hover:underline">privacidade@olvinternacional.com.br</a>.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+      
+      {/* CTA - Fale Conosco */}
+      <section className="py-12 bg-[#0a0f1d]">
+        <div className="container mx-auto max-w-7xl px-4">
+          <div className="bg-[#141c2f] p-8 rounded-lg border border-[#2a3448] shadow-lg text-center">
+            <h2 className="text-2xl font-bold text-white mb-4">
+              Precisa de ajuda adicional?
+            </h2>
+            <p className="text-gray-300 mb-6 max-w-3xl mx-auto">
+              Nossa equipe está disponível para esclarecer quaisquer dúvidas sobre nossa Política de Privacidade ou sobre como tratamos seus dados pessoais.
+            </p>
+            
+            <Link 
+              href="/contato" 
+              className="inline-block bg-[#d4af37] hover:bg-[#b8941f] text-black font-bold py-3 px-8 rounded-lg transition-colors duration-300"
+            >
+              Entrar em Contato
+            </Link>
+          </div>
+        </div>
+      </section>
     </MainLayout>
   );
 } 

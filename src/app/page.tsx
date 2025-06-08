@@ -34,24 +34,33 @@ export default function HomePage() {
   return (
     <MainLayout>
       {/* Hero Section */}
-      <section className="section hero pt-0 pb-0 mb-0">
-        <div className="container">
-          <div className="flex flex-col md:flex-row items-center gap-4 mb-2 bg-[#141c2f] p-5 rounded-lg border border-[#2a3448] shadow-lg">
+      <section className="section hero pt-8 pb-8">
+        <div className="container mx-auto max-w-7xl px-4">
+          <div className="flex flex-col md:flex-row items-center gap-8 mb-12 bg-[#141c2f] p-6 rounded-lg border border-[#2a3448] shadow-lg">
             <div className="flex-1">
-              <h2 className="text-4xl md:text-5xl font-bold mb-3 text-white">Integramos Estratégia, Operação e Resultado</h2>
-              <p className="mb-2 text-gray-300 text-base">
-                <span className="text-[#d4af37] font-semibold">35 anos</span> integrando estratégia, operações e resultados. Somos especialistas em Supply Chain, Comércio Exterior, Logística Internacional e Desenvolvimento de Negócios.
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">Integramos Estratégia, Operação e Resultado</h1>
+              <div className="flex items-center mb-6">
+                <Image 
+                  src="/images/olv-internacional-logo.jpeg" 
+                  alt="OLV Internacional Logo" 
+                  width={160} 
+                  height={80} 
+                  className="mr-4" 
+                  priority
+                />
+                <p className="text-lg text-[#d4af37] font-medium">
+                  35 anos de experiência em soluções estratégicas
+                </p>
+              </div>
+              <p className="mb-4 text-gray-300 text-base">
+                Somos especialistas em Supply Chain, Comércio Exterior, Logística Internacional e Desenvolvimento de Negócios.
               </p>
-              <p className="mb-2 text-gray-300 text-base">
+              <p className="mb-4 text-gray-300 text-base">
                 Atuamos como o braço consultivo do Ecossistema OLV, oferecendo suporte completo para
                 empresas que querem importar, exportar, expandir seus negócios, operar com segurança e alta performance no
                 mercado global.
               </p>
-              <p className="mb-2 text-gray-300 text-base">
-                Nossa missão é simplificar operações complexas, acelerar negócios e integrar estratégias com resultados.
-                Atuamos como uma extensão do seu negócio, sem ativos próprios, focando exclusivamente na entrega de valor.
-              </p>
-              <p className="text-[#d4af37] font-medium italic mb-2">
+              <p className="text-[#d4af37] font-medium italic mb-4">
                 Do Radar SISCOMEX ao Embarque. Da Estratégia à Execução. Da Burocracia ao Resultado.
               </p>
             </div>
@@ -69,206 +78,18 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Pilares de Atuação em mini-cards */}
-          <div className="mb-2">
-            <h3 className="text-3xl font-semibold mb-3 text-[#d4af37]">Pilares da Nossa Atuação</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {keyPoints.map((point, index) => (
-                <div 
-                  key={index}
-                  className="bg-[#141c2f] p-3 rounded-lg border border-[#2a3448] shadow-md hover:border-[#d4af37] hover:shadow-lg transition-all duration-300"
-                >
-                  <div className="flex items-start mb-1">
-                    <Image src={point.icon} alt={point.title} width={20} height={20} className="mt-1 mr-2 flex-shrink-0" />
-                    <h4 className="text-gray-200 font-semibold">{point.title}</h4>
-                  </div>
-                  <p className="text-gray-400 text-sm pl-7">{point.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Nossas Soluções Estratégicas */}
-      <section className="section py-0 mb-0" id="servicos">
-        <div className="container">
-          <div className="section-heading mb-2">
-            <div className="w-14 h-14 mx-auto mb-1 rounded-full bg-[#0a0f1d] border-2 border-[#d4af37] flex items-center justify-center">
-              <Image src="/icons/solutions-icon.svg" alt="Ícone de Soluções" width={28} height={28} className="text-[#d4af37]" />
-            </div>
-            <h2 className="text-4xl font-bold text-center mb-3">Nossas Soluções Estratégicas</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-            {/* Card 1 - Consultoria Estratégica em Comex */}
-            <div className="bg-[#141c2f] rounded-xl border border-[#2a3448] overflow-hidden shadow-xl hover:border-[#d4af37] hover:shadow-2xl transition-all duration-300">
-              <div className="p-4">
-                <div className="w-14 h-14 rounded-full bg-[#0a0f1d] border-2 border-[#d4af37] flex items-center justify-center mb-3">
-                  <Image src="/icons/strategy.svg" alt="Ícone de Estratégia" width={28} height={28} />
-                </div>
-                <h3 className="text-2xl font-semibold mb-2 text-white">Consultoria Estratégica em Comex</h3>
-                <p className="text-gray-300 mb-3 text-sm">
-                  Análise profunda de cenários, estruturação de operações internacionais e desenho de estratégias
-                  personalizadas para cada perfil de empresa. Desenvolvemos roadmaps completos para
-                  internacionalização segura, eficiente e escalável.
-                </p>
-                <ul className="space-y-2 mb-3">
-                  <li className="bg-[#1a2338] p-2 rounded-lg flex items-start border border-[#2a3448] hover:border-[#d4af37] hover:transform hover:translate-x-1 transition-all duration-200">
-                    <Image src="/icons/check.svg" alt="Checkmark" width={16} height={16} className="mt-1 mr-2 flex-shrink-0" />
-                    <span className="text-xs text-gray-300">Análise de viabilidade para mercados-alvo</span>
-                  </li>
-                  <li className="bg-[#1a2338] p-2 rounded-lg flex items-start border border-[#2a3448] hover:border-[#d4af37] hover:transform hover:translate-x-1 transition-all duration-200">
-                    <Image src="/icons/check.svg" alt="Checkmark" width={16} height={16} className="mt-1 mr-2 flex-shrink-0" />
-                    <span className="text-xs text-gray-300">Estruturação de modelos de negócio global</span>
-                  </li>
-                  <li className="bg-[#1a2338] p-2 rounded-lg flex items-start border border-[#2a3448] hover:border-[#d4af37] hover:transform hover:translate-x-1 transition-all duration-200">
-                    <Image src="/icons/check.svg" alt="Checkmark" width={16} height={16} className="mt-1 mr-2 flex-shrink-0" />
-                    <span className="text-xs text-gray-300">Planejamento estratégico internacional</span>
-                  </li>
-                </ul>
-                <Link href="/solucoes" className="mt-2 inline-block text-[#d4af37] hover:underline text-sm">Ver mais soluções →</Link>
-              </div>
-            </div>
-
-            {/* Card 2 - Soluções Operacionais para Exportação e Importação */}
-            <div className="bg-[#141c2f] rounded-xl border border-[#2a3448] overflow-hidden shadow-xl hover:border-[#d4af37] hover:shadow-2xl transition-all duration-300">
-              <div className="p-4">
-                <div className="w-14 h-14 rounded-full bg-[#0a0f1d] border-2 border-[#d4af37] flex items-center justify-center mb-3">
-                  <Image src="/icons/operations.svg" alt="Ícone de Operações" width={28} height={28} />
-                </div>
-                <h3 className="text-2xl font-semibold mb-2 text-white">Soluções Operacionais para Exportação e Importação</h3>
-                <p className="text-gray-300 mb-3 text-sm">
-                  Condução completa de todos os processos operacionais de comércio exterior, desde
-                  habilitações e registros até o fechamento de câmbio, documentação e desembaraço
-                  aduaneiro, com foco em conformidade e eficiência.
-                </p>
-                <ul className="space-y-2 mb-3">
-                  <li className="bg-[#1a2338] p-2 rounded-lg flex items-start border border-[#2a3448] hover:border-[#d4af37] hover:transform hover:translate-x-1 transition-all duration-200">
-                    <Image src="/icons/check.svg" alt="Checkmark" width={16} height={16} className="mt-1 mr-2 flex-shrink-0" />
-                    <span className="text-xs text-gray-300">Habilitação e manutenção de Radar SISCOMEX</span>
-                  </li>
-                  <li className="bg-[#1a2338] p-2 rounded-lg flex items-start border border-[#2a3448] hover:border-[#d4af37] hover:transform hover:translate-x-1 transition-all duration-200">
-                    <Image src="/icons/check.svg" alt="Checkmark" width={16} height={16} className="mt-1 mr-2 flex-shrink-0" />
-                    <span className="text-xs text-gray-300">Operações completas de importação e exportação</span>
-                  </li>
-                  <li className="bg-[#1a2338] p-2 rounded-lg flex items-start border border-[#2a3448] hover:border-[#d4af37] hover:transform hover:translate-x-1 transition-all duration-200">
-                    <Image src="/icons/check.svg" alt="Checkmark" width={16} height={16} className="mt-1 mr-2 flex-shrink-0" />
-                    <span className="text-xs text-gray-300">Gestão documental e análise de parametrização</span>
-                  </li>
-                </ul>
-                <Link href="/solucoes" className="mt-2 inline-block text-[#d4af37] hover:underline text-sm">Ver mais soluções →</Link>
-              </div>
-            </div>
-
-            {/* Card 3 - Gestão de Supply Chain Integrado */}
-            <div className="bg-[#141c2f] rounded-xl border border-[#2a3448] overflow-hidden shadow-xl hover:border-[#d4af37] hover:shadow-2xl transition-all duration-300">
-              <div className="p-4">
-                <div className="w-14 h-14 rounded-full bg-[#0a0f1d] border-2 border-[#d4af37] flex items-center justify-center mb-3">
-                  <Image src="/icons/supply-chain.svg" alt="Ícone Supply Chain" width={28} height={28} />
-                </div>
-                <h3 className="text-2xl font-semibold mb-2 text-white">Gestão de Supply Chain Integrado</h3>
-                <p className="text-gray-300 mb-3 text-sm">
-                  Planejamento e otimização de toda a cadeia de suprimentos internacional, desde
-                  a identificação de fornecedores até a entrega ao cliente final, com foco em
-                  redução de custos, minimização de riscos e aumento de eficiência.
-                </p>
-                <ul className="space-y-2 mb-3">
-                  <li className="bg-[#1a2338] p-2 rounded-lg flex items-start border border-[#2a3448] hover:border-[#d4af37] hover:transform hover:translate-x-1 transition-all duration-200">
-                    <Image src="/icons/check.svg" alt="Checkmark" width={16} height={16} className="mt-1 mr-2 flex-shrink-0" />
-                    <span className="text-xs text-gray-300">Gestão integrada de fornecedores globais</span>
-                  </li>
-                  <li className="bg-[#1a2338] p-2 rounded-lg flex items-start border border-[#2a3448] hover:border-[#d4af37] hover:transform hover:translate-x-1 transition-all duration-200">
-                    <Image src="/icons/check.svg" alt="Checkmark" width={16} height={16} className="mt-1 mr-2 flex-shrink-0" />
-                    <span className="text-xs text-gray-300">Otimização de fluxos logísticos internacionais</span>
-                  </li>
-                  <li className="bg-[#1a2338] p-2 rounded-lg flex items-start border border-[#2a3448] hover:border-[#d4af37] hover:transform hover:translate-x-1 transition-all duration-200">
-                    <Image src="/icons/check.svg" alt="Checkmark" width={16} height={16} className="mt-1 mr-2 flex-shrink-0" />
-                    <span className="text-xs text-gray-300">Controle de inventário e planejamento de demanda</span>
-                  </li>
-                </ul>
-                <Link href="/solucoes" className="mt-2 inline-block text-[#d4af37] hover:underline text-sm">Ver mais soluções →</Link>
-              </div>
-            </div>
-            
-            {/* Card 4 - Tecnologia Aplicada à Competitividade */}
-            <div className="bg-[#141c2f] rounded-xl border border-[#2a3448] overflow-hidden shadow-xl hover:border-[#d4af37] hover:shadow-2xl transition-all duration-300">
-              <div className="p-4">
-                <div className="w-14 h-14 rounded-full bg-[#0a0f1d] border-2 border-[#d4af37] flex items-center justify-center mb-3">
-                  <Image src="/icons/tech.svg" alt="Ícone de Tecnologia" width={28} height={28} />
-                </div>
-                <h3 className="text-2xl font-semibold mb-2 text-white">Tecnologia Aplicada à Competitividade</h3>
-                <p className="text-gray-300 mb-3 text-sm">
-                  Implementação de soluções tecnológicas que automatizam processos e geram
-                  insights estratégicos para tomada de decisão baseada em dados. Nossa abordagem
-                  combina ferramentas tecnológicas com expertise humana.
-                </p>
-                <ul className="space-y-2 mb-3">
-                  <li className="bg-[#1a2338] p-2 rounded-lg flex items-start border border-[#2a3448] hover:border-[#d4af37] hover:transform hover:translate-x-1 transition-all duration-200">
-                    <Image src="/icons/check.svg" alt="Checkmark" width={16} height={16} className="mt-1 mr-2 flex-shrink-0" />
-                    <span className="text-xs text-gray-300">Automação de processos em comércio exterior</span>
-                  </li>
-                  <li className="bg-[#1a2338] p-2 rounded-lg flex items-start border border-[#2a3448] hover:border-[#d4af37] hover:transform hover:translate-x-1 transition-all duration-200">
-                    <Image src="/icons/check.svg" alt="Checkmark" width={16} height={16} className="mt-1 mr-2 flex-shrink-0" />
-                    <span className="text-xs text-gray-300">Integração de sistemas e plataformas globais</span>
-                  </li>
-                  <li className="bg-[#1a2338] p-2 rounded-lg flex items-start border border-[#2a3448] hover:border-[#d4af37] hover:transform hover:translate-x-1 transition-all duration-200">
-                    <Image src="/icons/check.svg" alt="Checkmark" width={16} height={16} className="mt-1 mr-2 flex-shrink-0" />
-                    <span className="text-xs text-gray-300">Análise de dados e inteligência de mercado</span>
-                  </li>
-                </ul>
-                <Link href="/solucoes" className="mt-2 inline-block text-[#d4af37] hover:underline text-sm">Ver mais soluções →</Link>
-              </div>
-            </div>
-            
-            {/* Card 5 - Compliance e Governança */}
-            <div className="bg-[#141c2f] rounded-xl border border-[#2a3448] overflow-hidden shadow-xl hover:border-[#d4af37] hover:shadow-2xl transition-all duration-300">
-              <div className="p-4">
-                <div className="w-14 h-14 rounded-full bg-[#0a0f1d] border-2 border-[#d4af37] flex items-center justify-center mb-3">
-                  <Image src="/icons/compliance-icon.svg" alt="Ícone de Compliance" width={28} height={28} />
-                </div>
-                <h3 className="text-2xl font-semibold mb-2 text-white">Compliance e Governança</h3>
-                <p className="text-gray-300 mb-3 text-sm">
-                  Implementação de estruturas de compliance e governança corporativa adaptadas
-                  a operações internacionais, garantindo conformidade com legislações locais
-                  e internacionais, reduzindo riscos regulatórios e reputacionais.
-                </p>
-                <ul className="space-y-2 mb-3">
-                  <li className="bg-[#1a2338] p-2 rounded-lg flex items-start border border-[#2a3448] hover:border-[#d4af37] hover:transform hover:translate-x-1 transition-all duration-200">
-                    <Image src="/icons/check.svg" alt="Checkmark" width={16} height={16} className="mt-1 mr-2 flex-shrink-0" />
-                    <span className="text-xs text-gray-300">Estruturação de programas de compliance internacional</span>
-                  </li>
-                  <li className="bg-[#1a2338] p-2 rounded-lg flex items-start border border-[#2a3448] hover:border-[#d4af37] hover:transform hover:translate-x-1 transition-all duration-200">
-                    <Image src="/icons/check.svg" alt="Checkmark" width={16} height={16} className="mt-1 mr-2 flex-shrink-0" />
-                    <span className="text-xs text-gray-300">Adequação a normas FCPA, UK Bribery Act e legislações locais</span>
-                  </li>
-                  <li className="bg-[#1a2338] p-2 rounded-lg flex items-start border border-[#2a3448] hover:border-[#d4af37] hover:transform hover:translate-x-1 transition-all duration-200">
-                    <Image src="/icons/check.svg" alt="Checkmark" width={16} height={16} className="mt-1 mr-2 flex-shrink-0" />
-                    <span className="text-xs text-gray-300">Gestão de riscos em operações multinacionais</span>
-                  </li>
-                </ul>
-                <Link href="/solucoes" className="mt-2 inline-block text-[#d4af37] hover:underline text-sm">Ver mais soluções →</Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* O Fator Humano na Nossa Atuação */}
-      <section className="section py-0 mb-32">
-        <div className="container mx-auto max-w-7xl px-4 pb-16">
-          <div className="bg-[#141c2f] rounded-lg border border-[#2a3448] overflow-hidden shadow-xl">
-            <div className="p-8 md:p-10">
-              <div className="section-heading mb-8">
-                <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-6">O Fator Humano</h2>
-                <p className="text-gray-300 text-center max-w-3xl mx-auto text-base">
-                  Nossa abordagem é fundamentada na combinação de expertise técnica com inteligência emocional. 
-                  Acreditamos que por trás de cada operação há pessoas, e compreender suas necessidades 
-                  é essencial para entregar resultados excepcionais.
-                </p>
-              </div>
+          {/* Blocos explicativos - O Fator Humano */}
+          <div className="mb-16">
+            <div className="bg-[#141c2f] rounded-lg border border-[#2a3448] overflow-hidden shadow-xl p-8">
+              <h2 className="text-3xl font-bold text-white text-center mb-8">O Fator Humano</h2>
+              <p className="text-gray-300 text-center max-w-3xl mx-auto text-base mb-10">
+                Nossa abordagem é fundamentada na combinação de expertise técnica com inteligência emocional. 
+                Acreditamos que por trás de cada operação há pessoas, e compreender suas necessidades 
+                é essencial para entregar resultados excepcionais.
+              </p>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-10">
-                <div className="bg-[#0a0f1d] p-5 rounded-lg border border-[#2a3448] hover:border-[#d4af37] transition-colors duration-300 shadow-md card-hover-effect">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <div className="bg-[#0a0f1d] p-5 rounded-lg border border-[#2a3448] hover:border-[#d4af37] transition-colors duration-300 shadow-md">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 rounded-full bg-[#141c2f] border border-[#d4af37] flex items-center justify-center mr-4">
                       <Image src="/icons/team.svg" alt="Ícone de Equipe" width={24} height={24} />
@@ -281,7 +102,7 @@ export default function HomePage() {
                   </p>
                 </div>
                 
-                <div className="bg-[#0a0f1d] p-5 rounded-lg border border-[#2a3448] hover:border-[#d4af37] transition-colors duration-300 shadow-md card-hover-effect">
+                <div className="bg-[#0a0f1d] p-5 rounded-lg border border-[#2a3448] hover:border-[#d4af37] transition-colors duration-300 shadow-md">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 rounded-full bg-[#141c2f] border border-[#d4af37] flex items-center justify-center mr-4">
                       <Image src="/icons/handshake.svg" alt="Ícone de Parceria" width={24} height={24} />
@@ -294,7 +115,7 @@ export default function HomePage() {
                   </p>
                 </div>
                 
-                <div className="bg-[#0a0f1d] p-5 rounded-lg border border-[#2a3448] hover:border-[#d4af37] transition-colors duration-300 shadow-md card-hover-effect">
+                <div className="bg-[#0a0f1d] p-5 rounded-lg border border-[#2a3448] hover:border-[#d4af37] transition-colors duration-300 shadow-md">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 rounded-full bg-[#141c2f] border border-[#d4af37] flex items-center justify-center mr-4">
                       <Image src="/icons/culture.svg" alt="Ícone de Cultura" width={24} height={24} />
@@ -308,6 +129,35 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Pilares de Atuação em mini-cards */}
+          <div className="mb-16">
+            <h2 className="text-3xl font-semibold mb-6 text-[#d4af37]">Pilares da Nossa Atuação</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {keyPoints.map((point, index) => (
+                <div 
+                  key={index}
+                  className="bg-[#141c2f] p-4 rounded-lg border border-[#2a3448] shadow-md hover:border-[#d4af37] hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="flex items-start mb-2">
+                    <Image src={point.icon} alt={point.title} width={20} height={20} className="mt-1 mr-2 flex-shrink-0" />
+                    <h4 className="text-gray-200 font-semibold">{point.title}</h4>
+                  </div>
+                  <p className="text-gray-400 text-sm pl-7">{point.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Botão para Ecossistema */}
+          <div className="text-center mb-16">
+            <Link 
+              href="/ecossistema" 
+              className="inline-block bg-[#d4af37] hover:bg-[#b8941f] text-black font-bold py-3 px-8 rounded-lg transition-colors duration-300 text-lg"
+            >
+              Conheça Nosso Ecossistema Completo
+            </Link>
           </div>
         </div>
       </section>

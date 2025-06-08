@@ -5,7 +5,7 @@ import Header from './Header/index';
 import Footer from './Footer/index';
 import Sidebar from './Sidebar/index';
 import WhatsAppButton from '../layout/WhatsAppButton';
-import ChatWidget from '../ChatWidget';
+import ChatWidget from '../layout/ChatWidget';
 import Ticker from './Ticker';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
