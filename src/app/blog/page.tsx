@@ -4,8 +4,31 @@ import Link from 'next/link';
 import MainLayout from '../../components/layout/MainLayout';
 
 export const metadata = {
-  title: 'Blog | OLV Internacional',
-  description: 'Conteúdo especializado sobre comércio exterior, estratégia, operações internacionais e soluções para PMEs.'
+  title: 'Blog sobre Comércio Exterior | Conteúdo Especializado para Importadores e Exportadores',
+  description: 'Artigos e guias práticos sobre importação, exportação, logística internacional e supply chain. Aprenda com especialistas como operar no mercado global.',
+  keywords: [
+    'Blog de Comércio Exterior',
+    'Guia de Importação para Iniciantes',
+    'Como Exportar do Brasil',
+    'Tendências Logística Internacional',
+    'Estratégias de Redução de Custos em Importação',
+    'Planejamento Tributário Comex',
+    'Compliance em Exportação',
+    'Dicas para Importadores',
+    'Análise de Mercado Internacional',
+    'Exportação para PMEs'
+  ],
+  openGraph: {
+    title: 'Blog OLV Internacional | Conteúdo Especializado em Comércio Exterior',
+    description: 'Aprenda como importar, exportar e expandir seu negócio globalmente com nossos artigos, guias e análises de especialistas em comércio internacional.',
+    url: 'https://olv-site.vercel.app/blog',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Blog OLV Internacional | Comércio Exterior',
+    description: 'Artigos especializados sobre importação, exportação e logística internacional para empresas brasileiras.'
+  }
 };
 
 export default function BlogPage() {

@@ -4,8 +4,31 @@ import Link from 'next/link';
 import MainLayout from '../../components/layout/MainLayout';
 
 export const metadata = {
-  title: 'Radar 360 | OLV Internacional - Dados, Inteligência e Simuladores',
-  description: 'Acesse o Radar 360 da OLV Internacional: dados em tempo real, inteligência de mercado e simuladores para otimizar suas operações de Supply Chain, Comércio Exterior e Logística Internacional.'
+  title: 'Radar 360° | Sistema de Inteligência para Comércio Exterior',
+  description: 'Monitoramento em tempo real de variáveis regulatórias, tributárias, logísticas e cambiais para otimizar suas operações de importação e exportação com análises preditivas.',
+  keywords: [
+    'Inteligência de Mercado para Exportação',
+    'Monitoramento de Comércio Exterior',
+    'Sistema de Alerta para Importadores',
+    'Análise de Mercado Internacional',
+    'Compliance em Tempo Real',
+    'Monitoramento Tributário para Importação',
+    'Radar SISCOMEX Inteligente',
+    'Acompanhamento de Operações Internacionais',
+    'Previsão de Riscos em Comércio Exterior',
+    'Dados Estratégicos para Exportadores'
+  ],
+  openGraph: {
+    title: 'Radar 360° | Inteligência para Comércio Exterior | OLV Internacional',
+    description: 'Sistema de monitoramento e inteligência que antecipa riscos e identifica oportunidades para suas operações de importação e exportação.',
+    url: 'https://olv-site.vercel.app/radar360',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Radar 360° | OLV Internacional',
+    description: 'Monitore em tempo real todas as variáveis que afetam suas operações de importação e exportação.'
+  }
 };
 
 export default function Radar360Page() {

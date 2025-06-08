@@ -4,8 +4,32 @@ import Image from 'next/image';
 import MainLayout from '../../components/layout/MainLayout';
 
 export const metadata = {
-  title: 'Soluções | OLV Internacional',
-  description: 'Conheça as soluções de consultoria em comércio exterior e gestão empresarial da OLV Internacional.'
+  title: 'Soluções Completas em Comércio Exterior | OLV Internacional',
+  description: 'Consultoria especializada em importação, exportação, logística internacional e planejamento tributário. Transforme desafios em oportunidades no mercado global.',
+  keywords: [
+    'Soluções Completas em Comércio Exterior',
+    'Consultoria para Radar SISCOMEX',
+    'Reduza Erros com nossa Consultoria',
+    'Importação Sem Burocracia',
+    'Planejamento Tributário Comex',
+    'Abra sua Importadora',
+    'Importar com Redução Fiscal',
+    'Exportar com Lucro Real',
+    'Logística 3PL para Exportação',
+    'Montamos sua Operação Comex',
+    'Exportação Sem Erros'
+  ],
+  openGraph: {
+    title: 'Soluções em Comércio Exterior para PMEs | OLV Internacional',
+    description: 'Consultoria especializada em importação, exportação e logística internacional. Do planejamento à execução, simplificamos o comércio exterior para sua empresa.',
+    url: 'https://olv-site.vercel.app/solucoes',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Soluções em Comércio Exterior | OLV Internacional',
+    description: 'Importação, exportação e logística internacional para PMEs brasileiras. Consultoria completa para seu negócio global.'
+  }
 };
 
 export default function SolucoesPage() {

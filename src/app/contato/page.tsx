@@ -4,8 +4,31 @@ import Link from 'next/link';
 import MainLayout from '../../components/layout/MainLayout';
 
 export const metadata = {
-  title: 'Contato | OLV Internacional',
-  description: 'Entre em contato com a OLV Internacional. Nossa equipe está pronta para oferecer soluções personalizadas para sua empresa.'
+  title: 'Contato | Consultoria Especializada em Comércio Exterior | OLV Internacional',
+  description: 'Entre em contato com nossos especialistas em importação, exportação e logística internacional. Solicite uma análise gratuita para sua operação de comércio exterior.',
+  keywords: [
+    'Consultoria em Comércio Exterior',
+    'Contato Especialistas em Importação',
+    'Consultoria Radar SISCOMEX',
+    'Ajuda para Exportar',
+    'Consultoria em Importação',
+    'Falar com Especialista em Comex',
+    'Assessoria para Importadores',
+    'Suporte em Exportação',
+    'Consultoria Aduaneira',
+    'Planejamento Tributário para Importação'
+  ],
+  openGraph: {
+    title: 'Entre em Contato | OLV Internacional',
+    description: 'Fale com especialistas em comércio exterior, importação, exportação e logística internacional. Solicite uma análise personalizada para seu negócio.',
+    url: 'https://olv-site.vercel.app/contato',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contato | OLV Internacional',
+    description: 'Fale com especialistas em comércio exterior. Consultoria para importação e exportação.'
+  }
 };
 
 export default function ContatoPage() {

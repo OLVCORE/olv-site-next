@@ -4,8 +4,31 @@ import Link from 'next/link';
 import MainLayout from '../../components/layout/MainLayout';
 
 export const metadata = {
-  title: 'Ecossistema | OLV Internacional',
-  description: 'O Ecossistema OLV Corp integra estratégia, operação e resultado, capacitando PMEs com acesso global.'
+  title: 'Ecossistema OLV | Soluções Integradas para Comércio Global',
+  description: 'O Ecossistema OLV integra 11 empresas especializadas em comércio exterior, supply chain, inovação e desenvolvimento de negócios internacionais para PMEs brasileiras.',
+  keywords: [
+    'Ecossistema de Negócios Internacionais',
+    'Soluções Integradas em Comércio Exterior',
+    'Consultoria Especializada em Exportação',
+    'Supply Chain Internacional',
+    'Desenvolvimento de Negócios Globais',
+    'Tecnologia para Comércio Exterior',
+    'Planejamento Estratégico Internacional',
+    'Gestão de Operações Globais',
+    'Empresas de Logística Internacional',
+    'Inovação em Comércio Exterior'
+  ],
+  openGraph: {
+    title: 'Ecossistema OLV | Soluções Integradas para Comércio Global',
+    description: 'Conheça as empresas do Ecossistema OLV que trabalham de forma integrada para oferecer soluções completas em comércio exterior e negócios internacionais.',
+    url: 'https://olv-site.vercel.app/ecossistema',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Ecossistema OLV Internacional',
+    description: 'Empresas especializadas em comércio exterior, supply chain e desenvolvimento de negócios internacionais para PMEs brasileiras.'
+  }
 };
 
 export default function EcossistemaPage() {

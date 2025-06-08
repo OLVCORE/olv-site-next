@@ -4,8 +4,31 @@ import Link from 'next/link';
 import MainLayout from '../../components/layout/MainLayout';
 
 export const metadata = {
-  title: 'Sobre | OLV Internacional',
-  description: 'Conheça a história, missão, visão e valores da OLV Internacional.'
+  title: 'Sobre a OLV Internacional | Especialistas em Comércio Exterior',
+  description: 'Conheça a OLV Internacional: 35 anos de experiência transformando a maneira como PMEs acessam mercados globais com consultoria especializada e tecnologia avançada.',
+  keywords: [
+    'Especialistas em Comex',
+    'Consultoria em Comércio Exterior',
+    'Consultoria Customizada por Projeto',
+    'Comex sem Mistérios',
+    'Planeje sua Exportação',
+    'Supply Chain Internacional',
+    'Consultoria para PMEs',
+    'Importação e Exportação Brasil',
+    'Experiência em Comex',
+    'Logística Internacional Consultoria'
+  ],
+  openGraph: {
+    title: 'Sobre a OLV Internacional | Especialistas em Comércio Exterior',
+    description: 'Conheça nossa história, missão e valores. 35 anos de experiência ajudando empresas brasileiras a conquistarem o mercado global.',
+    url: 'https://olv-site.vercel.app/sobre',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sobre a OLV Internacional',
+    description: 'Conheça nossa história, missão e valores. Consultoria especializada em comércio exterior para PMEs brasileiras.'
+  }
 };
 
 export default function Sobre() {

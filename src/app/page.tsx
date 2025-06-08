@@ -2,6 +2,34 @@ import MainLayout from '../components/layout/MainLayout';
 import Image from 'next/image';
 import Link from 'next/link';
 
+export const metadata = {
+  title: 'OLV Internacional | Consultoria Especializada em Comércio Exterior',
+  description: 'Transforme sua operação internacional com nossa inteligência estratégica. Do Radar SISCOMEX ao Embarque. Da Estratégia à Execução. Da Burocracia ao Resultado.',
+  keywords: [
+    'Consultoria em Exportação',
+    'Especialistas em Comex',
+    'Como Exportar Legalmente',
+    'Exportação para Iniciantes',
+    'Suporte do Radar ao Embarque',
+    'Exportação Sem Erros',
+    'Passo a Passo da Exportação',
+    'Reduza Custos de Importação',
+    'Abra sua Importadora',
+    'Planejamento Tributário Comex'
+  ],
+  openGraph: {
+    title: 'OLV Internacional | Soluções Completas em Comércio Exterior',
+    description: 'Transforme sua operação internacional com nossa inteligência estratégica. Especialistas em importação, exportação e logística internacional para PMEs.',
+    url: 'https://olv-site.vercel.app/',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'OLV Internacional | Soluções em Comércio Exterior',
+    description: 'Ecossistema digital para exportadores e importadores no Brasil. Consultoria especializada para PMEs.'
+  }
+};
+
 export default function HomePage() {
   // Os pilares de atuação da OLV Internacional
   const keyPoints = [
