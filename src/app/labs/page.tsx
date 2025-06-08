@@ -4,9 +4,31 @@ import Link from 'next/link';
 import PlatformLayout from '../../components/platforms/PlatformLayout';
 
 export const metadata = {
-  title: 'LABS - OLV Internacional | Centro de Inovação em Comércio Internacional',
-  description: 'LABS é o centro de inovação da OLV Internacional dedicado a pesquisar, desenvolver e implementar tecnologias emergentes que transformam as operações de comércio exterior.',
-  keywords: 'inovação comércio exterior, tecnologias emergentes, blockchain exportação, inteligência artificial comex, transformação digital internacional',
+  title: 'LABS | Inovação Tecnológica para Comércio Internacional',
+  description: 'Transforme suas operações globais com blockchain, inteligência artificial e IoT. Soluções tecnológicas inovadoras para eficiência e competitividade no comércio exterior.',
+  keywords: [
+    'Tecnologia para Comércio Exterior',
+    'Blockchain em Exportação',
+    'Inteligência Artificial na Cadeia Logística',
+    'Inovação em Supply Chain Internacional',
+    'Rastreabilidade de Produtos Exportados',
+    'Automação de Processos Aduaneiros',
+    'IoT em Logística Internacional',
+    'Transformação Digital no Comércio Global',
+    'Soluções Tecnológicas para Importadores',
+    'Redução de Custos com Tecnologia em Comex'
+  ],
+  openGraph: {
+    title: 'LABS | Inovação Tecnológica para Comércio Internacional | OLV Internacional',
+    description: 'Tecnologias emergentes aplicadas ao comércio exterior: blockchain, IA, IoT e transformação digital para operações globais mais eficientes.',
+    url: 'https://olv-site.vercel.app/labs',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'LABS | Inovação em Comércio Exterior',
+    description: 'Tecnologias avançadas aplicadas para transformar operações de comércio internacional.'
+  }
 };
 
 export default function LabsPage() {

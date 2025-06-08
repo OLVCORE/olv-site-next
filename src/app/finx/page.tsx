@@ -4,9 +4,31 @@ import Link from 'next/link';
 import PlatformLayout from '../../components/platforms/PlatformLayout';
 
 export const metadata = {
-  title: 'FINX - OLV Internacional | Soluções Financeiras para Comércio Internacional',
-  description: 'FINX é a plataforma financeira da OLV Internacional que oferece soluções para câmbio, pagamentos internacionais, financiamento e gestão de risco em operações de comércio exterior.',
-  keywords: 'finanças internacionais, câmbio, pagamentos internacionais, financiamento comércio exterior, hedging, gestão financeira global',
+  title: 'FINX | Soluções Financeiras para Importação e Exportação',
+  description: 'Reduza custos financeiros, proteja-se contra riscos cambiais e otimize o fluxo de caixa em operações internacionais com soluções financeiras especializadas.',
+  keywords: [
+    'Financiamento para Importação',
+    'Hedge Cambial para Exportadores',
+    'Redução de Custos em Câmbio',
+    'ACC e ACE para Exportação',
+    'FINIMP Melhores Taxas',
+    'Proteção Cambial para Empresas',
+    'Otimização de Pagamentos Internacionais',
+    'Gestão de Risco em Comércio Exterior',
+    'Redução de Custos Financeiros em Importação',
+    'Financiamento para Expansão Internacional'
+  ],
+  openGraph: {
+    title: 'FINX | Soluções Financeiras para Comércio Internacional | OLV Internacional',
+    description: 'Maximize resultados financeiros em operações globais com estratégias personalizadas de financiamento, hedge cambial e otimização de fluxo de caixa.',
+    url: 'https://olv-site.vercel.app/finx',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'FINX | Finanças para Comércio Exterior',
+    description: 'Soluções financeiras especializadas para empresas que operam no mercado internacional.'
+  }
 };
 
 export default function FinxPage() {

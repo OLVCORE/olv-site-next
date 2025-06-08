@@ -4,9 +4,31 @@ import Link from 'next/link';
 import PlatformLayout from '../../components/platforms/PlatformLayout';
 
 export const metadata = {
-  title: 'CONNECTA - OLV Internacional | Conectando Negócios Globais',
-  description: 'A plataforma CONNECTA da OLV Internacional facilita conexões com fornecedores, parceiros estratégicos e soluções para comércio internacional e logística global.',
-  keywords: 'rede fornecedores internacionais, parceiros comércio exterior, supply chain global, sourcing internacional, conexão mercado global',
+  title: 'CONNECTA | Rede de Parceiros e Fornecedores Internacionais',
+  description: 'Conecte-se com parceiros estratégicos globais para importação, exportação e distribuição. Reduza riscos e acelere sua expansão internacional com a rede qualificada CONNECTA.',
+  keywords: [
+    'Parceiros Internacionais para Exportação',
+    'Fornecedores Confiáveis para Importação',
+    'Rede Global de Distribuidores',
+    'Parceiros Estratégicos em Comércio Exterior',
+    'Networking Internacional para Empresas',
+    'Encontrar Distribuidores no Exterior',
+    'Matchmaking Empresarial Internacional',
+    'Verificação de Fornecedores Globais',
+    'Expansão Internacional com Parceiros Locais',
+    'Conectar com Empresas Internacionais'
+  ],
+  openGraph: {
+    title: 'CONNECTA | Rede de Parceiros e Fornecedores Internacionais | OLV Internacional',
+    description: 'Acesse uma rede qualificada de parceiros globais e expanda seus negócios internacionalmente com menor risco e maior agilidade.',
+    url: 'https://olv-site.vercel.app/connecta',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'CONNECTA | Rede de Parceiros Globais',
+    description: 'Conecte-se com parceiros estratégicos para expandir seu negócio internacionalmente.'
+  }
 };
 
 export default function ConnectaPage() {

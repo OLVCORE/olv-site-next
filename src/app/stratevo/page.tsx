@@ -4,9 +4,31 @@ import Link from 'next/link';
 import PlatformLayout from '../../components/platforms/PlatformLayout';
 
 export const metadata = {
-  title: 'STRATEVO - OLV Internacional | Inteligência para Decidir. Estratégia para Crescer.',
-  description: 'STRATEVO é a plataforma de inteligência de mercado que fornece análises aprofundadas para tomada de decisão estratégica no comércio internacional.',
-  keywords: 'inteligência de mercado, análise estratégica, comércio internacional, dados de mercado, insights de negócios, estratégia empresarial',
+  title: 'STRATEVO | Inteligência de Mercado para Expansão Internacional',
+  description: 'Plataforma de inteligência estratégica para empresas que desejam expandir globalmente. Análises de mercado, dados competitivos e insights para decisões mais assertivas.',
+  keywords: [
+    'Inteligência de Mercado Internacional',
+    'Análise de Mercados Globais',
+    'Dados para Expansão Internacional',
+    'Pesquisa de Mercado Exportação',
+    'Estratégia de Entrada em Mercados',
+    'Business Intelligence Comércio Exterior',
+    'Análise Competitiva Internacional',
+    'Identificação de Oportunidades Globais',
+    'Consultoria Estratégica Exportação',
+    'Redução de Riscos em Mercados Internacionais'
+  ],
+  openGraph: {
+    title: 'STRATEVO | Inteligência para Expansão Internacional | OLV Internacional',
+    description: 'Dados e análises estratégicas para tomar decisões assertivas sobre expansão internacional, novos mercados e operações globais.',
+    url: 'https://olv-site.vercel.app/stratevo',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'STRATEVO | Inteligência de Mercado',
+    description: 'Dados e análises para decisões estratégicas no comércio internacional.'
+  }
 };
 
 export default function StratevoPage() {

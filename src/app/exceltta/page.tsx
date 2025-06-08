@@ -4,9 +4,31 @@ import Link from 'next/link';
 import PlatformLayout from '../../components/platforms/PlatformLayout';
 
 export const metadata = {
-  title: 'EXCELTTA - OLV Internacional | Excelência na Gestão de Processos',
-  description: 'EXCELTTA é a plataforma de gestão de processos da OLV Internacional que otimiza fluxos de trabalho, reduz ineficiências e aumenta a produtividade em operações internacionais.',
-  keywords: 'gestão de processos, fluxos de trabalho, otimização de processos, automação, produtividade, comércio internacional, BPM',
+  title: 'EXCELTTA | Otimização de Processos para Comércio Exterior',
+  description: 'Plataforma de gestão e automação de processos para empresas importadoras e exportadoras. Reduza custos, minimize erros e aumente a eficiência nas operações internacionais.',
+  keywords: [
+    'Automação de Processos em Comércio Exterior',
+    'Otimização de Fluxos de Importação',
+    'Gestão Documental Aduaneira',
+    'Redução de Erros em Exportação',
+    'Eficiência em Operações Internacionais',
+    'BPM para Comércio Exterior',
+    'Digitalização de Processos Aduaneiros',
+    'Automação de Compliance Internacional',
+    'Mapeamento de Processos de Importação',
+    'Dashboards para Gestão de Comércio Exterior'
+  ],
+  openGraph: {
+    title: 'EXCELTTA | Otimização de Processos para Comércio Exterior | OLV Internacional',
+    description: 'Reduza custos e erros, automatize fluxos e aumente a eficiência operacional em suas operações internacionais.',
+    url: 'https://olv-site.vercel.app/exceltta',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'EXCELTTA | Otimização de Processos',
+    description: 'Automação e digitalização de processos para operações de comércio exterior mais eficientes.'
+  }
 };
 
 export default function ExcelttaPage() {
