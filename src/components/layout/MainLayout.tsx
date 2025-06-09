@@ -19,14 +19,14 @@ interface MainLayoutProps {
   children: React.ReactNode;
   className?: string;
   isPlatformPage?: boolean;
-  locale: Locale;
+  locale?: Locale;
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({ 
   children, 
   className = '',
   isPlatformPage = false,
-  locale
+  locale = 'pt-BR'
 }) => {
   const [showFooter, setShowFooter] = useState(false);
   const [isPageLoaded, setIsPageLoaded] = useState(false);
