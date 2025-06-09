@@ -4,31 +4,23 @@ import { i18n } from './config';
 export type Locale = 'pt-BR' | 'en-US'
 
 /** CARREGA AS TRADUÇÕES CORRESPONDENTES AO LOCALE */
-export async function getTranslation(key: string, locale: Locale = 'pt-BR') {
-  // Exemplo mínimo: importe seus JSONs de tradução ou defina inline
+export function getTranslation(key: string, locale: Locale): string {
+  // Substitua esses imports pelos caminhos dos seus arquivos JSON de tradução, se diferente
   const translations = {
-    'pt-BR': await import('./dictionaries/pt-BR.json'),
-    'en-US': await import('./dictionaries/en-US.json'),
-  }
-  
-  // Get the translation object for the locale
-  const dict = translations[locale] || translations['pt-BR'];
-  
-  // Access the nested key (e.g., 'seo.home.title')
-  const keys = key.split('.');
-  let result = dict;
-  
-  for (const k of keys) {
-    if (result && result.default) {
-      result = result.default[k];
-    } else {
-      result = result?.[k];
+    'pt-BR': {
+      'seo.home.title': 'OLV Internacional – Ecossistema Estratégico',
+      'seo.home.description': 'Soluções integradas de importação, exportação…',
+      // …ou importe via: await import('./locales/pt-BR.json')
+    },
+    'en-US': {
+      'seo.home.title': 'OLV International – Strategic Ecosystem',
+      'seo.home.description': 'Integrated import, export solutions…',
+      // …ou importe via: await import('./locales/en-US.json')
     }
-    
-    if (!result) break;
-  }
-  
-  return result || key; // Fallback to the key if translation not found
+  };
+
+  const dict = translations[locale] || translations['pt-BR'];
+  return dict[key] || key;
 }
 
 export { i18n };
