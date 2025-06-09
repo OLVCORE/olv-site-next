@@ -1,7 +1,7 @@
 import MainLayout from '../../components/layout/MainLayout';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getTranslation, Locale } from '@/i18n';
+import { getTranslation, Locale } from '../../i18n';
 
 interface PageProps {
   params: {
@@ -13,8 +13,8 @@ export async function generateMetadata({ params }: PageProps) {
   const { locale } = params;
   
   return {
-    title: getTranslation('seo.home.title', locale),
-    description: getTranslation('seo.home.description', locale),
+    title: getTranslation('seo.home.title'),
+    description: getTranslation('seo.home.description'),
     keywords: [
       'Consultoria em Exportação',
       'Especialistas em Comex',
@@ -28,15 +28,15 @@ export async function generateMetadata({ params }: PageProps) {
       'Planejamento Tributário Comex'
     ],
     openGraph: {
-      title: getTranslation('seo.home.title', locale),
-      description: getTranslation('seo.home.description', locale),
+      title: getTranslation('seo.home.title'),
+      description: getTranslation('seo.home.description'),
       url: `https://olv-site-next.app/${locale}`,
       type: 'website'
     },
     twitter: {
       card: 'summary_large_image',
-      title: getTranslation('seo.home.title', locale),
-      description: getTranslation('seo.home.description', locale)
+      title: getTranslation('seo.home.title'),
+      description: getTranslation('seo.home.description')
     },
     alternates: {
       canonical: 'https://olv-site-next.app/',
