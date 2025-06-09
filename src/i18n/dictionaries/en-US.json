@@ -1,0 +1,16 @@
+{
+  "common": {
+    "header": {
+      "home": "Home",
+      "about": "About",
+      "solutions": "Solutions",
+      "ecosystem": "Ecosystem",
+      "contact": "Contact"
+    },
+    "footer": {
+      "rights": "All rights reserved",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Use"
+    }
+  }
+} 

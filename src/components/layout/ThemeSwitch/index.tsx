@@ -6,18 +6,11 @@ import { FiSun, FiMoon } from 'react-icons/fi';
 const ThemeSwitch: React.FC = () => {
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [isMounted, setIsMounted] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
-    
-    // Verificar se é dispositivo móvel
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
     
     // Recuperar tema do localStorage
     const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
@@ -27,6 +20,15 @@ const ThemeSwitch: React.FC = () => {
     } else {
       document.body.classList.add('theme-dark');
     }
+    
+    // Detectar se é dispositivo móvel
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    // Verificar no carregamento e no redimensionamento
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
     
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
@@ -48,33 +50,60 @@ const ThemeSwitch: React.FC = () => {
   if (!isMounted) return null;
 
   return (
-    <button 
-      onClick={toggleTheme}
-      aria-label={`Mudar para modo ${theme === 'light' ? 'escuro' : 'claro'}`}
-      className={`
-        fixed z-50 flex items-center justify-center transition-all duration-300 ease-in-out
-        ${isMobile ? 'bottom-20 right-4 top-auto' : 'top-4 right-4'}
-        w-10 h-10 rounded-full bg-opacity-80 backdrop-blur-sm
-        ${theme === 'light' 
-          ? 'bg-gray-200 text-gray-800 hover:bg-gray-300' 
-          : 'bg-gray-800 text-gray-200 hover:bg-gray-700'}
-        shadow-lg border-2 border-opacity-20
-        ${theme === 'light' ? 'border-gray-400' : 'border-gray-600'}
-        hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2
-        ${theme === 'light' ? 'focus:ring-blue-400' : 'focus:ring-yellow-500'}
-      `}
+    <div 
+      className="theme-switch relative"
+      onMouseEnter={() => !isMobile && setIsHovered(true)}
+      onMouseLeave={() => !isMobile && setIsHovered(false)}
+      onClick={() => isMobile && setIsHovered(false)}
     >
-      {theme === 'light' ? (
-        <FiMoon className="w-5 h-5" />
-      ) : (
-        <FiSun className="w-5 h-5" />
-      )}
+      <button 
+        onClick={toggleTheme}
+        aria-label={`Mudar para modo ${theme === 'light' ? 'escuro' : 'claro'}`}
+        className={`
+          relative flex items-center justify-center
+          w-11 h-11 rounded-full
+          transition-all duration-300 ease-in-out
+          shadow-md
+          ${theme === 'light' 
+            ? 'bg-gradient-to-br from-amber-300 to-orange-400 text-amber-800' 
+            : 'bg-gradient-to-br from-indigo-800 via-blue-900 to-violet-900 text-indigo-100'}
+        `}
+        title={`Modo ${theme === 'light' ? 'escuro' : 'claro'}`}
+      >
+        {/* Icon */}
+        <span className="relative z-10">
+          {theme === 'light' ? (
+            <FiMoon className="w-5 h-5 text-gray-800" />
+          ) : (
+            <FiSun className="w-5 h-5 text-yellow-300" />
+          )}
+        </span>
+
+        {/* Border ring */}
+        <span className={`
+          absolute inset-0 rounded-full 
+          ring-1 ring-inset
+          ${theme === 'light' 
+            ? 'ring-amber-500/30' 
+            : 'ring-blue-500/30'}
+        `}></span>
+      </button>
       
-      {/* Tooltip para desktop */}
-      <span className="absolute right-full mr-2 whitespace-nowrap bg-gray-800 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none hidden md:block">
-        Modo {theme === 'light' ? 'escuro' : 'claro'}
-      </span>
-    </button>
+      {/* Tooltip */}
+      {isHovered && (
+        <div className="absolute z-20 -bottom-8 left-1/2 transform -translate-x-1/2 flex items-center justify-center">
+          <div className={`
+            py-1 px-2 text-xs font-medium rounded-md
+            bg-gray-800 text-white
+            shadow-lg border border-gray-700
+            whitespace-nowrap
+            w-max
+          `}>
+            {theme === 'light' ? 'Mudar para escuro' : 'Mudar para claro'}
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 

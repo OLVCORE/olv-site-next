@@ -51,6 +51,62 @@ const platforms = [
   }
 ];
 
+// Adicionando estilos para tooltip no footer
+const footerTooltipStyles = `
+  @keyframes pulse {
+    0% { box-shadow: 0 0 5px rgba(194, 167, 78, 0.6); }
+    50% { box-shadow: 0 0 15px rgba(194, 167, 78, 0.8); }
+    100% { box-shadow: 0 0 5px rgba(194, 167, 78, 0.6); }
+  }
+
+  .platform-tooltip {
+    position: absolute;
+    left: 100%;
+    margin-left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 50;
+    background-color: #111;
+    border: 1px solid #c2a74e;
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    animation: pulse 2s infinite;
+    width: max-content;
+    max-width: 250px;
+    word-wrap: break-word;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 768px) {
+    .platform-tooltip {
+      position: absolute;
+      left: 0;
+      top: 100%;
+      margin-left: 0;
+      margin-top: 5px;
+      transform: none;
+      width: max-content;
+      max-width: calc(100vw - 40px);
+      z-index: 100;
+    }
+    
+    .platform-tooltip::after {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: 15px;
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 5px solid #111;
+    }
+  }
+`;
+
 const Footer: React.FC = () => {
   const [showFooter, setShowFooter] = useState(false);
   const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
@@ -101,6 +157,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer className={`footer-reveal ${showFooter ? 'reveal' : ''}`}>
+      <style dangerouslySetInnerHTML={{ __html: footerTooltipStyles }} />
       <div className="footer-container max-w-7xl mx-auto px-4 py-12 mt-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Coluna 1 - Sobre */}
@@ -157,7 +214,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Coluna 3 - Plataformas */}
-          <div>
+          <div className="overflow-visible">
             <h3 className="text-xl font-bold mb-4 text-blue-400">Nossas Plataformas</h3>
             <ul className="space-y-2">
               {platforms.map(platform => (
@@ -176,7 +233,7 @@ const Footer: React.FC = () => {
                     {/* Nome da plataforma */}
                     <Link 
                       href={platform.url} 
-                      className="text-white hover:text-[#d4af37] transition-colors border-b border-transparent hover:border-[#d4af37] inline-block"
+                      className="text-white hover:text-[#d4af37] transition-colors border-b border-transparent hover:border-[#d4af37] inline-block hover:underline"
                     >
                       {platform.name}
                     </Link>
@@ -184,13 +241,7 @@ const Footer: React.FC = () => {
                   
                   {/* Tooltip */}
                   {activeTooltip === platform.id && (
-                    <div className="absolute left-auto top-1/2 transform -translate-y-1/2 ml-[0.3cm] bg-blue-900 text-white text-xs p-2 rounded shadow-lg z-10 w-max max-w-[250px] sidebar-tooltip" style={{
-                      opacity: 1,
-                      visibility: 'visible',
-                      boxShadow: '0 0 15px rgba(212, 175, 55, 0.7)',
-                      border: '2px solid #d4af37',
-                      animation: 'tooltipGlow 2s infinite'
-                    }}>
+                    <div className="platform-tooltip">
                       {platform.description}
                     </div>
                   )}

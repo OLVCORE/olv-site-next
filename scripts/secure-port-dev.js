@@ -2,9 +2,10 @@ const { exec, execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = 3999;
+// Fixed port range to try
+const PORTS = [3999, 4000, 4001, 4002, 4003];
 
-// Verificar se todos os arquivos necessários existem
+// Verify if all required files exist
 function verifyRequiredFiles() {
   const requiredFiles = [
     'package.json',
@@ -26,7 +27,7 @@ function verifyRequiredFiles() {
     return false;
   }
   
-  // Verificar se o package.json contém a dependência next
+  // Verify if package.json contains the next dependency
   try {
     const packageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf-8'));
     if (!packageJson.dependencies || !packageJson.dependencies.next) {
@@ -38,17 +39,49 @@ function verifyRequiredFiles() {
     return false;
   }
   
-  // Verificar se o diretório ativo é olv-site-next
+  // Verify if the active directory is olv-site-next
   const currentDir = path.basename(process.cwd());
   if (currentDir !== 'olv-site-next') {
-    console.error(`❌ O diretório ativo deve ser olv-site-next, mas é ${currentDir}`);
-    return false;
+    console.warn(`⚠️ O diretório ativo deveria ser olv-site-next, mas é ${currentDir}`);
+    // Allow continuing even if directory name doesn't match
   }
   
   return true;
 }
 
-// Função principal
+// Simple function to find an available port
+function startWithPort(portIndex = 0) {
+  if (portIndex >= PORTS.length) {
+    console.error('❌ Nenhuma porta disponível entre', PORTS[0], 'e', PORTS[PORTS.length - 1]);
+    console.error('Por favor, encerre outros processos e tente novamente.');
+    process.exit(1);
+  }
+
+  const port = PORTS[portIndex];
+  console.log(`🔍 Tentando porta ${port}...`);
+  
+  const child = exec(`next dev -p ${port}`);
+  
+  // Forward output from child process to console
+  child.stdout.pipe(process.stdout);
+  child.stderr.pipe(process.stderr);
+  
+  // Handle error if port is already in use
+  child.stderr.on('data', (data) => {
+    if (data.includes('EADDRINUSE')) {
+      console.log(`⚠️ Porta ${port} já está em uso, tentando próxima...`);
+      child.kill();
+      startWithPort(portIndex + 1);
+    }
+  });
+  
+  // Handle process termination
+  process.on('SIGINT', () => {
+    child.kill('SIGINT');
+  });
+}
+
+// Main function
 (async () => {
   console.log('🔍 Verificando ambiente...');
   
@@ -58,7 +91,7 @@ function verifyRequiredFiles() {
   
   console.log('✅ Verificação de ambiente concluída com sucesso');
   
-  // Executar o script fix-encoding.js se existir
+  // Run fix-encoding.js script if it exists
   const fixEncodingPath = path.join(process.cwd(), 'scripts', 'fix-encoding.js');
   if (fs.existsSync(fixEncodingPath)) {
     console.log('🔧 Executando fix-encoding.js...');
@@ -70,21 +103,6 @@ function verifyRequiredFiles() {
     }
   }
   
-  console.log(`✅ Script de porta dinâmica criado com sucesso!`);
-  console.log(`🚀 Servidor Next.js iniciado com sucesso!`);
-  console.log(`🌐 Acesse o site pelo navegador:`);
-  console.log(`➡️ http://localhost:${PORT}/`);
-  console.log(`🧭 Projeto ativo: olv-site-next`);
-  console.log(`📁 Repositório Git: https://github.com/OLVCORE/olv-site`);
-  
-  const child = exec(`next dev -p ${PORT}`);
-  
-  // Encaminhar saída do processo filho para o console
-  child.stdout.pipe(process.stdout);
-  child.stderr.pipe(process.stderr);
-  
-  // Manipular encerramento do processo
-  process.on('SIGINT', () => {
-    child.kill('SIGINT');
-  });
+  console.log(`🔍 Buscando porta disponível...`);
+  startWithPort();
 })(); 
