@@ -22,12 +22,15 @@ export function middleware(request: NextRequest) {
     }
   }
 
-  // Redirect to the locale version of the URL
+  // Redirect to the locale version
   return NextResponse.redirect(
-    new URL(`/${locale}${pathname.startsWith('/') ? pathname : `/${pathname}`}`, request.url)
+    new URL(
+      `/${locale}${pathname === '/' ? '' : pathname}${request.nextUrl.search}`,
+      request.url
+    )
   );
 }
 
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|.*\\.).*)'],
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)'],
 }; 
