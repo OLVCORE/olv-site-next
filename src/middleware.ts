@@ -1,47 +1,33 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { match as matchLocale } from '@formatjs/intl-localematcher';
 import { i18n } from './i18n';
 
-function getLocale(request: NextRequest): string {
-  // Negotiator expects plain object so we need to transform headers
-  const negotiatorHeaders: Record<string, string> = {};
-  request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
-
-  // Use negotiator and intl-localematcher to get best locale
-  let languages = negotiatorHeaders['accept-language'];
-  if (!languages) return i18n.defaultLocale;
-  
-  const locales: string[] = i18n.locales;
-  
-  // Use negotiator and intl-localematcher to get best locale
-  try {
-    return matchLocale(languages.split(','), locales, i18n.defaultLocale);
-  } catch (error) {
-    return i18n.defaultLocale;
-  }
-}
-
 export function middleware(request: NextRequest) {
+  // Check if there is any supported locale in the pathname
   const pathname = request.nextUrl.pathname;
   
-  // Check if there is any supported locale in the pathname
-  const pathnameIsMissingLocale = i18n.locales.every(
-    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+  // Check if the pathname already has a locale
+  const pathnameHasLocale = i18n.locales.some(
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
-  
-  // Redirect if there is no locale
-  if (pathnameIsMissingLocale) {
-    const locale = getLocale(request);
-    
-    // e.g. incoming request is /products
-    // The new URL is now /en-US/products
-    return NextResponse.redirect(
-      new URL(`/${locale}${pathname.startsWith('/') ? pathname : `/${pathname}`}`, request.url)
-    );
+
+  if (pathnameHasLocale) return;
+
+  // Get locale from cookie or accept-language header
+  let locale = i18n.defaultLocale;
+  const acceptLanguage = request.headers.get('accept-language');
+  if (acceptLanguage) {
+    const preferredLocale = acceptLanguage.split(',')[0].split(';')[0].trim();
+    if (i18n.locales.includes(preferredLocale as any)) {
+      locale = preferredLocale;
+    }
   }
+
+  // Redirect to the locale version of the URL
+  return NextResponse.redirect(
+    new URL(`/${locale}${pathname.startsWith('/') ? pathname : `/${pathname}`}`, request.url)
+  );
 }
 
 export const config = {
-  // Matcher ignoring /_next/ and /api/
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|.*\\.).*)'],
 }; 
