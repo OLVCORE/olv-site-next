@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import MainLayout from '../../components/layout/MainLayout';
+import { getTranslation } from '@/i18n';
 
 export const metadata = {
   title: 'Termos de Uso | OLV Internacional',
@@ -9,9 +10,17 @@ export const metadata = {
   keywords: 'termos de uso, termos e condições, direitos autorais comércio exterior, propriedade intelectual, política de uso, responsabilidades, limitação de responsabilidade, consultoria importação, exportação, regras de uso'
 };
 
-export default function TermosPage() {
+interface PageProps {
+  params: {
+    locale: string;
+  };
+}
+
+export default function TermosPage({ params }: PageProps) {
+  const { locale = 'pt-BR' } = params || {};
+  
   return (
-    <MainLayout>
+    <MainLayout locale={locale}>
       <div className="main-content">
         {/* HERO DA PÁGINA TERMOS */}
         <section className="section hero">

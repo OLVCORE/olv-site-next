@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import MainLayout from '../../components/layout/MainLayout';
+import { getTranslation } from '@/i18n';
 
 export const metadata = {
   title: 'Ecossistema OLV | Soluções Integradas para Comércio Global',
@@ -31,7 +32,13 @@ export const metadata = {
   }
 };
 
-export default function EcossistemaPage() {
+interface PageProps {
+  params: { locale: string };
+}
+
+export default function EcossistemaPage({ params }: PageProps) {
+  const { locale = 'pt-BR' } = params || {};
+  
   // Dados das empresas do ecossistema
   const empresas = [
     {
@@ -191,7 +198,7 @@ export default function EcossistemaPage() {
   ];
 
   return (
-    <MainLayout>
+    <MainLayout locale={locale}>
       {/* Banner principal */}
       <section className="pt-8 pb-12 bg-[#0a0f1d]">
         <div className="container mx-auto max-w-7xl px-4">

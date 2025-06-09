@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import MainLayout from '../../components/layout/MainLayout';
+import { getTranslation } from '@/i18n';
 
 export const metadata = {
   title: 'Soluções Completas em Comércio Exterior | OLV Internacional',
@@ -32,7 +33,15 @@ export const metadata = {
   }
 };
 
-export default function SolucoesPage() {
+interface PageProps {
+  params: {
+    locale: string;
+  };
+}
+
+export default function SolucoesPage({ params }: PageProps) {
+  const { locale = 'pt-BR' } = params || {};
+  
   // Dados das soluções
   const solucoes = [
     {
@@ -122,7 +131,7 @@ export default function SolucoesPage() {
   ];
 
   return (
-    <MainLayout>
+    <MainLayout locale={locale}>
       {/* Banner principal */}
       <section className="pt-8 pb-12 bg-[#0a0f1d]">
         <div className="container mx-auto max-w-7xl px-4">

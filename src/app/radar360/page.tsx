@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import MainLayout from '../../components/layout/MainLayout';
+import { getTranslation } from '@/i18n';
 
 export const metadata = {
   title: 'Radar 360° | Sistema de Inteligência para Comércio Exterior',
@@ -31,7 +32,15 @@ export const metadata = {
   }
 };
 
-export default function Radar360Page() {
+interface PageProps {
+  params: {
+    locale: string;
+  };
+}
+
+export default function Radar360Page({ params }: PageProps) {
+  const { locale = 'pt-BR' } = params || {};
+  
   // Benefícios do Radar360
   const beneficios = [
     {
@@ -149,7 +158,7 @@ export default function Radar360Page() {
   ];
 
   return (
-    <MainLayout>
+    <MainLayout locale={locale}>
       {/* Banner principal */}
       <section className="pt-8 pb-12 bg-[#0a0f1d]">
         <div className="container mx-auto max-w-7xl px-4">

@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import MainLayout from '../../components/layout/MainLayout';
+import { getTranslation } from '@/i18n';
 
 export const metadata = {
   title: 'Sobre a OLV Internacional | Especialistas em Comércio Exterior',
@@ -31,7 +32,15 @@ export const metadata = {
   }
 };
 
-export default function Sobre() {
+interface PageProps {
+  params: {
+    locale: string;
+  };
+}
+
+export default function SobrePage({ params }: PageProps) {
+  const { locale = 'pt-BR' } = params || {};
+  
   // Lista de expertise OLV
   const expertiseList = [
     "Supply Chain",
@@ -105,7 +114,7 @@ export default function Sobre() {
   ];
 
   return (
-    <MainLayout>
+    <MainLayout locale={locale}>
       <div className="main-content">
         {/* SEÇÃO HERO */}
         <section className="section hero">

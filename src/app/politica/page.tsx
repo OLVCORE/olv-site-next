@@ -2,13 +2,22 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import MainLayout from '../../components/layout/MainLayout';
+import { getTranslation } from '@/i18n';
 
 export const metadata = {
   title: 'Política | OLV Internacional',
   description: 'Política de Privacidade e LGPD da OLV Internacional: como coletamos, armazenamos, tratamos e protegemos seus dados pessoais, em conformidade com a legislação brasileira e melhores práticas de comércio exterior, supply chain e importação/exportação.'
 };
 
-export default function PoliticaPage() {
+interface PageProps {
+  params: {
+    locale: string;
+  };
+}
+
+export default function PoliticaPage({ params }: PageProps) {
+  const { locale = 'pt-BR' } = params || {};
+  
   // Data da última atualização
   const ultimaAtualizacao = "15 de maio de 2025";
 
@@ -140,7 +149,7 @@ export default function PoliticaPage() {
   ];
 
   return (
-    <MainLayout>
+    <MainLayout locale={locale}>
       {/* Banner principal */}
       <section className="pt-8 pb-12 bg-[#0a0f1d]">
         <div className="container mx-auto max-w-7xl px-4">

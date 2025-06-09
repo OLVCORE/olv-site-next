@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import MainLayout from '../../components/layout/MainLayout';
+import { getTranslation } from '@/i18n';
 
 export const metadata = {
   title: 'Contato | Consultoria Especializada em Comércio Exterior | OLV Internacional',
@@ -31,7 +32,13 @@ export const metadata = {
   }
 };
 
-export default function ContatoPage() {
+interface PageProps {
+  params: { locale: string };
+}
+
+export default function ContatoPage({ params }: PageProps) {
+  const { locale = 'pt-BR' } = params || {};
+  
   // Dados de contato da empresa
   const contactInfo = {
     address: "Av. Paulista, 1578, 7º andar, Bela Vista",
@@ -91,7 +98,7 @@ export default function ContatoPage() {
   ];
 
   return (
-    <MainLayout>
+    <MainLayout locale={locale}>
       {/* Banner principal */}
       <section className="pt-8 pb-12 bg-[#0a0f1d]">
         <div className="container mx-auto max-w-7xl px-4">
