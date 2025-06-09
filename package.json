@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "node scripts/secure-port-dev.js",
     "dev:legacy": "next dev -p 4000",
-    "build": "node fix-build.js && next build",
+    "clean": "node scripts/clean-cache.js",
+    "fix:encoding:files": "node scripts/fix-encoding-files.js",
+    "build": "next build",
     "deploy-prepare": "node scripts/fix-encoding.js && node direct-deploy.js",
     "start": "next start",
     "lint": "next lint",
