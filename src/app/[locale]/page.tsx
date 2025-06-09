@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: PageProps) {
     openGraph: {
       title: getTranslation('seo.home.title', locale),
       description: getTranslation('seo.home.description', locale),
-      url: `https://olv-site.vercel.app/${locale}`,
+      url: `https://olv-site-next.app/${locale}`,
       type: 'website'
     },
     twitter: {
@@ -39,10 +39,10 @@ export async function generateMetadata({ params }: PageProps) {
       description: getTranslation('seo.home.description', locale)
     },
     alternates: {
-      canonical: 'https://olv-site.vercel.app/',
+      canonical: 'https://olv-site-next.app/',
       languages: {
-        'pt-BR': 'https://olv-site.vercel.app/pt-BR',
-        'en-US': 'https://olv-site.vercel.app/en-US'
+        'pt-BR': 'https://olv-site-next.app/pt-BR',
+        'en-US': 'https://olv-site-next.app/en-US'
       }
     }
   };
