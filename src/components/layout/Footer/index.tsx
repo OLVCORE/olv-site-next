@@ -48,6 +48,13 @@ const platforms = [
     url: '/academy',
     icon: <FaGraduationCap size={16} className="text-blue-400" />,
     description: 'Educação Corporativa e Desenvolvimento de Talentos'
+  },
+  {
+    id: 'core',
+    name: 'OLV CORE',
+    url: '/core',
+    icon: <FaCogs size={16} className="text-blue-400" />,
+    description: 'Cockpit inteligente de gestão e performance'
   }
 ];
 
