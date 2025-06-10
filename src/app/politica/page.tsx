@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import MainLayout from '../../components/layout/MainLayout';
-import { getTranslation } from '@/i18n';
+import { getTranslation, Locale, i18n } from '@/i18n';
 
 export const metadata = {
   title: 'Política | OLV Internacional',
@@ -11,12 +11,12 @@ export const metadata = {
 
 interface PageProps {
   params: {
-    locale: string;
+    locale?: string;
   };
 }
-
 export default function PoliticaPage({ params }: PageProps) {
-  const { locale = 'pt-BR' } = params || {};
+  // Usar locale padrão pois esta página não está na rota dinâmica [locale]
+  const locale = i18n.defaultLocale as Locale;
   
   // Data da última atualização
   const ultimaAtualizacao = "15 de maio de 2025";

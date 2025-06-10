@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import PlatformLayout from '../../components/platforms/PlatformLayout';
 import MainLayout from '../../components/layout/MainLayout';
-import { getTranslation } from '@/i18n';
+import { getTranslation, Locale, i18n } from '@/i18n';
 
 interface PageProps {
   params: { locale: string };
@@ -38,7 +38,7 @@ export const metadata = {
 };
 
 export default function VeritusPage({ params }: PageProps) {
-  const { locale = 'pt-BR' } = params;
+  const locale = i18n.defaultLocale as Locale;
   
   return (
     <MainLayout locale={locale}>

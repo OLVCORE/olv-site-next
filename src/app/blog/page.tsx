@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import MainLayout from '../../components/layout/MainLayout';
-import { getTranslation } from '@/i18n';
+import { getTranslation, Locale, i18n } from '@/i18n';
 
 export const metadata = {
   title: 'Blog sobre Comércio Exterior | Conteúdo Especializado para Importadores e Exportadores',
@@ -34,12 +34,12 @@ export const metadata = {
 
 interface PageProps {
   params: {
-    locale: string;
+    locale?: string;
   };
 }
 
 export default function BlogPage({ params }: PageProps) {
-  const { locale = 'pt-BR' } = params || {};
+  const locale = i18n.defaultLocale as Locale;
   
   // Dados dos artigos do blog
   const articles = [

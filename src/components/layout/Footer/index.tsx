@@ -108,7 +108,6 @@ const footerTooltipStyles = `
 `;
 
 const Footer: React.FC = () => {
-  const [showFooter, setShowFooter] = useState(false);
   const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -125,29 +124,6 @@ const Footer: React.FC = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Efeito para mostrar o footer quando o usuário rolar até o final da página
-  useEffect(() => {
-    const handleScroll = () => {
-      const position = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      
-      // Show footer when near the end of the page (300px from bottom)
-      if (position + windowHeight > documentHeight - 400) {
-        setShowFooter(true);
-      } else {
-        setShowFooter(false);
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    
-    // Verificar a posição inicial
-    handleScroll();
-    
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   // Função para alternar o tooltip no mobile (touch)
   const toggleTooltip = (id: string) => {
     if (isMobile) {
@@ -156,7 +132,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className={`footer-reveal ${showFooter ? 'reveal' : ''}`}>
+    <footer className="footer-reveal reveal">
       <style dangerouslySetInnerHTML={{ __html: footerTooltipStyles }} />
       <div className="footer-container max-w-7xl mx-auto px-4 py-12 mt-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">

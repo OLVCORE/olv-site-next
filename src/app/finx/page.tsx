@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import MainLayout from '../../components/layout/MainLayout';
 import PlatformLayout from '../../components/platforms/PlatformLayout';
-import { getTranslation } from '@/i18n';
+import { getTranslation, Locale, i18n } from '@/i18n';
 
 export const metadata = {
   title: 'FINX | Gestão Financeira para Comércio Exterior',
@@ -33,11 +33,11 @@ export const metadata = {
 };
 
 interface PageProps {
-  params: { locale: string };
+  params: { locale?: string };
 }
 
 export default function FinxPage({ params }: PageProps) {
-  const { locale = 'pt-BR' } = params;
+  const locale = i18n.defaultLocale as Locale;
   
   return (
     <MainLayout locale={locale}>

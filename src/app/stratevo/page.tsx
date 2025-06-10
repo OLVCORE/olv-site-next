@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import MainLayout from '../../components/layout/MainLayout';
 import PlatformLayout from '../../components/platforms/PlatformLayout';
-import { getTranslation } from '@/i18n';
+import { getTranslation, Locale, i18n } from '@/i18n';
 
 export const metadata = {
   title: 'STRATEVO | Inteligência de Mercado para Expansão Internacional',
@@ -38,7 +38,7 @@ interface PageProps {
 }
 
 export default function StratevoPage({ params }: PageProps) {
-  const { locale = 'pt-BR' } = params;
+  const locale = i18n.defaultLocale as Locale;
   return (
     <MainLayout locale={locale}>
       <PlatformLayout

@@ -496,7 +496,6 @@ body.theme-light .sidebar-icon {
 
 .ticker-inner p {
   white-space: nowrap;
-  animation: ticker-scroll 30s linear infinite;
   display: inline-block;
 }
 
@@ -1075,7 +1074,6 @@ body.theme-light .card-list li:hover img {
   padding: 12px 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   opacity: 0.95;
-  animation: pulse 2s infinite;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -1095,18 +1093,6 @@ body.theme-light .card-list li:hover img {
 .beta-description {
   font-size: 0.85rem;
   line-height: 1.4;
-}
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
-  }
 }
 
 /* Fale Conosco floating card - repositioned to left side */
@@ -1264,7 +1250,6 @@ body.theme-light .card-list li:hover img {
   transition: opacity 0.3s ease, transform 0.3s ease;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   pointer-events: none;
-  animation: tooltipGlow 2s infinite;
 }
 
 /* New improved footer tooltips */
@@ -1286,7 +1271,6 @@ body.theme-light .card-list li:hover img {
   transition: opacity 0.3s ease, transform 0.3s ease;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   pointer-events: none;
-  animation: tooltipGlow 2s infinite;
   text-wrap: balance;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -1676,5 +1660,30 @@ body.theme-light .platform-tooltip {
 @media (max-width: 768px) {
   .desktop-only {
     display: none !important;
+  }
+}
+
+/* Disabling animation keyframes */
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 50%, 100% {
+    text-shadow: none;
+  }
+}
+
+@keyframes tooltipGlow {
+  0%, 100% {
+    box-shadow: none;
+  }
+}
+
+@keyframes ticker-scroll {
+  0%, 100% {
+    transform: none;
   }
 }

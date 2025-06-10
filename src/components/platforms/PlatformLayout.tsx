@@ -10,6 +10,7 @@ import Ticker from '../layout/Ticker';
 import WhatsAppButton from '../layout/WhatsAppButton';
 import SpecialistButton from '../layout/SpecialistButton';
 import { usePathname } from 'next/navigation';
+import { i18n, Locale } from '@/i18n';
 
 interface PlatformLayoutProps {
   children: React.ReactNode;
@@ -17,6 +18,7 @@ interface PlatformLayoutProps {
   platformLogo: string;
   platformDescription: string;
   platformColor?: string;
+  locale?: Locale;
 }
 
 const PlatformLayout: React.FC<PlatformLayoutProps> = ({
@@ -25,54 +27,34 @@ const PlatformLayout: React.FC<PlatformLayoutProps> = ({
   platformLogo,
   platformDescription,
   platformColor = '#0a2463', // Default color - dark blue
+  locale = i18n.defaultLocale, // Default to pt-BR if not provided
 }) => {
-  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const pathname = usePathname();
   
   // Get platform name from path for CSS class
   const platformKey = pathname?.split('/')[1]?.toLowerCase() || '';
 
-  // Initialize theme from localStorage or default to dark
+  // Initialize theme to dark only
   useEffect(() => {
-    // Check for saved theme
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    
-    // If saved theme exists, use it, otherwise keep dark
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.body.classList.remove('theme-light', 'theme-dark');
-      document.body.classList.add(`theme-${savedTheme}`);
-    }
+    // Force dark theme
+    document.body.classList.remove('theme-light');
+    document.body.classList.add('theme-dark');
+    localStorage.setItem('theme', 'dark');
     
     // Add platform-page class to body
     document.body.classList.add('platform-page');
+    
+    // Update meta tag for theme-color
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (metaThemeColor) {
+      metaThemeColor.setAttribute('content', '#0a0f1d');
+    }
     
     return () => {
       // Clean up when component unmounts
       document.body.classList.remove('platform-page');
     };
   }, []);
-
-  // Toggle theme function
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-    
-    // Remove theme classes from body
-    document.body.classList.remove('theme-light', 'theme-dark');
-    // Add new theme class
-    document.body.classList.add(`theme-${newTheme}`);
-    
-    // Update meta tag for theme-color
-    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
-    if (metaThemeColor) {
-      metaThemeColor.setAttribute(
-        'content',
-        newTheme === 'dark' ? '#0a0f1d' : '#ffffff'
-      );
-    }
-  };
 
   return (
     <div className="site-wrapper">
@@ -82,7 +64,7 @@ const PlatformLayout: React.FC<PlatformLayoutProps> = ({
       {/* Main Content Area */}
       <div className="content-wrapper">
         {/* Header */}
-        <Header theme={theme} toggleTheme={toggleTheme} />
+        <Header locale={locale} />
         
         {/* Ticker */}
         <Ticker />

@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import MainLayout from '../../components/layout/MainLayout';
-import { getTranslation } from '@/i18n';
+import { getTranslation, Locale, i18n } from '@/i18n';
 
 export const metadata = {
   title: 'Ecossistema OLV | Soluções Integradas para Comércio Global',
@@ -37,7 +37,8 @@ interface PageProps {
 }
 
 export default function EcossistemaPage({ params }: PageProps) {
-  const { locale = 'pt-BR' } = params || {};
+  // Usar locale padrão pois esta página não está na rota dinâmica [locale]
+  const locale = i18n.defaultLocale as Locale;
   
   // Dados das empresas do ecossistema
   const empresas = [

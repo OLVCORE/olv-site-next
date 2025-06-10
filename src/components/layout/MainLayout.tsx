@@ -28,9 +28,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({
   isPlatformPage = false,
   locale = 'pt-BR'
 }) => {
-  const [showFooter, setShowFooter] = useState(false);
-  const [isPageLoaded, setIsPageLoaded] = useState(false);
-  
   const pathname = usePathname();
   
   // Check if current page is a platform page
@@ -41,23 +38,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({
     '/engage', 
     '/mecs'
   ].includes(pathname);
-
-  useEffect(() => {
-    // Show footer after 500ms
-    const footerTimer = setTimeout(() => {
-      setShowFooter(true);
-    }, 500);
-
-    // Show page after 200ms for transition effect
-    const pageTimer = setTimeout(() => {
-      setIsPageLoaded(true);
-    }, 200);
-    
-    return () => {
-      clearTimeout(footerTimer);
-      clearTimeout(pageTimer);
-    };
-  }, []);
 
   // CSS styles for the floating action buttons container
   const mobileButtonsStyle = `
@@ -94,14 +74,8 @@ const MainLayout: React.FC<MainLayoutProps> = ({
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.3s ease;
         background: linear-gradient(135deg, #141c2f, #0a0f1d);
         border: 1px solid rgba(255, 255, 255, 0.1);
-      }
-      
-      .mobile-button:hover, .mobile-button:focus {
-        transform: scale(1.05);
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
       }
       
       .mobile-button-tooltip {
@@ -113,7 +87,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({
         font-size: 12px;
         white-space: nowrap;
         opacity: 0;
-        transition: all 0.3s ease;
         pointer-events: none;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         border: 1px solid #d4af37;
@@ -128,16 +101,11 @@ const MainLayout: React.FC<MainLayoutProps> = ({
         right: 100%;
         margin-right: 12px;
       }
-      
-      .mobile-button:hover .mobile-button-tooltip,
-      .mobile-button:focus .mobile-button-tooltip {
-        opacity: 1;
-      }
     }
   `;
 
   return (
-    <div className={`app-container ${className} ${isPageLoaded ? 'loaded' : ''}`}>
+    <div className={`app-container ${className} loaded`}>
       <style dangerouslySetInnerHTML={{ __html: mobileButtonsStyle }} />
       
       <ThemeSwitch />
@@ -154,7 +122,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
           <QuickLinks />
         </div>
         
-        <main className={`main-content ${isPageLoaded ? 'fade-in' : ''} min-h-screen pb-36`}>
+        <main className="main-content min-h-screen pb-36">
           {children}
         </main>
         
@@ -179,7 +147,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
         {/* Reduzindo o espaçamento antes do footer para evitar muito espaço */}
         <div className="h-12"></div>
         
-        {showFooter && <Footer />}
+        <Footer />
         
         {/* Fixed buttons - Now hidden on mobile, shown on desktop */}
         <div className="hidden md:block">

@@ -3,11 +3,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import PlatformLayout from '../../components/platforms/PlatformLayout';
 import MainLayout from '../../components/layout/MainLayout';
-import { getTranslation } from '@/i18n';
+import { getTranslation, i18n, Locale } from '@/i18n';
 
 interface PageProps {
   params: {
-    locale: string;
+    locale?: string;
   };
 }
 
@@ -40,7 +40,7 @@ export const metadata = {
 };
 
 export default function AcademyPage({ params }: PageProps) {
-  const { locale = 'pt-BR' } = params || {};
+  const locale = i18n.defaultLocale as Locale;
 
   return (
     <MainLayout locale={locale}>
@@ -49,6 +49,7 @@ export default function AcademyPage({ params }: PageProps) {
         platformLogo="/images/academy.jpeg"
         platformDescription="Capacitação e Desenvolvimento em Comércio Internacional"
         platformColor="#0a2463"
+        locale={locale}
       >
         <section className="mb-12">
           <h2 className="section-title">Sobre a ACADEMY</h2>
