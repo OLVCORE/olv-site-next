@@ -1,0 +1,74 @@
+{
+  "common": {
+    "header": {
+      "home": "Home",
+      "about": "About",
+      "solutions": "Solutions",
+      "ecosystem": "Ecosystem",
+      "radar360": "Radar 360",
+      "blog": "Blog",
+      "contact": "Contact",
+      "policy": "Policy"
+    },
+    "footer": {
+      "rights": "All rights reserved",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Use"
+    },
+    "languages": {
+      "pt": "PT",
+      "en": "EN"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "We Integrate Strategy, Operation and Results",
+      "experience": "35 years of experience in strategic solutions",
+      "description1": "We are specialists in Supply Chain, Foreign Trade, International Logistics and Business Development.",
+      "description2": "We act as the consulting arm of the OLV Ecosystem, offering complete support for companies that want to import, export, expand their business, operate safely and with high performance in the global market.",
+      "slogan": "From SISCOMEX Radar to Shipping. From Strategy to Execution. From Bureaucracy to Results."
+    },
+    "humanFactor": {
+      "title": "The Human Factor",
+      "description": "Our approach is based on the combination of technical expertise with emotional intelligence. We believe that behind every operation there are people, and understanding their needs is essential to deliver exceptional results.",
+      "expertise": {
+        "title": "Human Expertise",
+        "description": "Our multidisciplinary team combines technical knowledge with interpersonal skills to build relationships of trust and deliver personalized solutions."
+      },
+      "partnership": {
+        "title": "Long-term Partnership",
+        "description": "We are not just service providers, but strategic partners committed to sustainable growth and the continued success of our clients."
+      },
+      "culture": {
+        "title": "Cultural Sensitivity",
+        "description": "We understand the cultural nuances of different markets and facilitate communication and negotiation in diverse international environments."
+      }
+    },
+    "pillars": {
+      "title": "Pillars of Our Operation",
+      "cta": "Discover Our Complete Ecosystem"
+    }
+  },
+  "about": {
+    "title": "About OLV International",
+    "description": "Learn about our history, mission and values"
+  },
+  "solutions": {
+    "title": "Foreign Trade Solutions",
+    "description": "Discover our customized solutions for import and export"
+  },
+  "ecosystem": {
+    "title": "OLV Ecosystem",
+    "description": "Meet all companies in the OLV group"
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "description": "We are ready to help your company"
+  },
+  "seo": {
+    "home": {
+      "title": "OLV International | Specialized Foreign Trade Consulting",
+      "description": "Transform your international operation with our strategic intelligence. From SISCOMEX Radar to Shipping. From Strategy to Execution. From Bureaucracy to Results."
+    }
+  }
+} 

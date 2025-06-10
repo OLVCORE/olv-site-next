@@ -1,0 +1,25 @@
+# Meta Robots Configuration for OLV Internacional
+
+# Define default indexing behavior
+index, follow
+
+# Allow Google to index everything
+google: index, follow
+
+# Allow images to be shown in Google image search
+googlebot-image: index
+
+# Allow mobile-specific content to be indexed
+googlebot-mobile: index
+
+# Set a longer fresh period for core content
+unavailable_after: never
+
+# Set maximum image preview size to large for better visibility in search results
+max-image-preview: large
+
+# Allow snippets to be as large as needed
+max-snippet: -1
+
+# Allow video previews to be as large as needed
+max-video-preview: -1 

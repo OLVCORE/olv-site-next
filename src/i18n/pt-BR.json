@@ -1,0 +1,74 @@
+{
+  "common": {
+    "header": {
+      "home": "Home",
+      "about": "Sobre",
+      "solutions": "Soluções",
+      "ecosystem": "Ecossistema",
+      "radar360": "Radar 360",
+      "blog": "Blog",
+      "contact": "Contato",
+      "policy": "Política"
+    },
+    "footer": {
+      "rights": "Todos os direitos reservados",
+      "privacy": "Política de Privacidade",
+      "terms": "Termos de Uso"
+    },
+    "languages": {
+      "pt": "PT",
+      "en": "EN"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Integramos Estratégia, Operação e Resultado",
+      "experience": "35 anos de experiência em soluções estratégicas",
+      "description1": "Somos especialistas em Supply Chain, Comércio Exterior, Logística Internacional e Desenvolvimento de Negócios.",
+      "description2": "Atuamos como o braço consultivo do Ecossistema OLV, oferecendo suporte completo para empresas que querem importar, exportar, expandir seus negócios, operar com segurança e alta performance no mercado global.",
+      "slogan": "Do Radar SISCOMEX ao Embarque. Da Estratégia à Execução. Da Burocracia ao Resultado."
+    },
+    "humanFactor": {
+      "title": "O Fator Humano",
+      "description": "Nossa abordagem é fundamentada na combinação de expertise técnica com inteligência emocional. Acreditamos que por trás de cada operação há pessoas, e compreender suas necessidades é essencial para entregar resultados excepcionais.",
+      "expertise": {
+        "title": "Expertise Humana",
+        "description": "Nossa equipe multidisciplinar combina conhecimento técnico com habilidades interpessoais para construir relacionamentos de confiança e entregar soluções personalizadas."
+      },
+      "partnership": {
+        "title": "Parceria de Longo Prazo",
+        "description": "Não somos apenas prestadores de serviço, mas parceiros estratégicos comprometidos com o crescimento sustentável e o sucesso contínuo dos nossos clientes."
+      },
+      "culture": {
+        "title": "Sensibilidade Cultural",
+        "description": "Entendemos as nuances culturais dos diferentes mercados e facilitamos a comunicação e negociação em ambientes internacionais diversos."
+      }
+    },
+    "pillars": {
+      "title": "Pilares da Nossa Atuação",
+      "cta": "Conheça Nosso Ecossistema Completo"
+    }
+  },
+  "about": {
+    "title": "Sobre a OLV Internacional",
+    "description": "Conheça nossa história, missão e valores"
+  },
+  "solutions": {
+    "title": "Soluções em Comércio Exterior",
+    "description": "Conheça nossas soluções personalizadas para importação e exportação"
+  },
+  "ecosystem": {
+    "title": "Ecossistema OLV",
+    "description": "Conheça todas as empresas do grupo OLV"
+  },
+  "contact": {
+    "title": "Entre em Contato",
+    "description": "Estamos prontos para ajudar sua empresa"
+  },
+  "seo": {
+    "home": {
+      "title": "OLV Internacional | Consultoria Especializada em Comércio Exterior",
+      "description": "Transforme sua operação internacional com nossa inteligência estratégica. Do Radar SISCOMEX ao Embarque. Da Estratégia à Execução. Da Burocracia ao Resultado."
+    }
+  }
+} 

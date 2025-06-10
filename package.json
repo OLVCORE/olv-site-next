@@ -1,0 +1,59 @@
+{
+  "name": "olv-site-next",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node scripts/secure-port-dev.js",
+    "dev:legacy": "next dev -p 4000",
+    "clean": "node scripts/clean-cache.js",
+    "fix:encoding:files": "node scripts/fix-encoding-files.js",
+    "fix:locale": "node scripts/fix-locale-typing.js",
+    "fix:bracket": "node scripts/fix-extra-bracket.js",
+    "fix:imports": "node scripts/fix-duplicate-imports.js",
+    "fix:links": "node scripts/fix-links.js",
+    "fix:syntax": "node scripts/fix-syntax.js",
+    "build": "next build",
+    "deploy-prepare": "node scripts/fix-encoding.js && node direct-deploy.js",
+    "prepare": "node scripts/prepare-deploy.js",
+    "start": "next start",
+    "lint": "next lint",
+    "fix:encoding": "node scripts/fix-encoding.js",
+    "fix:layout": "node scripts/fix-layout.js",
+    "check:site": "node scripts/check-site.js",
+    "check:layout": "node scripts/check-layout.js",
+    "cleanup": "node scripts/pre-build-cleanup.js",
+    "version:approve": "node scripts/approve-version.js",
+    "version:list": "node scripts/version-manager.js list",
+    "version:restore": "node scripts/version-manager.js restore",
+    "version:check": "node scripts/version-manager.js check",
+    "version:history": "node scripts/version-manager.js history",
+    "fix:site": "node scripts/restore-site.js"
+  },
+  "dependencies": {
+    "@formatjs/intl-localematcher": "^0.6.1",
+    "@vercel/analytics": "^1.5.0",
+    "framer-motion": "^12.16.0",
+    "langchain": "^0.3.27",
+    "negotiator": "^1.0.0",
+    "next": "^14.0.4",
+    "openai": "^5.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^5.5.0"
+  },
+  "devDependencies": {
+    "@types/negotiator": "^0.6.4",
+    "@types/node": "20.17.57",
+    "@types/react": "18.3.23",
+    "@types/react-dom": "^18.0.0",
+    "autoprefixer": "^10.4.21",
+    "detect-port": "^2.1.0",
+    "glob": "^10.3.10",
+    "postcss": "^8.5.4",
+    "tailwindcss": "^3.4.17",
+    "typescript": "5.8.3"
+  },
+  "olv": {
+    "projectInfo": "Website institucional da OLV Internacional"
+  }
+}

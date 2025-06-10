@@ -1,0 +1,12 @@
+# www.robotstxt.org/
+
+# Allow crawling of all content
+User-agent: *
+Allow: /
+
+# Block specific areas
+Disallow: /api/
+Disallow: /_next/
+
+# Specify sitemap location
+Sitemap: https://olvinternacional.com.br/sitemap.xml 
