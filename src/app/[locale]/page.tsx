@@ -4,33 +4,51 @@ import Link from 'next/link';
 import { getTranslation, Locale } from '../../i18n';
 
 interface PageProps {
-  params: {
-    locale: Locale;
-  };
+  params: { locale: Locale };
 }
 
-export async function generateMetadata({ params }: PageProps) {
-  const { locale } = params;
-  
+export async function generateMetadata() {
   return {
     title: getTranslation('seo.home.title'),
     description: getTranslation('seo.home.description'),
     keywords: [
-      'Consultoria em Exportação',
-      'Especialistas em Comex',
+      'Consultoria em exportação',
+      'Consultoria em importação',
+      'Exportação de produtos',
+      'Logística internacional / 3PL / 4PL',
       'Como Exportar Legalmente',
+      'Especialistas em Comex',
+      'Abra sua Importadora',
+      'Importação Sem Burocracia',
+      'Suporte Total no Comex',
+      'Comex para Empresas PME',
+      'Planeje sua Exportação',
+      'Importar com Segurança',
       'Exportação para Iniciantes',
+      'Documentação de Comex',
+      'Treinamento em Comércio',
+      'Desembaraço Aduaneiro Rápido',
+      'Planejamento Tributário Comex',
+      'Passo a Passo da Exportação',
+      'Exportar Alimentos do Brasil',
+      'Importar com Redução Fiscal',
+      'Consultoria para Radar SISCOMEX',
+      'Regularize sua Empresa Comex',
+      'Exportar com Baixo Custo',
+      'Importação para Revenda',
+      'Exportação Café e Soja',
+      'Logística 3PL para Exportação',
+      'Montamos sua Operação Comex',
       'Suporte do Radar ao Embarque',
       'Exportação Sem Erros',
-      'Passo a Passo da Exportação',
       'Reduza Custos de Importação',
-      'Abra sua Importadora',
-      'Planejamento Tributário Comex'
+      'Exportação Legalizada e Fácil',
+      'Exportar com Lucro Real'
     ],
     openGraph: {
       title: getTranslation('seo.home.title'),
       description: getTranslation('seo.home.description'),
-      url: `https://olv-site-next.app/${locale}`,
+      url: 'https://olv-site-next.app',
       type: 'website'
     },
     twitter: {
@@ -50,26 +68,79 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default function LocaleHomePage({ params }: PageProps) {
   const { locale } = params;
-  
+
   return (
     <MainLayout locale={locale}>
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-6">
-          {params.locale === 'pt-BR' ? 'Bem-vindo à OLV Internacional!' : 'Welcome to OLV Internacional!'}
-        </h1>
-        <p className="mb-4">
-          {params.locale === 'pt-BR' 
-            ? 'Especialistas em comércio exterior, importação, exportação e logística internacional.' 
-            : 'Specialists in foreign trade, import, export, and international logistics.'}
-        </p>
-        <div className="bg-blue-100 p-4 rounded-lg dark:bg-blue-900">
-          <p className="text-sm">
-            {params.locale === 'pt-BR'
-              ? 'Você está visualizando esta página em Português do Brasil.'
-              : 'You are viewing this page in English.'}
-          </p>
+      {/* Hero */}
+      <section className="bg-[#0a0f24] text-white py-16">
+        <div className="container mx-auto flex flex-col md:flex-row items-center">
+          <div className="md:w-1/2 space-y-4">
+            <h1 className="text-4xl font-bold">
+              {getTranslation('home.hero.title', locale)}
+            </h1>
+            <p className="text-lg">
+              {getTranslation('home.hero.subtitle', locale)}
+            </p>
+            <p className="italic text-yellow-300">
+              {getTranslation('home.hero.note', locale)}
+            </p>
+          </div>
+          <div className="md:w-1/2 mt-8 md:mt-0">
+            <Image
+              src="/images/hero-banner.webp"
+              alt="OLV Internacional"
+              width={600}
+              height={400}
+              className="rounded-lg shadow-lg"
+            />
+          </div>
         </div>
-      </div>
+      </section>
+
+      {/* Pilares da Nossa Atuação */}
+      <section className="container mx-auto py-16 px-4">
+        <h2 className="text-3xl font-semibold text-yellow-400 mb-8">
+          {locale === 'pt-BR'
+            ? 'Pilares da Nossa Atuação'
+            : 'Our Core Pillars'}
+        </h2>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            {
+              titlePt: 'Operação Legalizada',
+              descPt: 'Condução de processos de importação e exportação dentro das normativas brasileiras e internacionais.',
+              titleEn: 'Legalized Operation',
+              descEn: 'Managing import/export processes in full compliance.'
+            },
+            {
+              titlePt: 'Redução Tributária Estruturada',
+              descPt: 'Planejamento fiscal estratégico para redução de carga tributária em operações de comércio exterior.',
+              titleEn: 'Structured Tax Reduction',
+              descEn: 'Strategic tax planning to reduce trade tax burden.'
+            },
+            {
+              titlePt: 'Logística Internacional / 3PL / 4PL',
+              descPt: 'Soluções completas de transporte, armazenagem e distribuição global.',
+              titleEn: 'International Logistics / 3PL / 4PL',
+              descEn: 'Comprehensive transportation & distribution solutions.'
+            }
+          ].map((p, i) => (
+            <div
+              key={i}
+              className="p-6 bg-[#1b1f3a] rounded-lg border border-gray-800">
+              <h3 className="text-xl font-bold mb-2">
+                {locale === 'pt-BR' ? p.titlePt : p.titleEn}
+              </h3>
+              <p className="text-gray-300">
+                {locale === 'pt-BR' ? p.descPt : p.descEn}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* (Aqui você adiciona as Soluções e O Fator Humano da mesma forma) */}
+
     </MainLayout>
   );
 }
